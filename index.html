@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gacha</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🎴 Le Gacha</h1>
+    <p class="subtitle">Tente ta chance et obtiens de nouveaux personnages !</p>
+  </header>
+
+  <main>
+    <section class="stats">
+      <div class="stat-box">
+        <span class="stat-label">Tirages effectués</span>
+        <span id="pull-count" class="stat-value">0</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Personnages débloqués</span>
+        <span id="unlocked-count" class="stat-value">0 / 0</span>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button id="pull-1" class="btn">Tirer x1</button>
+      <button id="pull-10" class="btn btn-secondary">Tirer x10</button>
+      <button id="reset" class="btn btn-danger">Réinitialiser</button>
+    </section>
+
+    <section id="result-area" class="result-area">
+      <p class="placeholder-text">Les résultats de tes tirages apparaîtront ici.</p>
+    </section>
+
+    <section class="rarity-legend">
+      <h2>Table des raretés</h2>
+      <div id="legend" class="legend-grid"></div>
+    </section>
+
+    <section class="history-section">
+      <h2>Historique</h2>
+      <ul id="history-list" class="history-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Base texte uniquement — ajoute un "image" dans characters.json pour illustrer un personnage.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
