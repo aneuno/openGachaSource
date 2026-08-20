@@ -28,11 +28,17 @@
     <section class="actions">
       <button id="pull-1" class="btn">Tirer x1</button>
       <button id="pull-10" class="btn btn-secondary">Tirer x10</button>
+      <button id="toggle-collection" class="btn btn-secondary">Ma collection</button>
       <button id="reset" class="btn btn-danger">Réinitialiser</button>
     </section>
 
     <section id="result-area" class="result-area">
       <p class="placeholder-text">Les résultats de tes tirages apparaîtront ici.</p>
+    </section>
+
+    <section id="collection-panel" class="collection-panel hidden">
+      <h2>Ma collection</h2>
+      <div id="collection-grid" class="collection-grid"></div>
     </section>
 
     <section class="rarity-legend">
@@ -49,6 +55,9 @@
   <footer>
     <p>Base texte uniquement — ajoute un "image" dans characters.json pour illustrer un personnage.</p>
   </footer>
+
+  <div id="fx-overlay" class="fx-overlay"></div>
+  <div id="fx-particles" class="fx-particles"></div>
 
   <script src="script.js"></script>
 </body>
