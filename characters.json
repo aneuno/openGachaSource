@@ -1,0 +1,19 @@
+[
+  { "id": 1,  "name": "Villageois",         "rarity": 1,  "description": "Un habitant paisible du village.",              "image": "" },
+  { "id": 2,  "name": "Garde municipal",    "rarity": 1,  "description": "Surveille les rues jour et nuit.",              "image": "" },
+  { "id": 3,  "name": "Marchand ambulant",  "rarity": 1,  "description": "Vend un peu de tout, un peu partout.",         "image": "" },
+  { "id": 4,  "name": "Archer novice",      "rarity": 2,  "description": "Apprend encore à viser juste.",                "image": "" },
+  { "id": 5,  "name": "Écuyer",             "rarity": 2,  "description": "Rêve de devenir chevalier un jour.",           "image": "" },
+  { "id": 6,  "name": "Guerrier des plaines","rarity": 3, "description": "Endurci par des années de combat.",            "image": "" },
+  { "id": 7,  "name": "Mage novice",        "rarity": 3,  "description": "Maîtrise quelques sorts basiques.",            "image": "" },
+  { "id": 8,  "name": "Chevalier errant",   "rarity": 4,  "description": "Voyage de royaume en royaume.",                "image": "" },
+  { "id": 9,  "name": "Prêtresse",          "rarity": 4,  "description": "Soigne les blessés grâce à la lumière sacrée.","image": "" },
+  { "id": 10, "name": "Rôdeuse des bois",   "rarity": 5,  "description": "Personne ne la voit venir.",                   "image": "" },
+  { "id": 11, "name": "Alchimiste",         "rarity": 5,  "description": "Transforme la matière à sa guise.",            "image": "" },
+  { "id": 12, "name": "Paladin sacré",      "rarity": 6,  "description": "Protecteur juré des innocents.",               "image": "" },
+  { "id": 13, "name": "Sorcière écarlate",  "rarity": 7,  "description": "Manipule des flammes destructrices.",          "image": "" },
+  { "id": 14, "name": "Chevalier-Dragon",   "rarity": 8,  "description": "A fusionné son âme avec un dragon ancien.",    "image": "" },
+  { "id": 15, "name": "Ange Déchu",         "rarity": 9,  "description": "Banni des cieux pour son pouvoir excessif.",   "image": "" },
+  { "id": 16, "name": "Empereur Céleste",   "rarity": 10, "description": "Règne sur les royaumes depuis les étoiles.",   "image": "" },
+  { "id": 17, "name": "Avatar du Chaos",    "rarity": 11, "description": "Une entité légendaire capable de réécrire la réalité.", "image": "" }
+]
