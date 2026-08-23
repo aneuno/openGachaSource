@@ -4,7 +4,7 @@ let CHARACTERS = [];
 let shards = 300;
 
 const COST_SINGLE = 100;
-const COST_TEN = 900;
+const COST_TEN = 100000;
 
 // Rareté fixe par personnage (identité), utilisée pour l'affichage du bandeau
 // et comme pool de tirage pondéré.
