@@ -177,6 +177,37 @@ html, body {
   gap: 36px;
 }
 
+.currency.shake { animation: shakeX 0.4s ease; }
+@keyframes shakeX {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translate(-50%, 20px);
+  background: var(--panel-2);
+  border: 1px solid rgba(240, 196, 25, 0.4);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 0.9rem;
+  padding: 12px 22px;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  opacity: 0;
+  z-index: 100;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast-warn { border-color: #ff6b6b; }
+.toast-error { border-color: #ff6b6b; color: #ffb3b3; }
+
 .gate {
   position: relative;
   width: 240px;
