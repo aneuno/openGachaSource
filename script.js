@@ -1,14 +1,17 @@
 const p = document.getElementById("p");
 const oneSummonButton = document.getElementById("oneSummonButton");
 const multiSummonButton = document.getElementById("multiSummonButton");
+let results = [];
 
-const results = [
-    { name: "saber", image: "https://res.cloudinary.com/daowtjque/image/upload/v1773661792/24a7eecb347dd7d60c050bcde3276448_x0odwo.jpg" },
-    { name: "misato", image: "https://res.cloudinary.com/daowtjque/image/upload/v1773661792/24a7eecb347dd7d60c050bcde3276448_x0odwo.jpg" },
-    { name: "zero two", image: "https://res.cloudinary.com/daowtjque/image/upload/v1773661792/24a7eecb347dd7d60c050bcde3276448_x0odwo.jpg" },
-    { name: "revy", image: "https://res.cloudinary.com/daowtjque/image/upload/v1773661792/24a7eecb347dd7d60c050bcde3276448_x0odwo.jpg" },
-    { name: "marin", image: "https://res.cloudinary.com/daowtjque/image/upload/v1773661792/24a7eecb347dd7d60c050bcde3276448_x0odwo.jpg" }
-];
+fetch("characters.json")
+    .then(response => response.json())
+    .then(data => {
+        results = data.results;
+    })
+    .catch(error => {
+        console.error("Failed to load characters.json:", error);
+        p.textContent = "Failed to load character data.";
+    });
 
 function getRandomResult() {
     const randomIndex = Math.floor(Math.random() * results.length);
@@ -32,18 +35,24 @@ function createCharacterCard(character) {
 }
 
 oneSummonButton.onclick = function () {
+    if (results.length === 0) {
+        p.textContent = "Still loading...";
+        return;
+    }
     p.innerHTML = "";
-    const randomResult = getRandomResult();
-    p.appendChild(createCharacterCard(randomResult));
+    p.appendChild(createCharacterCard(getRandomResult()));
 };
 
 multiSummonButton.onclick = function () {
+    if (results.length === 0) {
+        p.textContent = "Still loading...";
+        return;
+    }
     p.innerHTML = "";
     for (let j = 0; j < 10; j++) {
         p.appendChild(createCharacterCard(getRandomResult()));
     }
-    const bonus = getRandomResult();
-    const bonusCard = createCharacterCard(bonus);
+    const bonusCard = createCharacterCard(getRandomResult());
     bonusCard.classList.add("bonus");
     p.appendChild(bonusCard);
 };
