@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+    <style>
+        #p {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .character-card {
+            text-align: center;
+        }
+        .character-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .character-card.bonus img {
+            border: 3px solid gold;
+        }
+    </style>
 </head>
-
 <body>
-    <p id="p">0</p>
-
+    <div id="p"></div>
     <button id="oneSummonButton">1 summon</button>
     <button id="multiSummonButton">10 summon + 1</button>
-
     <script src="script.js"></script>
 </body>
-
 </html>
