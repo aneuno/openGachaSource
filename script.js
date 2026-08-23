@@ -41,9 +41,16 @@ const modalContinue = document.getElementById("modalContinue");
 
 // ---------- Load character data ----------
 
+function withTimeout(promise, ms) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), ms))
+  ]);
+}
+
 async function loadCharacters() {
   try {
-    const res = await fetch("characters.json");
+    const res = await withTimeout(fetch("characters.json"), 2500);
     if (!res.ok) throw new Error("network");
     const data = await res.json();
     CHARACTERS = data.results || [];
@@ -143,26 +150,38 @@ function spawnSpark() {
 async function handlePull(count) {
   const cost = count === 10 ? COST_TEN : COST_SINGLE;
   if (!canAfford(cost)) {
-    flashInsufficient();
+    flashInsufficient(cost);
+    return;
+  }
+
+  if (!CHARACTERS.length) {
+    showError("Aucun personnage chargé pour l'instant, réessaie dans un instant.");
     return;
   }
 
   setPullButtonsDisabled(true);
-  updateShards(-cost);
 
-  await playGateAnimation(count === 10 ? 1800 : 1300);
+  try {
+    updateShards(-cost);
 
-  const results = [];
-  for (let i = 0; i < count; i++) {
-    // Le pull x10 garantit au moins un SR ou mieux sur le dernier tirage.
-    const guaranteed = (count === 10 && i === count - 1 && !results.some(r => tierRank(r.tier) >= 1));
-    results.push(summonOne(guaranteed ? "SR" : null));
+    await playGateAnimation(count === 10 ? 1800 : 1300);
+
+    const results = [];
+    for (let i = 0; i < count; i++) {
+      // Le pull x10 garantit au moins un SR ou mieux sur le dernier tirage.
+      const guaranteed = (count === 10 && i === count - 1 && !results.some(r => tierRank(r.tier) >= 1));
+      results.push(summonOne(guaranteed ? "SR" : null));
+    }
+
+    showResults(results);
+    results.forEach(r => addHistoryEntry(r));
+  } catch (err) {
+    console.error("Erreur pendant l'invocation :", err);
+    updateShards(cost); // on rembourse si le tirage a échoué
+    showError("L'invocation a échoué. Regarde la console pour plus de détails.");
+  } finally {
+    setPullButtonsDisabled(false);
   }
-
-  showResults(results);
-  results.forEach(r => addHistoryEntry(r));
-
-  setPullButtonsDisabled(false);
 }
 
 function setPullButtonsDisabled(disabled) {
@@ -170,13 +189,28 @@ function setPullButtonsDisabled(disabled) {
   pullTenBtn.disabled = disabled;
 }
 
-function flashInsufficient() {
-  const original = shardCountEl.parentElement.style.borderColor;
-  shardCountEl.parentElement.style.borderColor = "#ff6b6b";
-  shardCountEl.parentElement.style.transition = "border-color 0.2s ease";
+function flashInsufficient(cost) {
+  shardCountEl.parentElement.classList.add("shake");
+  setTimeout(() => shardCountEl.parentElement.classList.remove("shake"), 500);
+  showToast(`Pas assez d'éclats : il te faut ◆ ${cost}.`, "warn");
+}
+
+function showError(message) {
+  showToast(message, "error");
+}
+
+let toastEl = null;
+function showToast(message, kind = "info") {
+  if (toastEl) toastEl.remove();
+  toastEl = document.createElement("div");
+  toastEl.className = `toast toast-${kind}`;
+  toastEl.textContent = message;
+  document.body.appendChild(toastEl);
+  requestAnimationFrame(() => toastEl.classList.add("show"));
   setTimeout(() => {
-    shardCountEl.parentElement.style.borderColor = original || "";
-  }, 500);
+    toastEl?.classList.remove("show");
+    setTimeout(() => toastEl?.remove(), 300);
+  }, 2600);
 }
 
 // ---------- Results modal ----------
