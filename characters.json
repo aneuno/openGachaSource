@@ -1,6 +1,8 @@
 {
-  "results": [
-    { "name": "saber", "image": "https://res.cloudinary.com/daowtjque/image/upload/v1773661792/24a7eecb347dd7d60c050bcde3276448_x0odwo.jpg" },
-    { "name": "zero two", "image": "https://res.cloudinary.com/daowtjque/image/upload/v1773661792/24a7eecb347dd7d60c050bcde3276448_x0odwo.jpg" },
-  ]
+    "characters": [
+      {"name": "zero two"},
+      {"name": "revy"},
+      {"name": "mikasa"},
+      {"name": "annie"}
+    ]
 }
