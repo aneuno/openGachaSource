@@ -1,9 +1,9 @@
 {
     "characters": [
-      {"name": "zero two"},
-      {"name": "revy"},
-      {"name": "mikasa"},
-      {"name": "annie"},
-      {"name": "yoruichi"}
+      {"name": "zero two", "image": "https://i.pinimg.com/736x/b6/c7/78/b6c778a5d02f48239df97efede5bbbfe.jpg"},
+      {"name": "revy", "image": "https://i.pinimg.com/736x/18/fa/e1/18fae195c3a05d9242b217e607814dec.jpg"},
+      {"name": "mikasa", "image": "https://i.pinimg.com/736x/ca/a7/e0/caa7e0b255bbfd654b5dad52671d71dc.jpg"},
+      {"name": "annie", "image": "https://i.pinimg.com/736x/ab/f5/f6/abf5f65521114f0f96e8869d9dee5b60.jpg"},
+      {"name": "yoruichi", "image": "https://i.pinimg.com/736x/23/92/d1/2392d18484855105509cab15afe40232.jpg"}
     ]
 }
