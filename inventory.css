@@ -1,0 +1,214 @@
+/* ============================== */
+/* GENERAL                        */
+/* ============================== */
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background-color: #E0E3E9;
+
+    color: #3E3D45;
+
+    font-family: Arial, sans-serif;
+
+}
+
+
+/* ============================== */
+/* HEADER                         */
+/* ============================== */
+
+header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 20px 30px;
+
+}
+
+
+header h1 {
+
+    margin: 0;
+
+}
+
+
+/* ============================== */
+/* BOUTONS                        */
+/* ============================== */
+
+button {
+
+    cursor: pointer;
+
+    padding: 8px 18px;
+
+    background-color: #A7A7AB;
+
+    border: none;
+
+    color: #3E3D45;
+
+    transition: transform 0.15s ease;
+
+}
+
+
+button:hover {
+
+    transform: scale(1.08);
+
+}
+
+
+/* ============================== */
+/* INFORMATIONS                   */
+/* ============================== */
+
+#collectionInfo {
+
+    padding: 0 30px 20px;
+
+}
+
+
+/* ============================== */
+/* INVENTAIRE                     */
+/* ============================== */
+
+#inventory {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(180px, 1fr));
+
+    gap: 20px;
+
+    padding: 0 30px 30px;
+
+}
+
+
+/* ============================== */
+/* CARTE PERSONNAGE               */
+/* ============================== */
+
+.characterCard {
+
+    position: relative;
+
+    background-color: #F6F7F7;
+
+    padding: 12px;
+
+    box-sizing: border-box;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+
+}
+
+
+.characterCard:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.15);
+
+}
+
+
+/* ============================== */
+/* IMAGE                          */
+/* ============================== */
+
+.characterCard img {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+}
+
+
+/* ============================== */
+/* NOM                             */
+/* ============================== */
+
+.characterName {
+
+    margin: 10px 0 5px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+}
+
+
+/* ============================== */
+/* INFORMATIONS PERSONNAGE         */
+/* ============================== */
+
+.characterInfo {
+
+    margin: 3px 0;
+
+    font-size: 14px;
+
+}
+
+
+/* ============================== */
+/* QUANTITE                       */
+/* ============================== */
+
+.quantity {
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 18px;
+
+    padding: 5px 9px;
+
+    background-color: #3E3D45;
+
+    color: white;
+
+    font-weight: bold;
+
+    border-radius: 4px;
+
+}
+
+
+/* ============================== */
+/* MESSAGE                        */
+/* ============================== */
+
+#message {
+
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    font-size: 18px;
+
+}
