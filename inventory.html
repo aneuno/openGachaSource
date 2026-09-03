@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Inventaire</title>
+
+    <link
+        rel="stylesheet"
+        href="inventory.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ============================== -->
+    <!-- HEADER                         -->
+    <!-- ============================== -->
+
+    <header>
+
+        <h1>Ma collection</h1>
+
+        <button id="backButton">
+            Retour
+        </button>
+
+    </header>
+
+
+    <!-- ============================== -->
+    <!-- INFORMATIONS                   -->
+    <!-- ============================== -->
+
+    <div id="collectionInfo">
+
+        <span id="collectionCount">
+            Chargement...
+        </span>
+
+    </div>
+
+
+    <!-- ============================== -->
+    <!-- INVENTAIRE                     -->
+    <!-- ============================== -->
+
+    <main>
+
+        <div id="inventory">
+
+            <p id="message">
+                Chargement de l'inventaire...
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- ============================== -->
+    <!-- SUPABASE                       -->
+    <!-- ============================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="inventory.js"></script>
+
+</body>
+
+</html>
