@@ -20,6 +20,13 @@
       "id": "annie leonardt",
       "rarity": "ssr",
       "weight": 100
+    },
+    {
+      "name": "saber",
+      "image": "https://i.pinimg.com/736x/55/b3/73/55b373644446e26eea9074b48329f43c.jpg",
+      "id": "saber",
+      "rarity": "ssr",
+      "weight": 100
     }
   ]
 }
