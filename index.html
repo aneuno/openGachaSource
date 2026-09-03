@@ -1,29 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
-    <link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Anime Gacha</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
+
+    <!-- ============================== -->
+    <!-- COMPTE                         -->
+    <!-- ============================== -->
+
+    <div id="account">
+
+        <span id="userEmail"></span>
+
+        <button id="inventoryButton">
+            Inventaire
+        </button>
+
+        <button id="logoutButton">
+            Déconnexion
+        </button>
+
+    </div>
+
+
+    <!-- ============================== -->
+    <!-- AFFICHAGE DU PERSONNAGE       -->
+    <!-- ============================== -->
+
     <div id="display">
+
         <img
             id="resultImage"
             src=""
             alt=""
             referrerpolicy="no-referrer"
         >
+
         <p id="result"></p>
+
     </div>
+
+
+    <!-- ============================== -->
+    <!-- BOUTONS SUMMON                 -->
+    <!-- ============================== -->
 
     <div id="summonButtons">
-        <button id="summonButton">1 summon</button>
-        <button id="multiSummonButton">10 summon +1</button>
+
+        <button id="summonButton">
+            1 summon
+        </button>
+
+        <button id="multiSummonButton">
+            10 summon +1
+        </button>
+
     </div>
 
+
+    <!-- ============================== -->
+    <!-- SUPABASE                       -->
+    <!-- ============================== -->
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script src="script.js"></script>
+
 
 </body>
 
