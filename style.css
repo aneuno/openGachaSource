@@ -1,54 +1,226 @@
+/* ========================= */
+/* GENERAL                   */
+/* ========================= */
+
 body {
+
     margin: 0;
+
     height: 100vh;
+
     position: relative;
+
     background-color: #E0E3E9;
+
     color: #3E3D45;
+
 }
+
+
+/* ========================= */
+/* COMPTE                    */
+/* ========================= */
+
+#account {
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+#account button {
+
+    cursor: pointer;
+
+    padding: 5px 15px;
+
+    background-color: #A7A7AB;
+
+    border: none;
+
+    color: #3E3D45;
+
+    transition:
+        transform 0.15s ease;
+
+}
+
+
+#account button:hover {
+
+    transform: scale(1.08);
+
+}
+
+
+/* ========================= */
+/* BOUTONS DE SUMMON         */
+/* ========================= */
 
 #summonButtons {
+
     position: absolute;
+
     top: 80%;
+
     left: 35%;
-    transform: translate(-50%, -50%);
+
+    transform:
+        translate(-50%, -50%);
 
     display: flex;
+
     flex-direction: row;
+
     gap: 10px;
+
 }
+
 
 #summonButtons button {
+
     cursor: pointer;
+
     padding: 5px 15px;
+
     background-color: #A7A7AB;
+
     border: none;
+
     color: #3E3D45;
 
-    transition: transform 0.15s ease;
+    transition:
+        transform 0.15s ease;
+
 }
+
 
 #summonButtons button:hover {
+
     transform: scale(1.08);
+
 }
+
+
+/* ========================= */
+/* AFFICHAGE DU PERSONNAGE   */
+/* ========================= */
 
 #display {
+
     position: absolute;
+
     top: 80%;
+
     left: 35%;
-    transform: translate(-50%, calc(-100% - 20px));
+
+    transform:
+        translate(
+            -50%,
+            calc(-100% - 20px)
+        );
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
 }
 
-img {
+
+#display img {
+
     display: none;
+
     width: 400px;
+
     cursor: pointer;
-    transition: width 0.15s ease;
+
+    transition:
+        width 0.15s ease;
+
 }
 
-img.enlarged {
+
+#display img.enlarged {
+
     width: 650px;
+
+}
+
+
+/* ========================= */
+/* PAGE DE CONNEXION         */
+/* ========================= */
+
+#login {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    width: 250px;
+
+}
+
+
+#login input {
+
+    padding: 8px;
+
+    background-color: #F6F7F7;
+
+    border: none;
+
+    color: #3E3D45;
+
+    box-sizing: border-box;
+
+}
+
+
+#login button {
+
+    cursor: pointer;
+
+    padding: 8px;
+
+    background-color: #A7A7AB;
+
+    border: none;
+
+    color: #3E3D45;
+
+    transition:
+        transform 0.15s ease;
+
+}
+
+
+#login button:hover {
+
+    transform: scale(1.03);
+
 }
