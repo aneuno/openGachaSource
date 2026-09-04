@@ -77,43 +77,95 @@ function renderAllBanners() {
 
 
 // ========================================
-// CREATION D'UNE CARTE DE BANNIERE
+// CREATION D'UNE CARTE DE BANNIERE (juste l'image)
 // ========================================
 
 function createBannerCard(banner) {
 
     const card = document.createElement("div");
     card.className = "bannerCard";
+    card.onclick = function () {
+        openBannerModal(banner);
+    };
 
-    // ----- image de la bannière -----
-    const image = document.createElement("img");
-    image.className = "bannerCardImage";
+    const imageWrap = document.createElement("div");
+    imageWrap.className = "bannerCardImageWrap";
+
     if (banner.image) {
+        const image = document.createElement("img");
+        image.className = "bannerCardImage";
         image.src = banner.image;
         image.referrerPolicy = "no-referrer";
-    } else {
-        image.style.display = "none";
+        imageWrap.appendChild(image);
     }
-    card.appendChild(image);
 
-    // ----- nom -----
+    card.appendChild(imageWrap);
+
+    return card;
+
+}
+
+
+// ========================================
+// OUVERTURE DE LA FENETRE DETAIL D'UNE BANNIERE
+// ========================================
+
+function openBannerModal(banner) {
+
+    const overlay = document.createElement("div");
+    overlay.className = "modalOverlay";
+    overlay.onclick = function (event) {
+        if (event.target === overlay) {
+            overlay.remove();
+        }
+    };
+
+    const modal = document.createElement("div");
+    modal.className = "bannerModal";
+
+    // ----- fermeture -----
+    const closeButton = document.createElement("button");
+    closeButton.className = "modalCloseButton";
+    closeButton.textContent = "✕";
+    closeButton.onclick = function () {
+        overlay.remove();
+    };
+    modal.appendChild(closeButton);
+
+    // ----- image en grand -----
+    const imageWrap = document.createElement("div");
+    imageWrap.className = "bannerModalImageWrap";
+
+    if (banner.image) {
+        const image = document.createElement("img");
+        image.className = "bannerModalImage";
+        image.src = banner.image;
+        image.referrerPolicy = "no-referrer";
+        imageWrap.appendChild(image);
+    }
+
+    modal.appendChild(imageWrap);
+
+    // ----- contenu détaillé -----
+    const content = document.createElement("div");
+    content.className = "bannerModalContent";
+
     const name = document.createElement("h2");
     name.textContent = banner.name;
-    card.appendChild(name);
+    content.appendChild(name);
 
-    // ----- description -----
-    const description = document.createElement("p");
-    description.textContent = banner.description || "";
-    card.appendChild(description);
+    if (banner.description) {
+        const description = document.createElement("p");
+        description.className = "bannerModalDescription";
+        description.textContent = banner.description;
+        content.appendChild(description);
+    }
 
-    // ----- prix -----
-    const soloPrice = document.createElement("p");
-    soloPrice.textContent = `1 summon : ${banner.soloPrice} gemmes`;
-    card.appendChild(soloPrice);
-
-    const multiPrice = document.createElement("p");
-    multiPrice.textContent = `10 summon : ${banner.multiPrice} gemmes`;
-    card.appendChild(multiPrice);
+    if (banner.startDate || banner.endDate) {
+        const dates = document.createElement("p");
+        dates.textContent = `Disponible du ${banner.startDate || "?"} au ${banner.endDate || "?"}`;
+        content.appendChild(dates);
+    }
 
     // ----- résultat du tirage -----
     const resultImage = document.createElement("img");
@@ -122,33 +174,37 @@ function createBannerCard(banner) {
     resultImage.onclick = function () {
         resultImage.classList.toggle("enlarged");
     };
-    card.appendChild(resultImage);
+    content.appendChild(resultImage);
 
     const resultText = document.createElement("p");
     resultText.className = "bannerResultText";
-    card.appendChild(resultText);
+    content.appendChild(resultText);
 
-    // ----- boutons summon -----
+    // ----- boutons de pull -----
     const buttonsRow = document.createElement("div");
     buttonsRow.className = "bannerCardButtons";
 
     const soloButton = document.createElement("button");
-    soloButton.textContent = "1 summon";
+    soloButton.className = "pullButton";
+    soloButton.innerHTML = `1x <span>${banner.soloPrice} 💎</span>`;
     soloButton.onclick = function () {
         summon(banner, resultImage, resultText);
     };
 
     const multiButton = document.createElement("button");
-    multiButton.textContent = "10 summon +1";
+    multiButton.className = "pullButton";
+    multiButton.innerHTML = `10+1x <span>${banner.multiPrice} 💎</span>`;
     multiButton.onclick = function () {
         multiSummon(banner, resultImage, resultText);
     };
 
     buttonsRow.appendChild(soloButton);
     buttonsRow.appendChild(multiButton);
-    card.appendChild(buttonsRow);
+    content.appendChild(buttonsRow);
 
-    return card;
+    modal.appendChild(content);
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
 
 }
 
@@ -428,7 +484,7 @@ async function summon(banner, resultImage, resultText) {
 
 
 // ========================================
-// SUMMON (x10) SUR UNE BANNIERE DONNEE
+// SUMMON (x10+1) SUR UNE BANNIERE DONNEE
 // ========================================
 
 async function multiSummon(banner, resultImage, resultText) {
@@ -463,7 +519,7 @@ async function multiSummon(banner, resultImage, resultText) {
     }
 
     console.log(
-        "Personnages obtenus (x10) :",
+        "Personnages obtenus (x10+1) :",
         drawn.map((c) => c.name)
     );
 
