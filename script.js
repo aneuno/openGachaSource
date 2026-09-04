@@ -42,7 +42,7 @@ async function loadUserGems() {
     } = await supabaseClient
         .from("profiles")
         .select("gems")
-        .eq("user_id", user.id)
+        .eq("id", user.id)
         .maybeSingle();
 
     if (error) {
@@ -54,7 +54,7 @@ async function loadUserGems() {
 
         const { error: insertError } = await supabaseClient
             .from("profiles")
-            .insert({ user_id: user.id, gems: 10000 });
+            .insert({ id: user.id, gems: 10000 });
 
         if (insertError) {
             console.error("Erreur lors de la création du profil :", insertError);
