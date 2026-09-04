@@ -167,7 +167,7 @@ function openBannerModal(banner) {
         content.appendChild(dates);
     }
 
-    // ----- résultat du tirage (solo) -----
+    // ----- résultat du tirage -----
     const resultImage = document.createElement("img");
     resultImage.className = "bannerResultImage";
     resultImage.style.display = "none";
@@ -188,7 +188,7 @@ function openBannerModal(banner) {
     soloButton.className = "pullButton";
     soloButton.innerHTML = `1x <span>${banner.soloPrice} 💎</span>`;
     soloButton.onclick = function () {
-        summon(banner, resultImage, resultText);
+        summon(banner, resultImage, resultText, modal);
     };
 
     const multiButton = document.createElement("button");
@@ -424,7 +424,7 @@ async function addToInventory(character) {
 
 
 // ========================================
-// AFFICHAGE D'UN RESULTAT DANS UNE CARTE (solo)
+// AFFICHAGE D'UN RESULTAT DANS UNE CARTE (solo, zone permanente)
 // ========================================
 
 function displayResultInCard(character, resultImage, resultText) {
@@ -452,7 +452,7 @@ function displayResultInCard(character, resultImage, resultText) {
 // SUMMON (x1) SUR UNE BANNIERE DONNEE
 // ========================================
 
-async function summon(banner, resultImage, resultText) {
+async function summon(banner, resultImage, resultText, modal) {
 
     if (banner.characters.length === 0) {
         console.error("Cette bannière ne contient aucun personnage.");
@@ -472,76 +472,15 @@ async function summon(banner, resultImage, resultText) {
         return;
     }
 
-    displayResultInCard(chosen, resultImage, resultText);
-
     const added = await addToInventory(chosen);
 
     if (!added) {
         console.error("Le personnage n'a pas pu être ajouté à l'inventaire.");
     }
 
-}
-
-
-// ========================================
-// REVELATION SEQUENTIELLE (clic pour passer au suivant)
-// ========================================
-
-function startSequentialReveal(drawn, modal, onFinished) {
-
-    let index = 0;
-
-    const revealOverlay = document.createElement("div");
-    revealOverlay.className = "revealOverlay";
-
-    const revealImage = document.createElement("img");
-    revealImage.className = "revealImage";
-    revealOverlay.appendChild(revealImage);
-
-    const revealName = document.createElement("p");
-    revealName.className = "revealName";
-    revealOverlay.appendChild(revealName);
-
-    const revealHint = document.createElement("p");
-    revealHint.className = "revealHint";
-    revealOverlay.appendChild(revealHint);
-
-    function showCurrent() {
-
-        const character = drawn[index];
-
-        if (character.image) {
-            revealImage.referrerPolicy = "no-referrer";
-            revealImage.src = character.image;
-            revealImage.style.display = "block";
-        } else {
-            revealImage.style.display = "none";
-        }
-
-        revealName.textContent = character.name;
-        revealHint.textContent = `${index + 1} / ${drawn.length} — cliquez pour continuer`;
-
-    }
-
-    revealOverlay.onclick = function () {
-
-        index++;
-
-        if (index >= drawn.length) {
-            revealOverlay.remove();
-            if (onFinished) {
-                onFinished();
-            }
-            return;
-        }
-
-        showCurrent();
-
-    };
-
-    showCurrent();
-
-    modal.appendChild(revealOverlay);
+    startSequentialReveal([chosen], modal, function () {
+        displayResultInCard(chosen, resultImage, resultText);
+    });
 
 }
 
@@ -589,6 +528,81 @@ async function multiSummon(banner, resultImage, resultText, modal) {
     startSequentialReveal(drawn, modal, function () {
         displayResultInCard(drawn[drawn.length - 1], resultImage, resultText);
     });
+
+}
+
+
+// ========================================
+// REVELATION SEQUENTIELLE (clic pour passer au suivant)
+// ========================================
+
+function startSequentialReveal(drawn, modal, onFinished) {
+
+    let index = 0;
+
+    const revealOverlay = document.createElement("div");
+    revealOverlay.className = "revealOverlay";
+
+    const revealCard = document.createElement("div");
+    revealCard.className = "revealCard";
+    revealOverlay.appendChild(revealCard);
+
+    const revealImage = document.createElement("img");
+    revealImage.className = "revealImage";
+    revealCard.appendChild(revealImage);
+
+    const revealName = document.createElement("p");
+    revealName.className = "revealName";
+    revealCard.appendChild(revealName);
+
+    const revealHint = document.createElement("p");
+    revealHint.className = "revealHint";
+    revealOverlay.appendChild(revealHint);
+
+    function showCurrent() {
+
+        const character = drawn[index];
+
+        if (character.image) {
+            revealImage.referrerPolicy = "no-referrer";
+            revealImage.src = character.image;
+            revealImage.style.display = "block";
+        } else {
+            revealImage.style.display = "none";
+        }
+
+        revealName.textContent = character.name;
+
+        revealHint.textContent = drawn.length > 1
+            ? `${index + 1} / ${drawn.length} — cliquez pour continuer`
+            : "cliquez pour fermer";
+
+        // relance l'animation d'apparition à chaque personnage
+        revealCard.classList.remove("revealCardEnter");
+        void revealCard.offsetWidth;
+        revealCard.classList.add("revealCardEnter");
+
+    }
+
+    revealOverlay.onclick = function () {
+
+        index++;
+
+        if (index >= drawn.length) {
+            revealOverlay.remove();
+            if (onFinished) {
+                onFinished();
+            }
+            return;
+        }
+
+        showCurrent();
+
+    };
+
+    showCurrent();
+
+    modal.appendChild(revealOverlay);
 
 }
 
