@@ -1,91 +1,82 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-
     <title>gachaOpenSource</title>
-
     <link
         rel="stylesheet"
         href="style.css"
     >
-
 </head>
-
-
 <body>
-
-
     <!-- ============================== -->
     <!-- COMPTE                         -->
     <!-- ============================== -->
-
     <div id="account">
-
+        <span id="gemsDisplay">0 gemmes</span>
         <span id="userEmail"></span>
-
         <button id="inventoryButton">
-            inveotory
+            inventory
         </button>
-
         <button id="logoutButton">
             log out
         </button>
-
     </div>
 
+    <!-- ============================== -->
+    <!-- LISTE DES BANNIERES            -->
+    <!-- ============================== -->
+    <div id="bannerList"></div>
 
     <!-- ============================== -->
-    <!-- AFFICHAGE DU PERSONNAGE       -->
+    <!-- INFOS DE LA BANNIERE ACTIVE    -->
     <!-- ============================== -->
+    <div id="bannerInfo">
+        <img
+            id="bannerImage"
+            src=""
+            alt=""
+            referrerpolicy="no-referrer"
+        >
+        <h2 id="bannerName"></h2>
+        <p id="bannerDescription"></p>
+        <p id="soloPriceLabel"></p>
+        <p id="multiPriceLabel"></p>
+    </div>
 
+    <!-- ============================== -->
+    <!-- AFFICHAGE DU PERSONNAGE        -->
+    <!-- ============================== -->
     <div id="display">
-
         <img
             id="resultImage"
             src=""
             alt=""
             referrerpolicy="no-referrer"
         >
-
         <p id="result"></p>
-
     </div>
-
 
     <!-- ============================== -->
     <!-- BOUTONS SUMMON                 -->
     <!-- ============================== -->
-
     <div id="summonButtons">
-
         <button id="summonButton">
             1 summon
         </button>
-
         <button id="multiSummonButton">
             10 summon +1
         </button>
-
     </div>
-
 
     <!-- ============================== -->
     <!-- SUPABASE                       -->
     <!-- ============================== -->
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <script src="script.js"></script>
-
-
 </body>
-
 </html>
