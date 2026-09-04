@@ -15,21 +15,11 @@ const supabaseClient =
 // ELEMENTS HTML
 // ========================================
 
-const button = document.getElementById("summonButton");
-const multiButton = document.getElementById("multiSummonButton");
-const result = document.getElementById("result");
-const resultImage = document.getElementById("resultImage");
 const userEmail = document.getElementById("userEmail");
 const logoutButton = document.getElementById("logoutButton");
 const backButton = document.getElementById("backButton");
-
-const bannerList = document.getElementById("bannerList");
-const bannerImage = document.getElementById("bannerImage");
-const bannerName = document.getElementById("bannerName");
-const bannerDescription = document.getElementById("bannerDescription");
-const soloPriceLabel = document.getElementById("soloPriceLabel");
-const multiPriceLabel = document.getElementById("multiPriceLabel");
 const gemsDisplay = document.getElementById("gemsDisplay");
+const bannersContainer = document.getElementById("bannersContainer");
 
 
 // ========================================
@@ -37,7 +27,6 @@ const gemsDisplay = document.getElementById("gemsDisplay");
 // ========================================
 
 let banners = [];
-let currentBanner = null;
 let userGems = 0;
 
 
@@ -61,11 +50,7 @@ async function loadBanners() {
 
         console.log("Bannières chargées :", banners);
 
-        renderBannerList();
-
-        if (banners.length > 0) {
-            selectBanner(banners[0]);
-        }
+        renderAllBanners();
 
     }
 
@@ -77,62 +62,93 @@ async function loadBanners() {
 
 
 // ========================================
-// AFFICHAGE DE LA LISTE DES BANNIERES
+// AFFICHAGE DE TOUTES LES BANNIERES
 // ========================================
 
-function renderBannerList() {
+function renderAllBanners() {
 
-    bannerList.innerHTML = "";
+    bannersContainer.innerHTML = "";
 
     banners.forEach((banner) => {
-
-        const btn = document.createElement("button");
-
-        btn.textContent = banner.name;
-        btn.dataset.bannerId = banner.id;
-
-        btn.onclick = () => selectBanner(banner);
-
-        bannerList.appendChild(btn);
-
+        bannersContainer.appendChild(createBannerCard(banner));
     });
 
 }
 
 
 // ========================================
-// SELECTION D'UNE BANNIERE
+// CREATION D'UNE CARTE DE BANNIERE
 // ========================================
 
-function selectBanner(banner) {
+function createBannerCard(banner) {
 
-    currentBanner = banner;
+    const card = document.createElement("div");
+    card.className = "bannerCard";
 
-    bannerName.textContent = banner.name;
-    bannerDescription.textContent = banner.description || "";
-
-    soloPriceLabel.textContent =
-        `1 summon : ${banner.soloPrice} gemmes`;
-
-    multiPriceLabel.textContent =
-        `10 summon : ${banner.multiPrice} gemmes`;
-
+    // ----- image de la bannière -----
+    const image = document.createElement("img");
+    image.className = "bannerCardImage";
     if (banner.image) {
-        bannerImage.src = banner.image;
-        bannerImage.style.display = "block";
+        image.src = banner.image;
+        image.referrerPolicy = "no-referrer";
     } else {
-        bannerImage.style.display = "none";
+        image.style.display = "none";
     }
+    card.appendChild(image);
 
-    [...bannerList.children].forEach((btn) => {
-        btn.classList.toggle(
-            "active",
-            btn.dataset.bannerId === banner.id
-        );
-    });
+    // ----- nom -----
+    const name = document.createElement("h2");
+    name.textContent = banner.name;
+    card.appendChild(name);
 
-    result.textContent = "";
+    // ----- description -----
+    const description = document.createElement("p");
+    description.textContent = banner.description || "";
+    card.appendChild(description);
+
+    // ----- prix -----
+    const soloPrice = document.createElement("p");
+    soloPrice.textContent = `1 summon : ${banner.soloPrice} gemmes`;
+    card.appendChild(soloPrice);
+
+    const multiPrice = document.createElement("p");
+    multiPrice.textContent = `10 summon : ${banner.multiPrice} gemmes`;
+    card.appendChild(multiPrice);
+
+    // ----- résultat du tirage -----
+    const resultImage = document.createElement("img");
+    resultImage.className = "bannerResultImage";
     resultImage.style.display = "none";
+    resultImage.onclick = function () {
+        resultImage.classList.toggle("enlarged");
+    };
+    card.appendChild(resultImage);
+
+    const resultText = document.createElement("p");
+    resultText.className = "bannerResultText";
+    card.appendChild(resultText);
+
+    // ----- boutons summon -----
+    const buttonsRow = document.createElement("div");
+    buttonsRow.className = "bannerCardButtons";
+
+    const soloButton = document.createElement("button");
+    soloButton.textContent = "1 summon";
+    soloButton.onclick = function () {
+        summon(banner, resultImage, resultText);
+    };
+
+    const multiButton = document.createElement("button");
+    multiButton.textContent = "10 summon +1";
+    multiButton.onclick = function () {
+        multiSummon(banner, resultImage, resultText);
+    };
+
+    buttonsRow.appendChild(soloButton);
+    buttonsRow.appendChild(multiButton);
+    card.appendChild(buttonsRow);
+
+    return card;
 
 }
 
@@ -161,7 +177,13 @@ async function loadUserGems() {
         .maybeSingle();
 
     if (error) {
-        console.error("Erreur lors de la récupération des gemmes :", error);
+        console.error(
+            "Erreur lors de la récupération des gemmes :",
+            error.message,
+            error.details,
+            error.hint,
+            error.code
+        );
         return;
     }
 
@@ -235,12 +257,10 @@ async function spendGems(amount) {
 
 
 // ========================================
-// TIRAGE ALEATOIRE PONDERE (dans la bannière active)
+// TIRAGE ALEATOIRE PONDERE
 // ========================================
 
-function getRandomCharacter() {
-
-    const pool = currentBanner.characters;
+function getRandomCharacter(pool) {
 
     const totalWeight = pool.reduce(
         (total, character) => total + character.weight,
@@ -348,12 +368,12 @@ async function addToInventory(character) {
 
 
 // ========================================
-// AFFICHAGE D'UN RESULTAT
+// AFFICHAGE D'UN RESULTAT DANS UNE CARTE
 // ========================================
 
-function displayResult(character) {
+function displayResultInCard(character, resultImage, resultText) {
 
-    result.textContent = character.name;
+    resultText.textContent = character.name;
 
     if (character.image) {
 
@@ -373,35 +393,30 @@ function displayResult(character) {
 
 
 // ========================================
-// SUMMON (x1)
+// SUMMON (x1) SUR UNE BANNIERE DONNEE
 // ========================================
 
-async function summon() {
+async function summon(banner, resultImage, resultText) {
 
-    if (!currentBanner) {
-        console.error("Aucune bannière sélectionnée.");
-        return;
-    }
-
-    if (currentBanner.characters.length === 0) {
+    if (banner.characters.length === 0) {
         console.error("Cette bannière ne contient aucun personnage.");
         return;
     }
 
-    const spent = await spendGems(currentBanner.soloPrice);
+    const spent = await spendGems(banner.soloPrice);
 
     if (!spent) {
         alert("Pas assez de gemmes pour ce summon.");
         return;
     }
 
-    const chosen = getRandomCharacter();
+    const chosen = getRandomCharacter(banner.characters);
 
     if (!chosen) {
         return;
     }
 
-    displayResult(chosen);
+    displayResultInCard(chosen, resultImage, resultText);
 
     const added = await addToInventory(chosen);
 
@@ -413,22 +428,17 @@ async function summon() {
 
 
 // ========================================
-// SUMMON (x10)
+// SUMMON (x10) SUR UNE BANNIERE DONNEE
 // ========================================
 
-async function multiSummon() {
+async function multiSummon(banner, resultImage, resultText) {
 
-    if (!currentBanner) {
-        console.error("Aucune bannière sélectionnée.");
-        return;
-    }
-
-    if (currentBanner.characters.length === 0) {
+    if (banner.characters.length === 0) {
         console.error("Cette bannière ne contient aucun personnage.");
         return;
     }
 
-    const spent = await spendGems(currentBanner.multiPrice);
+    const spent = await spendGems(banner.multiPrice);
 
     if (!spent) {
         alert("Pas assez de gemmes pour ce multi summon.");
@@ -439,7 +449,7 @@ async function multiSummon() {
 
     for (let i = 0; i < 10; i++) {
 
-        const chosen = getRandomCharacter();
+        const chosen = getRandomCharacter(banner.characters);
 
         if (chosen) {
             drawn.push(chosen);
@@ -449,7 +459,7 @@ async function multiSummon() {
     }
 
     if (drawn.length > 0) {
-        displayResult(drawn[drawn.length - 1]);
+        displayResultInCard(drawn[drawn.length - 1], resultImage, resultText);
     }
 
     console.log(
@@ -461,20 +471,8 @@ async function multiSummon() {
 
 
 // ========================================
-// EVENEMENTS BOUTONS
+// NAVIGATION
 // ========================================
-
-button.onclick = function () {
-    summon();
-};
-
-multiButton.onclick = function () {
-    multiSummon();
-};
-
-resultImage.onclick = function () {
-    resultImage.classList.toggle("enlarged");
-};
 
 backButton.onclick = function () {
     window.location.href = "index.html";
