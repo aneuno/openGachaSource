@@ -42,7 +42,8 @@ async function loadBanners() {
         const response = await fetch("banners.json");
 
         if (!response.ok) {
-            throw new Error(`Erreur HTTP ${response.status}`);
+        console.error("Erreur HTTP", response.status);
+        return;
         }
 
         const data = await response.json();
