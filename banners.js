@@ -1,4 +1,3 @@
-```javascript
 const SUPABASE_URL =
     "https://cskeaklbzfqanzinjfxm.supabase.co";
 
@@ -16,15 +15,24 @@ const supabaseClient =
 // ELEMENTS HTML
 // ========================================
 
-const userEmail = document.getElementById("userEmail");
-const logoutButton = document.getElementById("logoutButton");
-const backButton = document.getElementById("backButton");
-const gemsDisplay = document.getElementById("gemsDisplay");
-const bannersContainer = document.getElementById("bannersContainer");
+const userEmail =
+    document.getElementById("user-email");
+
+const logoutButton =
+    document.getElementById("logout-button");
+
+const backButton =
+    document.getElementById("back-button");
+
+const gemsDisplay =
+    document.getElementById("gems");
+
+const bannersContainer =
+    document.getElementById("banners-container");
 
 
 // ========================================
-// ETAT GLOBAL
+// VARIABLES
 // ========================================
 
 let banners = [];
@@ -32,108 +40,103 @@ let userGems = 0;
 
 
 // ========================================
-// CHARGEMENT DES BANNIERES
+// CHARGER LES BANNIERES
 // ========================================
 
 async function loadBanners() {
-
     try {
-
-        const response = await fetch("banners.json");
+        const response =
+            await fetch("banners.json");
 
         if (!response.ok) {
-        console.error("Erreur HTTP", response.status);
-        return;
+            console.error(
+                "Erreur HTTP",
+                response.status
+            );
+            return;
         }
 
-        const data = await response.json();
-
-        banners = data.banners;
-
-        console.log("Bannières chargées :", banners);
+        banners =
+            await response.json();
 
         renderAllBanners();
 
-    }
-
-    catch (error) {
-
+    } catch (error) {
         console.error(
             "Erreur lors du chargement des bannières :",
             error
         );
-
     }
-
 }
 
 
 // ========================================
-// AFFICHAGE DE TOUTES LES BANNIERES
+// AFFICHER LES BANNIERES
 // ========================================
 
 function renderAllBanners() {
 
+    if (!bannersContainer) {
+        return;
+    }
+
     bannersContainer.innerHTML = "";
 
-    banners.forEach((banner) => {
-        bannersContainer.appendChild(
-            createBannerCard(banner)
-        );
-    });
+    banners.forEach(function (banner) {
 
+        const card =
+            createBannerCard(banner);
+
+        bannersContainer.appendChild(card);
+    });
 }
 
 
 // ========================================
-// CREATION D'UNE CARTE DE BANNIERE
+// CREER UNE CARTE DE BANNIERE
 // ========================================
 
 function createBannerCard(banner) {
 
-    const card = document.createElement("div");
+    const card =
+        document.createElement("div");
 
-    card.className = "bannerCard";
+    card.className =
+        "banner-card";
 
-    card.onclick = function () {
-        openBannerModal(banner);
-    };
+    card.innerHTML =
 
+        '<img class="banner-image" src="' +
+        (banner.image || "") +
+        '" alt="' +
+        (banner.name || "Bannière") +
+        '">' +
 
-    const imageWrap = document.createElement("div");
+        '<div class="banner-content">' +
 
-    imageWrap.className =
-        "bannerCardImageWrap";
+        '<h2>' +
+        (banner.name || "Bannière") +
+        '</h2>' +
 
+        '<p>' +
+        (banner.description || "") +
+        '</p>' +
 
-    if (banner.image) {
+        '</div>';
 
-        const image =
-            document.createElement("img");
-
-        image.className =
-            "bannerCardImage";
-
-        image.src =
-            banner.image;
-
-        image.referrerPolicy =
-            "no-referrer";
-
-        imageWrap.appendChild(image);
-
-    }
-
-
-    card.appendChild(imageWrap);
+    card.addEventListener(
+        "click",
+        function () {
+            openBannerModal(banner);
+        }
+    );
 
     return card;
-
 }
 
 
 // ========================================
-// OUVERTURE DE LA MODALE
+// MODALE DE BANNIERE
 // ========================================
 
 function openBannerModal(banner) {
@@ -142,106 +145,65 @@ function openBannerModal(banner) {
         document.createElement("div");
 
     overlay.className =
-        "modalOverlay";
-
-
-    overlay.onclick = function (event) {
-
-        if (event.target === overlay) {
-            overlay.remove();
-        }
-
-    };
+        "banner-modal-overlay";
 
 
     const modal =
         document.createElement("div");
 
     modal.className =
-        "bannerModal";
+        "banner-modal";
 
-
-    // ====================================
-    // FERMETURE
-    // ====================================
 
     const closeButton =
         document.createElement("button");
 
     closeButton.className =
-        "modalCloseButton";
+        "banner-modal-close";
 
-    closeButton.textContent =
-        "✕";
-
-    closeButton.onclick = function () {
-        overlay.remove();
-    };
-
-    modal.appendChild(closeButton);
+    closeButton.textContent = "X";
 
 
-    // ====================================
-    // IMAGE
-    // ====================================
-
-    const imageWrap =
-        document.createElement("div");
-
-    imageWrap.className =
-        "bannerModalImageWrap";
+    closeButton.addEventListener(
+        "click",
+        function () {
+            overlay.remove();
+        }
+    );
 
 
     const image =
         document.createElement("img");
 
     image.className =
-        "bannerModalImage";
+        "banner-modal-image";
 
-    image.referrerPolicy =
-        "no-referrer";
+    image.src =
+        banner.image || "";
 
+    image.alt =
+        banner.name || "Bannière";
 
-    if (banner.image) {
-        image.src = banner.image;
-    }
-
-
-    imageWrap.appendChild(image);
-
-    modal.appendChild(imageWrap);
-
-
-    // ====================================
-    // CONTENU DROIT
-    // ====================================
 
     const content =
         document.createElement("div");
 
     content.className =
-        "bannerModalContent";
+        "banner-modal-content";
 
 
     const name =
         document.createElement("h2");
 
     name.textContent =
-        banner.name;
-
-    content.appendChild(name);
+        banner.name || "Bannière";
 
 
     const description =
         document.createElement("p");
 
-    description.className =
-        "bannerModalDescription";
-
     description.textContent =
         banner.description || "";
-
-    content.appendChild(description);
 
 
     const dates =
@@ -253,165 +215,143 @@ function openBannerModal(banner) {
         " au " +
         (banner.endDate || "?");
 
+
+    content.appendChild(name);
+    content.appendChild(description);
     content.appendChild(dates);
 
 
-    // ====================================
-    // INFORMATIONS PERSONNAGE
-    // ====================================
+    // ========================================
+    // PERSONNAGE MIS EN AVANT
+    // ========================================
 
-    const characterInfo =
-        document.createElement("div");
+    if (banner.character) {
 
-    characterInfo.className =
-        "characterInfo";
+        const characterInfo =
+            document.createElement("div");
 
-    characterInfo.style.display =
-        "none";
-
-
-    const characterRarity =
-        document.createElement("p");
-
-    characterRarity.className =
-        "characterRarity";
-
-    characterInfo.appendChild(
-        characterRarity
-    );
+        characterInfo.className =
+            "banner-character-info";
 
 
-    const characterId =
-        document.createElement("p");
+        const characterName =
+            document.createElement("h3");
 
-    characterId.className =
-        "characterId";
-
-    characterInfo.appendChild(
-        characterId
-    );
+        characterName.textContent =
+            banner.character.name || "";
 
 
-    content.appendChild(
-        characterInfo
-    );
+        const characterImage =
+            document.createElement("img");
+
+        characterImage.src =
+            banner.character.image || "";
+
+        characterImage.alt =
+            banner.character.name || "";
 
 
-    // ====================================
-    // PROGRESSION DU MULTI
-    // ====================================
+        characterInfo.appendChild(
+            characterImage
+        );
+
+        characterInfo.appendChild(
+            characterName
+        );
+
+        content.appendChild(
+            characterInfo
+        );
+    }
+
+
+    // ========================================
+    // PROGRESSION MULTI
+    // ========================================
 
     const multiProgress =
-        document.createElement("p");
+        document.createElement("div");
 
     multiProgress.className =
-        "multiProgress";
+        "multi-progress";
 
     content.appendChild(
         multiProgress
     );
 
 
-    // ====================================
-    // RESULTAT
-    // ====================================
-
-    const resultImage =
-        image;
-
-    resultImage.onclick =
-        function () {
-
-            resultImage.classList.toggle(
-                "enlarged"
-            );
-
-        };
-
-
-    // ====================================
-    // BOUTONS
-    // ====================================
-
-    const buttonsRow =
-        document.createElement("div");
-
-    buttonsRow.className =
-        "bannerCardButtons";
-
+    // ========================================
+    // BOUTON SOLO
+    // ========================================
 
     const soloButton =
         document.createElement("button");
 
     soloButton.className =
-        "pullButton";
+        "summon-button solo-button";
 
     soloButton.innerHTML =
-        `1x <span>${banner.soloPrice} 💎</span>`;
+        "1x <span>" +
+        (banner.soloPrice || 0) +
+        " gemmes</span>";
 
+
+    soloButton.addEventListener(
+        "click",
+        async function () {
+
+            await summon(
+                banner,
+                multiProgress
+            );
+        }
+    );
+
+
+    // ========================================
+    // BOUTON MULTI
+    // ========================================
 
     const multiButton =
         document.createElement("button");
 
     multiButton.className =
-        "pullButton";
+        "summon-button multi-button";
 
     multiButton.innerHTML =
-        `10+1x <span>${banner.multiPrice} 💎</span>`;
+        "10+1x <span>" +
+        (banner.multiPrice || 0) +
+        " gemmes</span>";
 
 
-    soloButton.onclick =
-        async function () {
-
-            await summon(
-                banner,
-                resultImage,
-                name,
-                description,
-                dates,
-                characterInfo,
-                characterRarity,
-                characterId,
-                multiProgress,
-                soloButton,
-                multiButton
-            );
-
-        };
-
-
-    multiButton.onclick =
+    multiButton.addEventListener(
+        "click",
         async function () {
 
             await multiSummon(
                 banner,
-                resultImage,
-                name,
-                description,
-                dates,
-                characterInfo,
-                characterRarity,
-                characterId,
-                multiProgress,
-                soloButton,
-                multiButton
+                multiProgress
             );
+        }
+    );
 
-        };
 
-
-    buttonsRow.appendChild(
+    content.appendChild(
         soloButton
     );
 
-    buttonsRow.appendChild(
+    content.appendChild(
         multiButton
     );
 
-    content.appendChild(
-        buttonsRow
+
+    modal.appendChild(
+        closeButton
     );
 
+    modal.appendChild(
+        image
+    );
 
     modal.appendChild(
         content
@@ -424,104 +364,108 @@ function openBannerModal(banner) {
     document.body.appendChild(
         overlay
     );
-
 }
 
 
 // ========================================
-// GESTION DES GEMMES
+// CHARGER LES GEMMES
 // ========================================
 
 async function loadUserGems() {
 
-    const {
-        data: { user }
-    } = await supabaseClient.auth.getUser();
-
-
-    if (!user) {
-        return;
-    }
-
-
-    const {
-        data,
-        error
-    } = await supabaseClient
-        .from("profiles")
-        .select("gems")
-        .eq("id", user.id)
-        .maybeSingle();
-
-
-    if (error) {
-
-        console.error(
-            "Erreur lors de la récupération des gemmes :",
-            error.message,
-            error.details,
-            error.hint,
-            error.code
-        );
-
-        return;
-
-    }
-
-
-    if (!data) {
+    try {
 
         const {
-            error: insertError
-        } = await supabaseClient
-            .from("profiles")
-            .insert({
-                id: user.id,
-                gems: 10000
-            });
+            data: {
+                user
+            }
+        } =
+            await supabaseClient.auth.getUser();
 
 
-        if (insertError) {
-
-            console.error(
-                "Erreur lors de la création du profil :",
-                insertError
-            );
-
+        if (!user) {
             return;
-
         }
 
 
-        userGems = 10000;
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("profiles")
+                .select("gems")
+                .eq("id", user.id)
+                .single();
 
+
+        if (error) {
+
+            console.error(
+                "Erreur lors du chargement des gemmes :",
+                error
+            );
+
+            return;
+        }
+
+
+        if (!data) {
+
+            const {
+                error: insertError
+            } =
+                await supabaseClient
+                    .from("profiles")
+                    .insert({
+                        id: user.id,
+                        gems: 10000
+                    });
+
+
+            if (insertError) {
+
+                console.error(
+                    "Erreur création profil :",
+                    insertError
+                );
+
+                return;
+            }
+
+            userGems = 10000;
+
+        } else {
+
+            userGems =
+                Number(data.gems) || 0;
+        }
+
+
+        updateGemsDisplay();
+
+    } catch (error) {
+
+        console.error(
+            "Erreur gemmes :",
+            error
+        );
     }
-
-    else {
-
-        userGems = data.gems;
-
-    }
-
-
-    updateGemsDisplay();
-
 }
 
 
 // ========================================
-// AFFICHAGE DES GEMMES
+// AFFICHER LES GEMMES
 // ========================================
 
 function updateGemsDisplay() {
 
-    if (gemsDisplay) {
-
-        gemsDisplay.textContent =
-            `${userGems} gemmes`;
-
+    if (!gemsDisplay) {
+        return;
     }
 
+    gemsDisplay.textContent =
+        userGems;
 }
 
 
@@ -533,18 +477,20 @@ async function spendGems(amount) {
 
     if (userGems < amount) {
 
-        console.warn(
-            "Pas assez de gemmes."
+        alert(
+            "Vous n'avez pas assez de gemmes."
         );
 
         return false;
-
     }
 
 
     const {
-        data: { user }
-    } = await supabaseClient.auth.getUser();
+        data: {
+            user
+        }
+    } =
+        await supabaseClient.auth.getUser();
 
 
     if (!user) {
@@ -552,39 +498,38 @@ async function spendGems(amount) {
     }
 
 
-    const newBalance =
+    const newAmount =
         userGems - amount;
 
 
     const {
         error
-    } = await supabaseClient
-        .from("profiles")
-        .update({
-            gems: newBalance
-        })
-        .eq("id", user.id);
+    } =
+        await supabaseClient
+            .from("profiles")
+            .update({
+                gems: newAmount
+            })
+            .eq("id", user.id);
 
 
     if (error) {
 
         console.error(
-            "Erreur lors de la mise à jour des gemmes :",
+            "Erreur lors de la dépense :",
             error
         );
 
         return false;
-
     }
 
 
     userGems =
-        newBalance;
+        newAmount;
 
     updateGemsDisplay();
 
     return true;
-
 }
 
 
@@ -594,12 +539,32 @@ async function spendGems(amount) {
 
 function getRandomCharacter(pool) {
 
-    const totalWeight =
-        pool.reduce(
-            (total, character) =>
-                total + Number(character.weight),
-            0
-        );
+    if (!pool || pool.length === 0) {
+        return null;
+    }
+
+
+    let totalWeight = 0;
+
+
+    pool.forEach(
+        function (character) {
+
+            totalWeight +=
+                Number(character.weight) || 0;
+        }
+    );
+
+
+    if (totalWeight <= 0) {
+
+        return pool[
+            Math.floor(
+                Math.random() *
+                pool.length
+            )
+        ];
+    }
 
 
     let random =
@@ -607,492 +572,308 @@ function getRandomCharacter(pool) {
         totalWeight;
 
 
-    for (const character of pool) {
+    for (
+        let i = 0;
+        i < pool.length;
+        i++
+    ) {
 
         random -=
-            Number(character.weight);
+            Number(pool[i].weight) || 0;
 
 
-        if (random < 0) {
-            return character;
+        if (random <= 0) {
+            return pool[i];
         }
-
     }
 
 
-    return null;
-
+    return pool[
+        pool.length - 1
+    ];
 }
 
 
 // ========================================
-// AJOUT A L'INVENTAIRE
+// AJOUT INVENTAIRE
 // ========================================
 
 async function addToInventory(character) {
 
-    const {
-        data: { user },
-        error: userError
-    } = await supabaseClient.auth.getUser();
+    try {
+
+        const {
+            data: {
+                user
+            }
+        } =
+            await supabaseClient.auth.getUser();
 
 
-    if (userError) {
-
-        console.error(
-            "Erreur utilisateur :",
-            userError
-        );
-
-        return false;
-
-    }
-
-
-    if (!user) {
-
-        console.error(
-            "Aucun utilisateur connecté."
-        );
-
-        return false;
-
-    }
-
-
-    const {
-        data: existingCharacter,
-        error: selectError
-    } = await supabaseClient
-        .from("inventory")
-        .select("*")
-        .eq("user_id", user.id)
-        .eq("character_id", character.id)
-        .maybeSingle();
-
-
-    if (selectError) {
-
-        console.error(
-            "Erreur lors de la recherche dans l'inventaire :",
-            selectError
-        );
-
-        return false;
-
-    }
-
-
-    if (existingCharacter) {
-
-        const newQuantity =
-            existingCharacter.quantity + 1;
+        if (!user || !character) {
+            return;
+        }
 
 
         const {
-            error: updateError
-        } = await supabaseClient
-            .from("inventory")
-            .update({
-                quantity: newQuantity,
-                character_name: character.name,
-                character_image: character.image,
-                character_rarity: character.rarity,
-                character_weight: character.weight
-            })
-            .eq("user_id", user.id)
-            .eq("character_id", character.id);
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("inventory")
+                .insert({
+                    user_id: user.id,
+                    character_id: character.id,
+                    character_name: character.name,
+                    character_image: character.image,
+                    rarity: character.rarity
+                });
 
 
-        if (updateError) {
+        if (error) {
 
             console.error(
-                "Erreur lors de la mise à jour de l'inventaire :",
-                updateError
+                "Erreur ajout inventaire :",
+                error
             );
 
-            return false;
-
+            return;
         }
 
 
-        return true;
+        return data;
 
-    }
-
-
-    const {
-        error: insertError
-    } = await supabaseClient
-        .from("inventory")
-        .insert({
-            user_id: user.id,
-            character_id: character.id,
-            character_name: character.name,
-            character_image: character.image,
-            character_rarity: character.rarity,
-            character_weight: character.weight,
-            quantity: 1
-        });
-
-
-    if (insertError) {
+    } catch (error) {
 
         console.error(
-            "Erreur lors de l'ajout à l'inventaire :",
-            insertError
+            "Erreur inventaire :",
+            error
         );
-
-        return false;
-
     }
-
-
-    return true;
-
 }
 
 
 // ========================================
-// ANIMATION D'UN CHANGEMENT DE CONTENU
+// AFFICHER UN PERSONNAGE
 // ========================================
 
-async function animateChange(elements, changeFunction) {
-
-    elements.forEach((element) => {
-
-        if (element) {
-            element.classList.add(
-                "contentChanging"
-            );
-        }
-
-    });
-
-
-    await new Promise(
-        resolve =>
-            setTimeout(resolve, 250)
-    );
-
-
-    changeFunction();
-
-
-    elements.forEach((element) => {
-
-        if (element) {
-
-            void element.offsetWidth;
-
-            element.classList.remove(
-                "contentChanging"
-            );
-
-        }
-
-    });
-
-}
-
-
-// ========================================
-// AFFICHAGE DU PERSONNAGE
-// ========================================
-
-async function displayCharacter(
+function displayCharacter(
     character,
-    image,
-    name,
-    description,
-    dates,
-    characterInfo,
-    characterRarity,
-    characterId,
-    multiProgress
+    container
 ) {
 
-    // ----------------------------
-    // Animation de l'image
-    // ----------------------------
-
-    image.classList.add(
-        "imageChanging"
-    );
-
-
-    // ----------------------------
-    // Animation du contenu
-    // ----------------------------
-
-    const contentElements = [
-        name,
-        description,
-        dates,
-        characterInfo,
-        multiProgress
-    ];
-
-
-    contentElements.forEach(
-        element => {
-
-            if (element) {
-                element.classList.add(
-                    "contentChanging"
-                );
-            }
-
-        }
-    );
-
-
-    await new Promise(
-        resolve =>
-            setTimeout(resolve, 250)
-    );
-
-
-    // ----------------------------
-    // Nouvelle image
-    // ----------------------------
-
-    if (character.image) {
-
-        image.src =
-            character.image;
-
-        image.alt =
-            character.name;
-
-        image.style.display =
-            "block";
-
+    if (!container) {
+        return;
     }
 
 
-    // ----------------------------
-    // Nouveau contenu
-    // ----------------------------
+    container.innerHTML = "";
+
+
+    if (!character) {
+
+        container.textContent =
+            "Aucun personnage";
+
+        return;
+    }
+
+
+    const image =
+        document.createElement("img");
+
+    image.src =
+        character.image || "";
+
+    image.alt =
+        character.name || "";
+
+
+    image.className =
+        "result-character-image";
+
+
+    const name =
+        document.createElement("h2");
 
     name.textContent =
-        character.name;
+        character.name || "Inconnu";
 
 
-    description.textContent =
-        "Personnage obtenu";
+    const gems =
+        document.createElement("p");
+
+    gems.textContent =
+        userGems +
+        " gemmes";
 
 
-    dates.textContent =
-        "";
+    const rarity =
+        document.createElement("p");
+
+    rarity.textContent =
+        "Rareté : " +
+        (character.rarity || "?");
 
 
-    characterRarity.textContent =
-        `Rareté : ${character.rarity || "?"}`;
+    const id =
+        document.createElement("p");
+
+    id.textContent =
+        "ID : " +
+        (character.id || "?");
 
 
-    characterId.textContent =
-        `ID : ${character.id || "?"}`;
+    container.appendChild(
+        image
+    );
 
+    container.appendChild(
+        name
+    );
 
-    characterInfo.style.display =
-        "flex";
+    container.appendChild(
+        rarity
+    );
 
+    container.appendChild(
+        id
+    );
 
-    multiProgress.classList.add(
-        "visible"
+    container.appendChild(
+        gems
     );
 
 
-    // ----------------------------
-    // Animation d'apparition
-    // ----------------------------
+    image.addEventListener(
+        "click",
+        function () {
 
-    void image.offsetWidth;
+            const enlarged =
+                document.createElement("div");
 
-    image.classList.remove(
-        "imageChanging"
-    );
+            enlarged.className =
+                "image-enlarged-overlay";
 
 
-    contentElements.forEach(
-        element => {
+            const enlargedImage =
+                document.createElement("img");
 
-            if (element) {
+            enlargedImage.src =
+                character.image || "";
 
-                void element.offsetWidth;
 
-                element.classList.remove(
-                    "contentChanging"
-                );
+            enlarged.appendChild(
+                enlargedImage
+            );
 
-            }
 
+            enlarged.addEventListener(
+                "click",
+                function () {
+                    enlarged.remove();
+                }
+            );
+
+
+            document.body.appendChild(
+                enlarged
+            );
         }
     );
-
 }
 
 
 // ========================================
-// SUMMON SOLO
+// TIRAGE SOLO
 // ========================================
 
 async function summon(
     banner,
-    resultImage,
-    resultText,
-    description,
-    dates,
-    characterInfo,
-    characterRarity,
-    characterId,
-    multiProgress,
-    soloButton,
-    multiButton
+    progressElement
 ) {
 
-    if (
-        !banner.characters ||
-        banner.characters.length === 0
-    ) {
+    const price =
+        Number(banner.soloPrice) || 0;
 
-        console.error(
-            "Cette bannière ne contient aucun personnage."
-        );
 
+    const success =
+        await spendGems(price);
+
+
+    if (!success) {
         return;
-
     }
 
 
-    const spent =
-        await spendGems(
-            banner.soloPrice
-        );
+    const pool =
+        banner.characters || [];
 
 
-    if (!spent) {
+    const character =
+        getRandomCharacter(pool);
+
+
+    if (!character) {
 
         alert(
-            "Pas assez de gemmes pour ce summon."
+            "Aucun personnage disponible."
         );
 
         return;
-
     }
 
 
-    const chosen =
-        getRandomCharacter(
-            banner.characters
-        );
-
-
-    if (!chosen) {
-        return;
-    }
-
-
-    const added =
-        await addToInventory(
-            chosen
-        );
-
-
-    if (!added) {
-
-        console.error(
-            "Le personnage n'a pas pu être ajouté à l'inventaire."
-        );
-
-    }
-
-
-    // Désactive temporairement les boutons
-    soloButton.disabled = true;
-    multiButton.disabled = true;
-
-
-    multiProgress.textContent =
-        "Personnage obtenu";
-
-
-    await displayCharacter(
-        chosen,
-        resultImage,
-        resultText,
-        description,
-        dates,
-        characterInfo,
-        characterRarity,
-        characterId,
-        multiProgress
+    await addToInventory(
+        character
     );
 
 
-    // Réactive les boutons
-    soloButton.disabled = false;
-    multiButton.disabled = false;
-
+    displayCharacter(
+        character,
+        progressElement
+    );
 }
 
 
 // ========================================
-// SUMMON MULTI
+// MULTI SUMMON
 // ========================================
 
 async function multiSummon(
     banner,
-    resultImage,
-    resultText,
-    description,
-    dates,
-    characterInfo,
-    characterRarity,
-    characterId,
-    multiProgress,
-    soloButton,
-    multiButton
+    progressElement
 ) {
 
-    if (
-        !banner.characters ||
-        banner.characters.length === 0
-    ) {
+    const price =
+        Number(banner.multiPrice) || 0;
 
-        console.error(
-            "Cette bannière ne contient aucun personnage."
-        );
 
+    const success =
+        await spendGems(price);
+
+
+    if (!success) {
         return;
-
     }
 
 
-    const spent =
-        await spendGems(
-            banner.multiPrice
-        );
+    const pool =
+        banner.characters || [];
 
 
-    if (!spent) {
+    if (pool.length === 0) {
 
         alert(
-            "Pas assez de gemmes pour ce multi summon."
+            "Aucun personnage disponible."
         );
 
         return;
-
     }
 
 
     const drawn = [];
 
-
-    // ----------------------------
-    // Tirage des 11 personnages
-    // ----------------------------
 
     for (
         let i = 0;
@@ -1100,55 +881,22 @@ async function multiSummon(
         i++
     ) {
 
-        const chosen =
-            getRandomCharacter(
-                banner.characters
-            );
+        const character =
+            getRandomCharacter(pool);
 
 
-        if (chosen) {
+        if (character) {
 
             drawn.push(
-                chosen
+                character
             );
 
             await addToInventory(
-                chosen
+                character
             );
-
         }
-
     }
 
-
-    if (drawn.length === 0) {
-        return;
-    }
-
-
-    console.log(
-        "Personnages obtenus (x10+1) :",
-        drawn.map(
-            character =>
-                character.name
-        )
-    );
-
-
-    // ----------------------------
-    // Désactivation des boutons
-    // ----------------------------
-
-    soloButton.disabled =
-        true;
-
-    multiButton.disabled =
-        true;
-
-
-    // ----------------------------
-    // Révélation dans la modale
-    // ----------------------------
 
     for (
         let index = 0;
@@ -1160,57 +908,29 @@ async function multiSummon(
             drawn[index];
 
 
-        multiProgress.textContent =
-            `${index + 1} / ${drawn.length} — cliquez pour continuer`;
+        progressElement.textContent =
+            (index + 1) +
+            " / " +
+            drawn.length +
+            " - cliquez pour continuer";
 
-        multiProgress.classList.add(
-            "visible"
-        );
 
-
-        // Affiche le personnage
-        await displayCharacter(
+        displayCharacter(
             character,
-            resultImage,
-            resultText,
-            description,
-            dates,
-            characterInfo,
-            characterRarity,
-            characterId,
-            multiProgress
+            progressElement
         );
 
 
-        // Attend le clic avant de continuer
         if (
             index <
             drawn.length - 1
         ) {
 
             await waitForClick(
-                multiProgress
+                progressElement
             );
-
         }
-
     }
-
-
-    // ----------------------------
-    // Fin du multi
-    // ----------------------------
-
-    multiProgress.textContent =
-        "Multi terminé";
-
-
-    soloButton.disabled =
-        false;
-
-    multiButton.disabled =
-        false;
-
 }
 
 
@@ -1221,111 +941,118 @@ async function multiSummon(
 function waitForClick(element) {
 
     return new Promise(
-        resolve => {
+        function (resolve) {
 
-            function clickHandler() {
+            function handler() {
 
                 element.removeEventListener(
                     "click",
-                    clickHandler
+                    handler
                 );
 
                 resolve();
-
             }
-
-
-            element.style.cursor =
-                "pointer";
 
 
             element.addEventListener(
                 "click",
-                clickHandler
+                handler
             );
-
         }
     );
-
 }
 
 
 // ========================================
-// NAVIGATION
+// BOUTON RETOUR
 // ========================================
 
-backButton.onclick =
-    function () {
+if (backButton) {
 
-        window.location.href =
-            "index.html";
+    backButton.addEventListener(
+        "click",
+        function () {
 
-    };
+            window.location.href =
+                "index.html";
+        }
+    );
+}
 
 
 // ========================================
-// VERIFICATION DU COMPTE
+// VERIFIER UTILISATEUR
 // ========================================
 
 async function checkUser() {
 
-    const {
-        data,
-        error
-    } = await supabaseClient.auth.getUser();
+    try {
+
+        const {
+            data: {
+                user
+            }
+        } =
+            await supabaseClient.auth.getUser();
 
 
-    if (
-        error ||
-        !data.user
-    ) {
+        if (!user) {
 
-        window.location.href =
-            "login.html";
+            window.location.href =
+                "login.html";
 
-        return false;
+            return;
+        }
 
+
+        if (userEmail) {
+
+            userEmail.textContent =
+                user.email || "";
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Erreur utilisateur :",
+            error
+        );
     }
-
-
-    userEmail.textContent =
-        data.user.email;
-
-
-    return true;
-
 }
 
 
 // ========================================
-// DECONNEXION
+// LOGOUT
 // ========================================
 
-logoutButton.onclick =
-    async function () {
+if (logoutButton) {
 
-        const {
-            error
-        } =
-            await supabaseClient.auth.signOut();
+    logoutButton.addEventListener(
+        "click",
+        async function () {
 
-
-        if (error) {
-
-            console.error(
-                "Erreur de déconnexion :",
+            const {
                 error
-            );
+            } =
+                await supabaseClient.auth.signOut();
 
-            return;
 
+            if (error) {
+
+                console.error(
+                    "Erreur déconnexion :",
+                    error
+                );
+
+                return;
+            }
+
+
+            window.location.href =
+                "login.html";
         }
-
-
-        window.location.href =
-            "login.html";
-
-    };
+    );
+}
 
 
 // ========================================
@@ -1334,21 +1061,12 @@ logoutButton.onclick =
 
 async function init() {
 
-    const loggedIn =
-        await checkUser();
-
-
-    if (!loggedIn) {
-        return;
-    }
-
+    await checkUser();
 
     await loadUserGems();
 
     await loadBanners();
-
 }
 
 
 init();
-```
