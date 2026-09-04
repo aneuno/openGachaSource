@@ -86,17 +86,24 @@ body {
 }
 
 .bannerCard {
-    width: 320px;
+    width: 420px;
+    max-width: 100%;
     background-color: #F6F7F7;
     box-sizing: border-box;
     overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s ease;
 }
 
-/* ----- image + nom en overlay ----- */
+.bannerCard:hover {
+    transform: scale(1.02);
+}
+
+/* ----- image seule, format horizontal ----- */
 .bannerCardImageWrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     background-color: #A7A7AB;
 }
@@ -108,26 +115,92 @@ body {
     display: block;
 }
 
-.bannerCardOverlay {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 30px 15px 12px 15px;
-    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
-    text-align: left;
+/* ========================= */
+/* MODALE DETAIL BANNIERE    */
+/* ========================= */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.bannerCardOverlay h2 {
+.bannerModal {
+    display: flex;
+    flex-direction: row;
+    width: 950px;
+    max-width: 100%;
+    max-height: 90vh;
+    background-color: #F6F7F7;
+    overflow: hidden;
+    position: relative;
+}
+
+.bannerModalImageWrap {
+    width: 50%;
+    flex-shrink: 0;
+    overflow: hidden;
+    background-color: #A7A7AB;
+}
+
+.bannerModalImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.bannerModalContent {
+    width: 50%;
+    padding: 25px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+.bannerModalContent h2 {
     margin: 0;
-    color: #F6F7F7;
-    font-size: 1.2em;
+}
+
+.bannerModalContent p {
+    margin: 0;
+}
+
+.bannerModalDescription {
+    color: #6b6a72;
+    font-size: 0.9em;
+}
+
+.modalCloseButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    padding: 5px 12px;
+    background-color: #A7A7AB;
+    border: none;
+    color: #3E3D45;
+    transition: transform 0.15s ease;
+    z-index: 1;
+}
+
+.modalCloseButton:hover {
+    transform: scale(1.08);
 }
 
 /* ----- prix / boutons ----- */
 .bannerCardButtons {
     display: flex;
     flex-direction: row;
+    gap: 10px;
+    margin-top: auto;
 }
 
 .pullButton {
@@ -143,10 +216,6 @@ body {
     align-items: center;
     gap: 2px;
     transition: transform 0.15s ease, background-color 0.15s ease;
-}
-
-.pullButton:first-child {
-    border-right: 2px solid #E0E3E9;
 }
 
 .pullButton span {
@@ -165,8 +234,9 @@ body {
 .bannerResultImage {
     display: none;
     width: 100%;
+    max-height: 220px;
+    object-fit: contain;
     cursor: pointer;
-    transition: filter 0.15s ease;
 }
 
 .bannerResultImage.enlarged {
@@ -175,13 +245,14 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 320px;
-    z-index: 999;
+    max-height: none;
+    z-index: 2000;
 }
 
 .bannerResultText {
     font-weight: bold;
     text-align: center;
-    padding: 8px 0;
+    padding: 6px 0;
     margin: 0;
     background-color: #E0E3E9;
 }
