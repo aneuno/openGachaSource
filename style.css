@@ -99,7 +99,6 @@ body {
     transform: scale(1.02);
 }
 
-/* ----- image seule, format horizontal ----- */
 .bannerCardImageWrap {
     position: relative;
     width: 100%;
@@ -141,10 +140,11 @@ body {
     position: relative;
 }
 
+/* ----- côté gauche : image pleine, pas de blanc ----- */
 .bannerModalImageWrap {
     width: 60%;
     flex-shrink: 0;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
 }
 
@@ -155,27 +155,27 @@ body {
     display: block;
     -webkit-mask-image: linear-gradient(
         to right,
-        rgba(0, 0, 0, 1) 60%,
+        rgba(0, 0, 0, 1) 55%,
         rgba(0, 0, 0, 0) 100%
     );
     mask-image: linear-gradient(
         to right,
-        rgba(0, 0, 0, 1) 60%,
+        rgba(0, 0, 0, 1) 55%,
         rgba(0, 0, 0, 0) 100%
     );
 }
 
+/* ----- côté droit : seul endroit blanc ----- */
 .bannerModalContent {
     width: 50%;
     margin-left: -220px;
-    padding: 25px 25px 25px 200px;
+    padding: 25px 25px 25px 210px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 12px;
     overflow-y: auto;
     position: relative;
-    background: transparent;
     z-index: 1;
 }
 
@@ -209,7 +209,6 @@ body {
     transform: scale(1.08);
 }
 
-/* ----- prix / boutons ----- */
 .bannerCardButtons {
     display: flex;
     flex-direction: row;
