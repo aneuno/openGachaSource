@@ -248,7 +248,10 @@ function openBannerModal(banner) {
         document.createElement("p");
 
     dates.textContent =
-        `Disponible du ${banner.startDate || "?"} au ${banner.endDate || "?"}`;
+        "Disponible du " +
+        (banner.startDate || "?") +
+        " au " +
+        (banner.endDate || "?");
 
     content.appendChild(dates);
 
