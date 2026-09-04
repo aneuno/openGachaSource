@@ -80,48 +80,83 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     padding: 80px 20px 40px 20px;
     box-sizing: border-box;
 }
 
 .bannerCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 280px;
-    padding: 15px;
+    width: 320px;
     background-color: #F6F7F7;
     box-sizing: border-box;
-    text-align: center;
+    overflow: hidden;
 }
-.bannerCard h2 {
-    margin: 10px 0 5px 0;
+
+/* ----- image + nom en overlay ----- */
+.bannerCardImageWrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background-color: #A7A7AB;
 }
-.bannerCard p {
-    margin: 2px 0;
-}
+
 .bannerCardImage {
     width: 100%;
+    height: 100%;
     object-fit: cover;
+    display: block;
 }
+
+.bannerCardOverlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30px 15px 12px 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    text-align: left;
+}
+
+.bannerCardOverlay h2 {
+    margin: 0;
+    color: #F6F7F7;
+    font-size: 1.2em;
+}
+
+/* ----- prix / boutons ----- */
 .bannerCardButtons {
     display: flex;
     flex-direction: row;
-    gap: 10px;
-    margin-top: 10px;
 }
-.bannerCardButtons button {
+
+.pullButton {
+    flex: 1;
     cursor: pointer;
-    padding: 5px 15px;
+    padding: 10px 5px;
     background-color: #A7A7AB;
     border: none;
     color: #3E3D45;
-    transition:
-        transform 0.15s ease;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    transition: transform 0.15s ease, background-color 0.15s ease;
 }
-.bannerCardButtons button:hover {
-    transform: scale(1.08);
+
+.pullButton:first-child {
+    border-right: 2px solid #E0E3E9;
+}
+
+.pullButton span {
+    font-weight: normal;
+    font-size: 0.85em;
+}
+
+.pullButton:hover {
+    transform: scale(1.03);
+    background-color: #8f8f94;
 }
 
 /* ========================= */
@@ -129,17 +164,26 @@ body {
 /* ========================= */
 .bannerResultImage {
     display: none;
-    width: 180px;
+    width: 100%;
     cursor: pointer;
-    margin-top: 15px;
-    transition:
-        width 0.15s ease;
+    transition: filter 0.15s ease;
 }
+
 .bannerResultImage.enlarged {
-    width: 280px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    z-index: 999;
 }
+
 .bannerResultText {
     font-weight: bold;
+    text-align: center;
+    padding: 8px 0;
+    margin: 0;
+    background-color: #E0E3E9;
 }
 
 /* ========================= */
