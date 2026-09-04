@@ -142,10 +142,9 @@ body {
 }
 
 .bannerModalImageWrap {
-    width: 55%;
+    width: 60%;
     flex-shrink: 0;
     overflow: hidden;
-    background-color: #A7A7AB;
     position: relative;
 }
 
@@ -154,24 +153,22 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-}
-
-/* ----- dégradé de fondu sur le bord droit de l'image ----- */
-.bannerModalImageWrap::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -1px;
-    width: 220px;
-    height: 100%;
-    background: linear-gradient(to right, transparent, #F6F7F7);
-    pointer-events: none;
+    -webkit-mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 1) 60%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 1) 60%,
+        rgba(0, 0, 0, 0) 100%
+    );
 }
 
 .bannerModalContent {
     width: 50%;
-    margin-left: -120px;
-    padding: 25px 25px 25px 145px;
+    margin-left: -220px;
+    padding: 25px 25px 25px 200px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -179,6 +176,7 @@ body {
     overflow-y: auto;
     position: relative;
     background: transparent;
+    z-index: 1;
 }
 
 .bannerModalContent h2 {
@@ -204,7 +202,7 @@ body {
     border: none;
     color: #3E3D45;
     transition: transform 0.15s ease;
-    z-index: 1;
+    z-index: 2;
 }
 
 .modalCloseButton:hover {
