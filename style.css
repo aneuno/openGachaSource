@@ -142,10 +142,11 @@ body {
 }
 
 .bannerModalImageWrap {
-    width: 50%;
+    width: 55%;
     flex-shrink: 0;
     overflow: hidden;
     background-color: #A7A7AB;
+    position: relative;
 }
 
 .bannerModalImage {
@@ -155,14 +156,29 @@ body {
     display: block;
 }
 
+/* ----- dégradé de fondu sur le bord droit de l'image ----- */
+.bannerModalImageWrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 220px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, #F6F7F7);
+    pointer-events: none;
+}
+
 .bannerModalContent {
     width: 50%;
-    padding: 25px;
+    margin-left: -120px;
+    padding: 25px 25px 25px 145px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 12px;
     overflow-y: auto;
+    position: relative;
+    background: transparent;
 }
 
 .bannerModalContent h2 {
