@@ -4,7 +4,7 @@
       "id": "standard",
       "name": "Bannière Standard",
       "description": "Bannière permanente. Pool de base disponible en continu.",
-      "image": "https://i.pinimg.com/736x/ca/a7/e0/caa7e0b255bbfd654b5dad52671d71dc.jpg",
+      "image": "",
       "soloPrice": 100,
       "multiPrice": 900,
       "characters": [
@@ -42,7 +42,7 @@
       "id": "limited_fate",
       "name": "Bannière Événement : Fate",
       "description": "Bannière limitée avec un taux d'apparition boosté pour Saber.",
-      "image": "https://i.pinimg.com/736x/55/b3/73/55b373644446e26eea9074b48329f43c.jpg",
+      "image": "",
       "startDate": "2026-09-01",
       "endDate": "2026-09-30",
       "soloPrice": 150,
