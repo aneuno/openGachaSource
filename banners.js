@@ -447,7 +447,7 @@ async function multiSummon(banner, resultImage, resultText) {
 
     const drawn = [];
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10 + 1; i++) {
 
         const chosen = getRandomCharacter(banner.characters);
 
