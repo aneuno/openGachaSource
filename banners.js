@@ -167,7 +167,7 @@ function openBannerModal(banner) {
         content.appendChild(dates);
     }
 
-    // ----- résultat du tirage -----
+    // ----- résultat du tirage (solo) -----
     const resultImage = document.createElement("img");
     resultImage.className = "bannerResultImage";
     resultImage.style.display = "none";
@@ -195,7 +195,7 @@ function openBannerModal(banner) {
     multiButton.className = "pullButton";
     multiButton.innerHTML = `10+1x <span>${banner.multiPrice} 💎</span>`;
     multiButton.onclick = function () {
-        multiSummon(banner, resultImage, resultText);
+        multiSummon(banner, resultImage, resultText, modal);
     };
 
     buttonsRow.appendChild(soloButton);
@@ -319,7 +319,7 @@ async function spendGems(amount) {
 function getRandomCharacter(pool) {
 
     const totalWeight = pool.reduce(
-        (total, character) => total + character.weight,
+        (total, character) => total + Number(character.weight),
         0
     );
 
@@ -327,7 +327,7 @@ function getRandomCharacter(pool) {
 
     for (const character of pool) {
 
-        random -= character.weight;
+        random -= Number(character.weight);
 
         if (random < 0) {
             return character;
@@ -424,7 +424,7 @@ async function addToInventory(character) {
 
 
 // ========================================
-// AFFICHAGE D'UN RESULTAT DANS UNE CARTE
+// AFFICHAGE D'UN RESULTAT DANS UNE CARTE (solo)
 // ========================================
 
 function displayResultInCard(character, resultImage, resultText) {
@@ -484,10 +484,73 @@ async function summon(banner, resultImage, resultText) {
 
 
 // ========================================
+// REVELATION SEQUENTIELLE (clic pour passer au suivant)
+// ========================================
+
+function startSequentialReveal(drawn, modal, onFinished) {
+
+    let index = 0;
+
+    const revealOverlay = document.createElement("div");
+    revealOverlay.className = "revealOverlay";
+
+    const revealImage = document.createElement("img");
+    revealImage.className = "revealImage";
+    revealOverlay.appendChild(revealImage);
+
+    const revealName = document.createElement("p");
+    revealName.className = "revealName";
+    revealOverlay.appendChild(revealName);
+
+    const revealHint = document.createElement("p");
+    revealHint.className = "revealHint";
+    revealOverlay.appendChild(revealHint);
+
+    function showCurrent() {
+
+        const character = drawn[index];
+
+        if (character.image) {
+            revealImage.referrerPolicy = "no-referrer";
+            revealImage.src = character.image;
+            revealImage.style.display = "block";
+        } else {
+            revealImage.style.display = "none";
+        }
+
+        revealName.textContent = character.name;
+        revealHint.textContent = `${index + 1} / ${drawn.length} — cliquez pour continuer`;
+
+    }
+
+    revealOverlay.onclick = function () {
+
+        index++;
+
+        if (index >= drawn.length) {
+            revealOverlay.remove();
+            if (onFinished) {
+                onFinished();
+            }
+            return;
+        }
+
+        showCurrent();
+
+    };
+
+    showCurrent();
+
+    modal.appendChild(revealOverlay);
+
+}
+
+
+// ========================================
 // SUMMON (x10+1) SUR UNE BANNIERE DONNEE
 // ========================================
 
-async function multiSummon(banner, resultImage, resultText) {
+async function multiSummon(banner, resultImage, resultText, modal) {
 
     if (banner.characters.length === 0) {
         console.error("Cette bannière ne contient aucun personnage.");
@@ -514,14 +577,18 @@ async function multiSummon(banner, resultImage, resultText) {
 
     }
 
-    if (drawn.length > 0) {
-        displayResultInCard(drawn[drawn.length - 1], resultImage, resultText);
-    }
-
     console.log(
         "Personnages obtenus (x10+1) :",
         drawn.map((c) => c.name)
     );
+
+    if (drawn.length === 0) {
+        return;
+    }
+
+    startSequentialReveal(drawn, modal, function () {
+        displayResultInCard(drawn[drawn.length - 1], resultImage, resultText);
+    });
 
 }
 
