@@ -135,8 +135,14 @@ function renderAllBanners() {
 
 bannersContainer.innerHTML = "";
 
-banners.forEach((banner) => {
-    bannersContainer.appendChild(createBannerCard(banner));
+banners.forEach((banner, index) => {
+
+    const card = createBannerCard(banner);
+
+    card.style.setProperty("--i", index);
+
+    bannersContainer.appendChild(card);
+
 });
 
 }
@@ -171,6 +177,28 @@ return card;
 }
 
 // ========================================
+// FERMETURE ANIMEE DE LA MODALE
+// ========================================
+//
+// Retire la classe "isOpen" (déclenche la transition CSS de sortie)
+// puis supprime réellement l'overlay du DOM une fois la transition finie.
+
+function closeBannerModal(overlay) {
+
+overlay.classList.remove("isOpen");
+
+overlay.addEventListener("transitionend", function handler(event) {
+
+    if (event.target === overlay) {
+        overlay.removeEventListener("transitionend", handler);
+        overlay.remove();
+    }
+
+});
+
+}
+
+// ========================================
 // OUVERTURE DE LA FENETRE DETAIL D'UNE BANNIERE
 // ========================================
 //
@@ -188,7 +216,7 @@ const overlay = document.createElement("div");
 overlay.className = "modalOverlay";
 overlay.onclick = function (event) {
     if (event.target === overlay) {
-        overlay.remove();
+        closeBannerModal(overlay);
     }
 };
 
@@ -201,7 +229,7 @@ closeButton.className = "modalCloseButton";
 closeButton.textContent = "✕";
 closeButton.onclick = function (event) {
     event.stopPropagation();
-    overlay.remove();
+    closeBannerModal(overlay);
 };
 modal.appendChild(closeButton);
 
@@ -275,6 +303,11 @@ content.appendChild(buttonsRow);
 modal.appendChild(content);
 overlay.appendChild(modal);
 document.body.appendChild(overlay);
+
+// ----- déclenchement de l'animation d'ouverture -----
+requestAnimationFrame(function () {
+    overlay.classList.add("isOpen");
+});
 
 // ----- état de la fenêtre -----
 const viewState = {
