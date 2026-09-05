@@ -503,11 +503,11 @@ const character = viewState.queue[viewState.index];
 
 swapImage(viewState.image, character.image, character.name);
 swapText(viewState.name, character.name);
+swapText(viewState.description, character.description || "");
 swapText(
-    viewState.description,
-    character.rarity ? `Rareté : ${character.rarity}` : ""
+    viewState.dates,
+    character.rarity ? `Rareté : ${character.rarity.toUpperCase()}` : ""
 );
-swapText(viewState.dates, "");
 swapText(
     viewState.hint,
     viewState.queue.length > 1
