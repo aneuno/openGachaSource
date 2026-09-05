@@ -5,28 +5,32 @@
       "image": "https://i.pinimg.com/736x/34/38/ca/3438ca3643795f3f88f58963e09c2605.jpg",
       "id": "zero two",
       "rarity": "r",
-      "weight": 100
+      "weight": 100,
+      "description": "Pilote du Franxx Strelizia, moitié humaine moitié klaxosaure."
     },
     {
       "name": "mikasa",
       "image": "https://i.pinimg.com/736x/ca/a7/e0/caa7e0b255bbfd654b5dad52671d71dc.jpg",
       "id": "mikasa",
       "rarity": "sr",
-      "weight": 100
+      "weight": 100,
+      "description": "Soldate d'élite du bataillon d'exploration, adoptée par la famille Yeager."
     },
     {
       "name": "annie",
       "image": "https://i.pinimg.com/736x/ab/f5/f6/abf5f65521114f0f96e8869d9dee5b60.jpg",
       "id": "annie leonardt",
       "rarity": "ssr",
-      "weight": 100
+      "weight": 100,
+      "description": "Guerrière capable de se transformer en Titan Cuirassé."
     },
     {
       "name": "saber",
       "image": "https://i.pinimg.com/736x/55/b3/73/55b373644446e26eea9074b48329f43c.jpg",
       "id": "saber",
       "rarity": "ssr",
-      "weight": 100
+      "weight": 100,
+      "description": "Servant de classe Épée, alter ego du roi Arthur."
     }
   ]
 }
