@@ -1,8 +1,6 @@
-```css
 /* ========================= */
 /* GENERAL                   */
 /* ========================= */
-
 body {
     margin: 0;
     height: 100vh;
@@ -11,11 +9,9 @@ body {
     color: #3E3D45;
 }
 
-
 /* ========================= */
 /* COMPTE                    */
 /* ========================= */
-
 #account {
     position: absolute;
     top: 20px;
@@ -24,36 +20,33 @@ body {
     align-items: center;
     gap: 10px;
 }
-
 #account button {
     cursor: pointer;
     padding: 5px 15px;
     background-color: #A7A7AB;
     border: none;
     color: #3E3D45;
-    transition: transform 0.15s ease;
+    transition:
+        transform 0.15s ease;
 }
-
 #account button:hover {
     transform: scale(1.08);
 }
-
 #gemsDisplay {
     font-weight: bold;
     padding: 5px 10px;
     background-color: #F6F7F7;
 }
 
-
 /* ========================= */
 /* MENU PRINCIPAL            */
 /* ========================= */
-
 #mainMenu {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,12 +54,10 @@ body {
     width: 250px;
     text-align: center;
 }
-
 #mainMenu h1 {
     margin: 0 0 10px 0;
     color: #3E3D45;
 }
-
 #mainMenu button {
     cursor: pointer;
     padding: 8px;
@@ -75,18 +66,16 @@ body {
     border: none;
     color: #3E3D45;
     box-sizing: border-box;
-    transition: transform 0.15s ease;
+    transition:
+        transform 0.15s ease;
 }
-
 #mainMenu button:hover {
     transform: scale(1.03);
 }
 
-
 /* ========================= */
 /* TOUTES LES BANNIERES      */
 /* ========================= */
-
 #bannersContainer {
     display: flex;
     flex-wrap: wrap;
@@ -125,11 +114,9 @@ body {
     display: block;
 }
 
-
 /* ========================= */
 /* MODALE DETAIL BANNIERE    */
 /* ========================= */
-
 .modalOverlay {
     position: fixed;
     inset: 0;
@@ -153,17 +140,14 @@ body {
     position: relative;
 }
 
-
-/* ========================= */
-/* IMAGE GAUCHE              */
-/* ========================= */
-
+/* ----- côté gauche : image pleine, pas de blanc ----- */
+/* Cette image sert à la fois pour la bannière et, pendant */
+/* le tirage, pour le personnage obtenu (même élément). */
 .bannerModalImageWrap {
     width: 60%;
     flex-shrink: 0;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
-    background-color: #A7A7AB;
 }
 
 .bannerModalImage {
@@ -171,30 +155,21 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-
     -webkit-mask-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 1) 55%,
         rgba(0, 0, 0, 0) 100%
     );
-
     mask-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 1) 55%,
         rgba(0, 0, 0, 0) 100%
     );
-
-    transition:
-        opacity 0.35s ease,
-        transform 0.45s ease,
-        filter 0.35s ease;
 }
 
-
-/* ========================= */
-/* CONTENU DROIT             */
-/* ========================= */
-
+/* ----- côté droit : seul endroit blanc ----- */
+/* Ce bloc affiche les infos de la bannière, puis, pendant le */
+/* tirage, les infos du personnage obtenu (mêmes éléments). */
 .bannerModalContent {
     width: 50%;
     margin-left: -220px;
@@ -206,13 +181,6 @@ body {
     overflow-y: auto;
     position: relative;
     z-index: 1;
-}
-
-.bannerModalContent h2,
-.bannerModalContent p {
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
 }
 
 .bannerModalContent h2 {
@@ -228,26 +196,16 @@ body {
     font-size: 0.9em;
 }
 
-
-/* ========================= */
-/* ANIMATION CHANGEMENT      */
-/* ========================= */
-
-.contentChanging {
-    opacity: 0;
-    transform: translateY(10px);
+.bannerModalDates {
+    color: #6b6a72;
+    font-size: 0.85em;
 }
 
-.imageChanging {
-    opacity: 0;
-    transform: scale(1.04);
-    filter: blur(4px);
+.bannerModalHint {
+    color: #A7A7AB;
+    font-size: 0.85em;
+    margin-top: auto;
 }
-
-
-/* ========================= */
-/* BOUTON FERMER             */
-/* ========================= */
 
 .modalCloseButton {
     position: absolute;
@@ -266,11 +224,6 @@ body {
     transform: scale(1.08);
 }
 
-
-/* ========================= */
-/* BOUTONS DE TIRAGE         */
-/* ========================= */
-
 .bannerCardButtons {
     display: flex;
     flex-direction: row;
@@ -286,16 +239,11 @@ body {
     border: none;
     color: #3E3D45;
     font-weight: bold;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2px;
-
-    transition:
-        transform 0.15s ease,
-        background-color 0.15s ease,
-        opacity 0.2s ease;
+    transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
 .pullButton span {
@@ -308,87 +256,40 @@ body {
     background-color: #8f8f94;
 }
 
-.pullButton:disabled {
-    cursor: default;
-    opacity: 0.5;
-    transform: none;
-}
-
-
 /* ========================= */
-/* RESULTAT DU TIRAGE        */
+/* ANIMATION DE REMPLACEMENT */
 /* ========================= */
-
-.bannerResultImage {
-    display: none;
-    width: 100%;
-    max-height: 220px;
-    object-fit: contain;
-    cursor: pointer;
-
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+/* Rejouée sur l'image et sur chaque texte à chaque changement */
+/* de contenu (passage bannière -> personnage -> bannière...). */
+.fadeSwapAnim {
+    animation: fadeSwap 0.35s ease-out;
 }
 
-.bannerResultImage.enlarged {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 320px;
-    max-height: none;
-    z-index: 2000;
+@keyframes fadeSwap {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
-
-.bannerResultText {
-    font-weight: bold;
-    text-align: center;
-    padding: 6px 0;
-    margin: 0;
-    background-color: #E0E3E9;
-}
-
-
-/* ========================= */
-/* INFOS DU PERSONNAGE       */
-/* ========================= */
-
-.characterInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
-}
-
-.characterRarity {
-    font-size: 0.9em;
-    color: #6b6a72;
-}
-
-.characterId {
-    font-size: 0.8em;
-    color: #8f8f94;
-}
-
 
 /* ========================= */
 /* PAGE DE CONNEXION         */
 /* ========================= */
-
 #login {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 250px;
 }
-
 #login input {
     padding: 8px;
     background-color: #F6F7F7;
@@ -396,36 +297,15 @@ body {
     color: #3E3D45;
     box-sizing: border-box;
 }
-
 #login button {
     cursor: pointer;
     padding: 8px;
     background-color: #A7A7AB;
     border: none;
     color: #3E3D45;
-    transition: transform 0.15s ease;
+    transition:
+        transform 0.15s ease;
 }
-
 #login button:hover {
     transform: scale(1.03);
 }
-
-
-/* ========================= */
-/* INDICATEUR MULTI          */
-/* ========================= */
-
-.multiProgress {
-    text-align: center;
-    font-size: 0.85em;
-    color: #6b6a72;
-    opacity: 0;
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
-}
-
-.multiProgress.visible {
-    opacity: 1;
-}
-```
