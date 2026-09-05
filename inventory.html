@@ -31,17 +31,53 @@
         </span>
     </div>
     <!-- ============================== -->
-    <!-- INVENTAIRE                     -->
+    <!-- SWITCH DE VUE                  -->
+    <!-- ============================== -->
+    <div id="viewSwitch">
+        <button id="viewCardsButton" class="viewButton isActive">
+            Cartes
+        </button>
+        <button id="viewBindersButton" class="viewButton">
+            Classeurs
+        </button>
+    </div>
+    <!-- ============================== -->
+    <!-- CONTENU PRINCIPAL              -->
     <!-- ============================== -->
     <main>
+        <!-- vue normale : toutes les cartes -->
         <div id="inventory">
             <p id="message">
                 Chargement de l'inventaire...
             </p>
         </div>
+
+        <!-- vue liste des classeurs -->
+        <div id="bindersView" style="display: none;">
+            <div id="bindersGrid"></div>
+        </div>
+
+        <!-- vue detail d'un classeur -->
+        <div id="binderDetail" style="display: none;">
+            <div id="binderDetailHeader">
+                <button id="binderBackButton">
+                    ← Retour aux classeurs
+                </button>
+                <h2 id="binderDetailTitle"></h2>
+                <div id="binderDetailActions">
+                    <button id="binderRenameButton">
+                        Renommer
+                    </button>
+                    <button id="binderDeleteButton">
+                        Supprimer
+                    </button>
+                </div>
+            </div>
+            <div id="binderCardsGrid"></div>
+        </div>
     </main>
     <!-- ============================== -->
-    <!-- FENETRE MODALE                 -->
+    <!-- FENETRE MODALE DETAIL PERSO    -->
     <!-- ============================== -->
     <div class="modalOverlay" id="modalOverlay">
         <div class="modalCard">
@@ -55,6 +91,18 @@
                 <p class="characterInfo" id="modalRarity"></p>
                 <p class="characterInfo" id="modalId"></p>
                 <p class="characterInfo" id="modalWeight"></p>
+            </div>
+        </div>
+    </div>
+    <!-- ============================== -->
+    <!-- FENETRE AJOUT CARTE AU CLASSEUR -->
+    <!-- ============================== -->
+    <div class="modalOverlay" id="addCardOverlay">
+        <div class="modalCard addCardModal">
+            <button class="modalClose" id="addCardClose" aria-label="Fermer">&times;</button>
+            <div class="addCardModalBody">
+                <h2>Ajouter une carte</h2>
+                <div id="addCardGrid"></div>
             </div>
         </div>
     </div>
