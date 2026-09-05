@@ -37,38 +37,7 @@
           "weight": 20
         }
       ]
-    },
-    {
-      "id": "limited_fate",
-      "name": "Bannière Événement : Fate",
-      "description": "Bannière limitée avec un taux d'apparition boosté pour Saber.",
-      "image": "",
-      "startDate": "2026-09-01",
-      "endDate": "2026-09-30",
-      "soloPrice": 150,
-      "multiPrice": 1350,
-      "characters": [
-        {
-          "name": "saber",
-          "image": "https://i.pinimg.com/736x/55/b3/73/55b373644446e26eea9074b48329f43c.jpg",
-          "id": "saber",
-          "rarity": "ssr",
-          "weight": 150
-        },
-        {
-          "name": "mikasa",
-          "image": "https://i.pinimg.com/736x/ca/a7/e0/caa7e0b255bbfd654b5dad52671d71dc.jpg",
-          "id": "mikasa",
-          "rarity": "sr",
-          "weight": 50
-        },
-        {
-          "name": "zero two",
-          "image": "https://i.pinimg.com/736x/34/38/ca/3438ca3643795f3f88f58963e09c2605.jpg",
-          "id": "zero two",
-          "rarity": "r",
-          "weight": 100
-        }
+    }
       ]
     }
   ]
