@@ -27,9 +27,50 @@ const bannersContainer = document.getElementById("bannersContainer");
 let banners = [];
 let userGems = 0;
 
+// Base de tous les personnages, indexée par nom (en minuscules).
+// Remplie par loadCharacters() avant loadBanners().
+let charactersByName = {};
+
+// ========================================
+// CHARGEMENT DE LA BASE DE PERSONNAGES
+// ========================================
+
+async function loadCharacters() {
+
+try {
+
+    const response = await fetch("characters.json");
+
+    if (!response.ok) {
+        throw new Error(`Erreur HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    charactersByName = {};
+
+    (data.characters || []).forEach((character) => {
+        charactersByName[character.name.toLowerCase()] = character;
+    });
+
+    console.log("Personnages chargés :", charactersByName);
+
+}
+
+catch (error) {
+    console.error("Erreur lors du chargement des personnages :", error);
+}
+
+}
+
 // ========================================
 // CHARGEMENT DES BANNIERES
 // ========================================
+//
+// Chaque bannière ne liste que des NOMS de personnages dans son
+// tableau "characters" (ex: ["zero two", "mikasa"]). On remplace
+// chaque nom par l'objet personnage complet trouvé dans characters.json
+// (id, rareté, poids, image, description, ...).
 
 async function loadBanners() {
 
@@ -43,7 +84,10 @@ try {
 
     const data = await response.json();
 
-    banners = data.banners;
+    banners = (data.banners || []).map((banner) => ({
+        ...banner,
+        characters: resolveBannerCharacters(banner)
+    }));
 
     console.log("Bannières chargées :", banners);
 
@@ -54,6 +98,32 @@ try {
 catch (error) {
     console.error("Erreur lors du chargement des bannières :", error);
 }
+
+}
+
+function resolveBannerCharacters(banner) {
+
+return (banner.characters || [])
+    .map((entry) => {
+
+        // Autorise soit une simple chaîne ("zero two"), soit un objet
+        // { "name": "zero two" } si jamais tu veux surcharger un jour.
+        const name = typeof entry === "string" ? entry : entry.name;
+
+        const character = charactersByName[(name || "").toLowerCase()];
+
+        if (!character) {
+            console.warn(
+                `Personnage introuvable dans characters.json pour la bannière "${banner.name}" :`,
+                name
+            );
+            return null;
+        }
+
+        return character;
+
+    })
+    .filter(Boolean);
 
 }
 
@@ -654,6 +724,7 @@ if (!loggedIn) {
 }
 
 await loadUserGems();
+await loadCharacters();
 await loadBanners();
 
 }
