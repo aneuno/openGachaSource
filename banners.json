@@ -5,8 +5,8 @@
       "name": "Bannière Standard",
       "description": "Gingembre. zero two",
       "image": "https://safebooru.org//samples/575/sample_306c6a2c06c2d76b70aaacf73a1c24d3df669e59.jpg?6820399",
-      "soloPrice": 100,
-      "multiPrice": 900,
+      "soloPrice": 5,
+      "multiPrice": 50,
       "characters": [
         "zero two",
         "zero two LR",
