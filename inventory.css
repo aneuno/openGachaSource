@@ -1,214 +1,260 @@
 /* ============================== */
 /* GENERAL                        */
 /* ============================== */
-
 body {
-
     margin: 0;
-
     min-height: 100vh;
-
     background-color: #E0E3E9;
-
     color: #3E3D45;
-
     font-family: Arial, sans-serif;
-
 }
-
-
 /* ============================== */
 /* HEADER                         */
 /* ============================== */
-
 header {
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     padding: 20px 30px;
-
 }
-
-
 header h1 {
-
     margin: 0;
-
 }
-
-
 /* ============================== */
 /* BOUTONS                        */
 /* ============================== */
-
 button {
-
     cursor: pointer;
-
     padding: 8px 18px;
-
     background-color: #A7A7AB;
-
     border: none;
-
     color: #3E3D45;
-
     transition: transform 0.15s ease;
-
 }
-
-
 button:hover {
-
     transform: scale(1.08);
-
 }
-
-
 /* ============================== */
 /* INFORMATIONS                   */
 /* ============================== */
-
 #collectionInfo {
-
     padding: 0 30px 20px;
-
 }
-
-
 /* ============================== */
 /* INVENTAIRE                     */
 /* ============================== */
-
 #inventory {
-
     display: grid;
-
     grid-template-columns:
-        repeat(auto-fill, minmax(180px, 1fr));
-
-    gap: 20px;
-
-    padding: 0 30px 30px;
-
+        repeat(auto-fill, minmax(220px, 1fr));
+    gap: 26px;
+    padding: 0 30px 40px;
 }
-
-
 /* ============================== */
 /* CARTE PERSONNAGE               */
 /* ============================== */
-
 .characterCard {
-
     position: relative;
-
     background-color: #F6F7F7;
-
-    padding: 12px;
-
+    padding: 0;
     box-sizing: border-box;
-
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(62, 61, 69, 0.10);
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+    animation: cardEnter 0.5s ease forwards;
+    animation-delay: calc(var(--i, 0) * 60ms);
     transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
-
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
-
-
 .characterCard:hover {
-
-    transform: translateY(-5px);
-
+    transform: translateY(-6px) scale(1.02);
     box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.15);
-
+        0 16px 30px rgba(62, 61, 69, 0.22);
 }
-
-
+.characterCard:focus-visible {
+    outline: 3px solid #3E3D45;
+    outline-offset: 2px;
+}
+@keyframes cardEnter {
+    from { opacity: 0; transform: translateY(18px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
 /* ============================== */
 /* IMAGE                          */
 /* ============================== */
-
-.characterCard img {
-
-    display: block;
-
+.imageWrap {
+    position: relative;
     width: 100%;
-
     aspect-ratio: 3 / 4;
-
-    object-fit: cover;
-
+    overflow: hidden;
 }
-
-
+.characterCard img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.characterCard:hover img {
+    transform: scale(1.07);
+}
+/* voile degrade pose sur l'image, seul le nom est visible sur la carte */
+.nameOverlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 28px 14px 12px;
+    background: linear-gradient(
+        to top,
+        rgba(62, 61, 69, 0.85) 0%,
+        rgba(62, 61, 69, 0.45) 55%,
+        rgba(62, 61, 69, 0) 100%
+    );
+}
 /* ============================== */
 /* NOM                             */
 /* ============================== */
-
 .characterName {
-
-    margin: 10px 0 5px;
-
-    font-size: 18px;
-
+    margin: 0;
+    font-size: 17px;
     font-weight: bold;
-
+    color: #F6F7F7;
 }
-
-
 /* ============================== */
 /* INFORMATIONS PERSONNAGE         */
+/* utilisees uniquement dans la fenetre modale */
 /* ============================== */
-
 .characterInfo {
-
     margin: 3px 0;
-
     font-size: 14px;
-
 }
-
-
 /* ============================== */
 /* QUANTITE                       */
 /* ============================== */
-
 .quantity {
-
     position: absolute;
-
-    top: 18px;
-
-    right: 18px;
-
+    top: 12px;
+    right: 12px;
     padding: 5px 9px;
-
     background-color: #3E3D45;
-
     color: white;
-
     font-weight: bold;
-
     border-radius: 4px;
-
 }
-
-
 /* ============================== */
 /* MESSAGE                        */
 /* ============================== */
-
 #message {
-
     grid-column: 1 / -1;
-
     text-align: center;
-
     font-size: 18px;
+}
 
+/* ============================== */
+/* FENETRE MODALE                 */
+/* ============================== */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: rgba(62, 61, 69, 0.55);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    z-index: 100;
+}
+.modalOverlay.isOpen {
+    opacity: 1;
+    visibility: visible;
+}
+.modalCard {
+    position: relative;
+    display: flex;
+    max-width: 780px;
+    width: 100%;
+    max-height: 85vh;
+    background-color: #F6F7F7;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(62, 61, 69, 0.35);
+    transform: scale(0.9) translateY(10px);
+    transition: transform 0.3s ease;
+}
+.modalOverlay.isOpen .modalCard {
+    transform: scale(1) translateY(0);
+}
+.modalImageWrap {
+    flex: 1 1 55%;
+    background-color: #E0E3E9;
+}
+.modalImageWrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.modalBody {
+    flex: 1 1 45%;
+    padding: 34px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+}
+.modalBody .characterName {
+    color: #3E3D45;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+.modalBody .quantity {
+    position: static;
+    display: inline-block;
+    margin-bottom: 16px;
+    width: fit-content;
+}
+.modalClose {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 1;
+    background-color: #3E3D45;
+    color: #F6F7F7;
+}
+.modalClose:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 640px) {
+    .modalCard {
+        flex-direction: column;
+        max-height: 90vh;
+    }
+    .modalImageWrap {
+        aspect-ratio: 3 / 4;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .characterCard,
+    .characterCard img,
+    .modalOverlay,
+    .modalCard {
+        animation: none !important;
+        transition: none !important;
+    }
+    .characterCard { opacity: 1; transform: none; }
 }
