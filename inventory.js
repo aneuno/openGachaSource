@@ -25,6 +25,95 @@ const collectionCount =
 const backButton =
     document.getElementById("backButton");
 
+const modalOverlay =
+    document.getElementById("modalOverlay");
+
+const modalClose =
+    document.getElementById("modalClose");
+
+const modalImage =
+    document.getElementById("modalImage");
+
+const modalName =
+    document.getElementById("modalName");
+
+const modalQuantity =
+    document.getElementById("modalQuantity");
+
+const modalRarity =
+    document.getElementById("modalRarity");
+
+const modalId =
+    document.getElementById("modalId");
+
+const modalWeight =
+    document.getElementById("modalWeight");
+
+
+// ========================================
+// FENETRE MODALE
+// ========================================
+
+function openModal(character) {
+
+    modalImage.src =
+        character.character_image;
+
+    modalImage.alt =
+        character.character_name;
+
+    modalName.textContent =
+        character.character_name;
+
+    modalQuantity.textContent =
+        `×${character.quantity}`;
+
+    modalRarity.textContent =
+        `Rareté : ${character.character_rarity}`;
+
+    modalId.textContent =
+        `ID : ${character.character_id}`;
+
+    modalWeight.textContent =
+        `Weight : ${character.character_weight}`;
+
+    modalOverlay.classList.add("isOpen");
+
+}
+
+function closeModal() {
+
+    modalOverlay.classList.remove("isOpen");
+
+}
+
+modalClose.addEventListener(
+    "click",
+    closeModal
+);
+
+modalOverlay.addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === modalOverlay) {
+            closeModal();
+        }
+
+    }
+);
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+            closeModal();
+        }
+
+    }
+);
+
 
 // ========================================
 // CHARGEMENT DE L'INVENTAIRE
@@ -157,7 +246,7 @@ async function loadInventory() {
     // CREATION DES CARTES
     // ----------------------------
 
-    inventory.forEach(character => {
+    inventory.forEach((character, index) => {
 
         const card =
             document.createElement("div");
@@ -166,10 +255,25 @@ async function loadInventory() {
         card.className =
             "characterCard";
 
+        card.style.setProperty(
+            "--i",
+            index
+        );
+
+        card.tabIndex = 0;
+
 
         // ----------------------------
-        // IMAGE
+        // ZONE IMAGE + NOM
         // ----------------------------
+
+        const imageWrap =
+            document.createElement("div");
+
+
+        imageWrap.className =
+            "imageWrap";
+
 
         const image =
             document.createElement("img");
@@ -187,9 +291,13 @@ async function loadInventory() {
             "no-referrer";
 
 
-        // ----------------------------
-        // NOM
-        // ----------------------------
+        const nameOverlay =
+            document.createElement("div");
+
+
+        nameOverlay.className =
+            "nameOverlay";
+
 
         const name =
             document.createElement("p");
@@ -203,52 +311,18 @@ async function loadInventory() {
             character.character_name;
 
 
-        // ----------------------------
-        // RARETE
-        // ----------------------------
-
-        const rarity =
-            document.createElement("p");
+        nameOverlay.appendChild(
+            name
+        );
 
 
-        rarity.className =
-            "characterInfo";
+        imageWrap.appendChild(
+            image
+        );
 
-
-        rarity.textContent =
-            `Rareté : ${character.character_rarity}`;
-
-
-        // ----------------------------
-        // ID
-        // ----------------------------
-
-        const id =
-            document.createElement("p");
-
-
-        id.className =
-            "characterInfo";
-
-
-        id.textContent =
-            `ID : ${character.character_id}`;
-
-
-        // ----------------------------
-        // WEIGHT
-        // ----------------------------
-
-        const weight =
-            document.createElement("p");
-
-
-        weight.className =
-            "characterInfo";
-
-
-        weight.textContent =
-            `Weight : ${character.character_weight}`;
+        imageWrap.appendChild(
+            nameOverlay
+        );
 
 
         // ----------------------------
@@ -272,27 +346,37 @@ async function loadInventory() {
         // ----------------------------
 
         card.appendChild(
-            image
-        );
-
-        card.appendChild(
-            name
-        );
-
-        card.appendChild(
-            rarity
-        );
-
-        card.appendChild(
-            id
-        );
-
-        card.appendChild(
-            weight
+            imageWrap
         );
 
         card.appendChild(
             quantity
+        );
+
+
+        // ----------------------------
+        // OUVERTURE DE LA MODALE
+        // ----------------------------
+
+        card.addEventListener(
+            "click",
+            function() {
+                openModal(character);
+            }
+        );
+
+        card.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter" || event.key === " ") {
+
+                    event.preventDefault();
+                    openModal(character);
+
+                }
+
+            }
         );
 
 
