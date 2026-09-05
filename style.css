@@ -43,25 +43,26 @@ body {
 /* ========================= */
 #mainMenu {
     position: absolute;
-    top: 100px;
-    left: 50%;
-    transform:
-        translateX(-50%);
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
-    width: 250px;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+    box-sizing: border-box;
     text-align: center;
 }
 #mainMenu h1 {
-    margin: 0 0 10px 0;
+    margin: 0;
     color: #3E3D45;
 }
 #mainMenu button {
     cursor: pointer;
-    padding: 8px;
-    width: 100%;
+    padding: 8px 20px;
+    width: auto;
     background-color: #A7A7AB;
     border: none;
     color: #3E3D45;
