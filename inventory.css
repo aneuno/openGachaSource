@@ -164,7 +164,7 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    padding: 24px;
     background-color: rgba(62, 61, 69, 0.55);
     backdrop-filter: blur(4px);
     opacity: 0;
@@ -179,21 +179,21 @@ button:hover {
 .modalCard {
     position: relative;
     display: flex;
-    max-width: 780px;
-    width: 100%;
-    max-height: 85vh;
+    width: 96vw;
+    height: 92vh;
+    max-width: 1600px;
     background-color: #F6F7F7;
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 30px 60px rgba(62, 61, 69, 0.35);
-    transform: scale(0.9) translateY(10px);
+    transform: scale(0.92) translateY(10px);
     transition: transform 0.3s ease;
 }
 .modalOverlay.isOpen .modalCard {
     transform: scale(1) translateY(0);
 }
 .modalImageWrap {
-    flex: 1 1 55%;
+    flex: 1 1 65%;
     background-color: #E0E3E9;
 }
 .modalImageWrap img {
@@ -203,48 +203,60 @@ button:hover {
     object-fit: cover;
 }
 .modalBody {
-    flex: 1 1 45%;
-    padding: 34px 32px;
+    flex: 1 1 35%;
+    padding: 50px 44px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     overflow-y: auto;
 }
 .modalBody .characterName {
     color: #3E3D45;
-    font-size: 26px;
-    margin-bottom: 10px;
+    font-size: 34px;
+    margin-bottom: 14px;
 }
 .modalBody .quantity {
     position: static;
     display: inline-block;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     width: fit-content;
+    font-size: 15px;
+    padding: 6px 12px;
+}
+.modalBody .characterInfo {
+    font-size: 16px;
+    margin: 6px 0;
 }
 .modalClose {
     position: absolute;
-    top: 18px;
-    right: 18px;
-    width: 36px;
-    height: 36px;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
     padding: 0;
     border-radius: 50%;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1;
     background-color: #3E3D45;
     color: #F6F7F7;
+    z-index: 1;
 }
 .modalClose:hover {
     transform: scale(1.1);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
     .modalCard {
         flex-direction: column;
-        max-height: 90vh;
+        width: 94vw;
+        height: 94vh;
     }
     .modalImageWrap {
-        aspect-ratio: 3 / 4;
+        flex: 1 1 55%;
+    }
+    .modalBody {
+        flex: 1 1 45%;
+        padding: 30px 26px;
     }
 }
 
