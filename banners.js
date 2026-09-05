@@ -282,7 +282,7 @@ buttonsRow.className = "bannerCardButtons";
 
 const soloButton = document.createElement("button");
 soloButton.className = "pullButton";
-soloButton.innerHTML = `1x <span>${banner.soloPrice} 💎</span>`;
+soloButton.innerHTML = `1x <span>${banner.soloPrice} </span>`;
 soloButton.onclick = function (event) {
     event.stopPropagation();
     handleSummon(viewState, 1);
@@ -290,7 +290,7 @@ soloButton.onclick = function (event) {
 
 const multiButton = document.createElement("button");
 multiButton.className = "pullButton";
-multiButton.innerHTML = `10+1x <span>${banner.multiPrice} 💎</span>`;
+multiButton.innerHTML = `10+1 <span>${banner.multiPrice} </span>`;
 multiButton.onclick = function (event) {
     event.stopPropagation();
     handleSummon(viewState, 11);
