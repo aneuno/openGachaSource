@@ -9,6 +9,14 @@
       "description": "Pilote du Franxx Strelizia"
     },
     {
+      "name": "zero two",
+      "id": "zero two",
+      "image": "https://i.pinimg.com/originals/86/62/45/86624531cd8638b2f498b6994dbf8b95.gif",
+      "rarity": "lr",
+      "weight": 100,
+      "description": "tkt,
+    },
+    {
       "name": "mikasa",
       "id": "mikasa",
       "image": "https://i.pinimg.com/736x/ca/a7/e0/caa7e0b255bbfd654b5dad52671d71dc.jpg",
