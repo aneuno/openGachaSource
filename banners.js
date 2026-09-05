@@ -282,7 +282,7 @@ buttonsRow.className = "bannerCardButtons";
 
 const soloButton = document.createElement("button");
 soloButton.className = "pullButton";
-soloButton.innerHTML = `1x <span>${banner.soloPrice} </span>`;
+soloButton.innerHTML = `1 <span>${banner.soloPrice} </span>`;
 soloButton.onclick = function (event) {
     event.stopPropagation();
     handleSummon(viewState, 1);
