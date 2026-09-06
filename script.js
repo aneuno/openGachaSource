@@ -22,6 +22,44 @@ const discordCodeInput = document.getElementById("discordCodeInput");
 const discordCodeSubmit = document.getElementById("discordCodeSubmit");
 const discordLinkError = document.getElementById("discordLinkError");
 // ========================================
+// FENETRE DE LIAISON DISCORD
+// ========================================
+// Le clic est attache immediatement, ici, au chargement du script,
+// AVANT toute requete reseau. Comme ca le bouton marche meme si
+// loadUserGems() echoue ou met du temps a repondre.
+function openDiscordLinkModal() {
+    discordCodeInput.value = "";
+    discordLinkError.textContent = "";
+    discordLinkOverlay.classList.add("isOpen");
+}
+function closeDiscordLinkModal() {
+    discordLinkOverlay.classList.remove("isOpen");
+}
+discordLinkStatus.onclick = openDiscordLinkModal;
+discordLinkClose.onclick = closeDiscordLinkModal;
+discordLinkOverlay.onclick = function (event) {
+    if (event.target === discordLinkOverlay) {
+        closeDiscordLinkModal();
+    }
+};
+discordCodeSubmit.onclick = async function () {
+    const code = discordCodeInput.value.trim();
+    if (!code) {
+        discordLinkError.textContent = "Entre un code.";
+        return;
+    }
+    discordLinkError.textContent = "";
+    const { error } = await supabaseClient.rpc("link_discord_account", {
+        p_code: code
+    });
+    if (error) {
+        discordLinkError.textContent = error.message || "Code invalide.";
+        return;
+    }
+    closeDiscordLinkModal();
+    updateDiscordLinkStatus(true);
+};
+// ========================================
 // GESTION DES GEMMES (affichage uniquement)
 // ========================================
 async function loadUserGems() {
@@ -59,48 +97,17 @@ async function loadUserGems() {
     }
 }
 // ========================================
-// STATUT DE LIAISON DISCORD
+// STATUT DE LIAISON DISCORD (juste le texte, le clic est deja fixe plus haut)
 // ========================================
 function updateDiscordLinkStatus(discordId) {
     if (discordId) {
         discordLinkStatus.textContent = "Discord lié ✅";
-        discordLinkStatus.onclick = null;
+        discordLinkStatus.disabled = true;
     } else {
         discordLinkStatus.textContent = "Lier Discord";
-        discordLinkStatus.onclick = openDiscordLinkModal;
+        discordLinkStatus.disabled = false;
     }
 }
-function openDiscordLinkModal() {
-    discordCodeInput.value = "";
-    discordLinkError.textContent = "";
-    discordLinkOverlay.classList.add("isOpen");
-}
-function closeDiscordLinkModal() {
-    discordLinkOverlay.classList.remove("isOpen");
-}
-discordLinkClose.onclick = closeDiscordLinkModal;
-discordLinkOverlay.onclick = function (event) {
-    if (event.target === discordLinkOverlay) {
-        closeDiscordLinkModal();
-    }
-};
-discordCodeSubmit.onclick = async function () {
-    const code = discordCodeInput.value.trim();
-    if (!code) {
-        discordLinkError.textContent = "Entre un code.";
-        return;
-    }
-    discordLinkError.textContent = "";
-    const { error } = await supabaseClient.rpc("link_discord_account", {
-        p_code: code
-    });
-    if (error) {
-        discordLinkError.textContent = error.message || "Code invalide.";
-        return;
-    }
-    closeDiscordLinkModal();
-    updateDiscordLinkStatus(true);
-};
 // ========================================
 // NAVIGATION
 // ========================================
