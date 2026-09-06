@@ -15,98 +15,141 @@ const gemsDisplay = document.getElementById("gemsDisplay");
 const logoutButton = document.getElementById("logoutButton");
 const bannersButton = document.getElementById("bannersButton");
 const inventoryButton = document.getElementById("inventoryButton");
-const discordLinkStatus = document.getElementById("discordLinkStatus");
-const discordLinkOverlay = document.getElementById("discordLinkOverlay");
-const discordLinkClose = document.getElementById("discordLinkClose");
-const discordCodeInput = document.getElementById("discordCodeInput");
-const discordCodeSubmit = document.getElementById("discordCodeSubmit");
-const discordLinkError = document.getElementById("discordLinkError");
+const usernameOverlay = document.getElementById("usernameOverlay");
+const usernameInput = document.getElementById("usernameInput");
+const usernameSubmit = document.getElementById("usernameSubmit");
+const usernameError = document.getElementById("usernameError");
 // ========================================
-// FENETRE DE LIAISON DISCORD
+// EXTRACTION DE L'ID DISCORD DEPUIS LA SESSION
 // ========================================
-// Le clic est attache immediatement, ici, au chargement du script,
-// AVANT toute requete reseau. Comme ca le bouton marche meme si
-// loadUserGems() echoue ou met du temps a repondre.
-function openDiscordLinkModal() {
-    discordCodeInput.value = "";
-    discordLinkError.textContent = "";
-    discordLinkOverlay.classList.add("isOpen");
-}
-function closeDiscordLinkModal() {
-    discordLinkOverlay.classList.remove("isOpen");
-}
-discordLinkStatus.onclick = openDiscordLinkModal;
-discordLinkClose.onclick = closeDiscordLinkModal;
-discordLinkOverlay.onclick = function (event) {
-    if (event.target === discordLinkOverlay) {
-        closeDiscordLinkModal();
+function extractDiscordId(user) {
+
+    const discordIdentity = (user.identities || []).find(
+        (identity) => identity.provider === "discord"
+    );
+
+    if (discordIdentity && discordIdentity.identity_data && discordIdentity.identity_data.id) {
+        return discordIdentity.identity_data.id;
     }
-};
-discordCodeSubmit.onclick = async function () {
-    const code = discordCodeInput.value.trim();
-    if (!code) {
-        discordLinkError.textContent = "Entre un code.";
+
+    if (user.user_metadata && user.user_metadata.provider_id) {
+        return user.user_metadata.provider_id;
+    }
+
+    return null;
+
+}
+// ========================================
+// FENETRE PSEUDO OBLIGATOIRE
+// ========================================
+function requireUsername() {
+
+    mainMenu.style.display = "none";
+    usernameOverlay.classList.add("isOpen");
+
+}
+
+function unlockApp() {
+
+    usernameOverlay.classList.remove("isOpen");
+    mainMenu.style.display = "flex";
+
+}
+
+const mainMenu = document.getElementById("mainMenu");
+
+usernameSubmit.onclick = async function () {
+
+    const username = usernameInput.value.trim();
+
+    if (!username) {
+        usernameError.textContent = "Entre un pseudo.";
         return;
     }
-    discordLinkError.textContent = "";
-    const { error } = await supabaseClient.rpc("link_discord_account", {
-        p_code: code
-    });
-    if (error) {
-        discordLinkError.textContent = error.message || "Code invalide.";
-        return;
-    }
-    closeDiscordLinkModal();
-    updateDiscordLinkStatus(true);
-};
-// ========================================
-// GESTION DES GEMMES (affichage uniquement)
-// ========================================
-async function loadUserGems() {
+
+    usernameError.textContent = "";
+
     const {
         data: { user }
     } = await supabaseClient.auth.getUser();
+
+    const { error } = await supabaseClient
+        .from("profiles")
+        .update({ username })
+        .eq("id", user.id);
+
+    if (error) {
+
+        if (error.code === "23505") {
+            usernameError.textContent = "Ce pseudo est déjà pris.";
+        } else {
+            usernameError.textContent = "Erreur, réessaie.";
+            console.error("Erreur mise à jour pseudo :", error);
+        }
+
+        return;
+
+    }
+
+    userEmail.textContent = username;
+    unlockApp();
+
+};
+// ========================================
+// GESTION DES GEMMES + PROFIL
+// ========================================
+async function loadUserGems() {
+
+    const {
+        data: { user }
+    } = await supabaseClient.auth.getUser();
+
     if (!user) {
         return;
     }
+
     const {
         data,
         error
     } = await supabaseClient
         .from("profiles")
-        .select("gems, discord_id")
+        .select("gems, username")
         .eq("id", user.id)
         .maybeSingle();
+
     if (error) {
-        console.error("Erreur lors de la récupération des gemmes :", error);
+        console.error("Erreur lors de la récupération du profil :", error);
         return;
     }
+
     if (!data) {
+
+        const discordId = extractDiscordId(user);
+
         const { error: insertError } = await supabaseClient
             .from("profiles")
-            .insert({ id: user.id, gems: 10000 });
+            .insert({ id: user.id, gems: 10000, discord_id: discordId });
+
         if (insertError) {
             console.error("Erreur lors de la création du profil :", insertError);
             return;
         }
+
         gemsDisplay.textContent = "10000 gemmes";
-        updateDiscordLinkStatus(null);
+        requireUsername();
+
     } else {
+
         gemsDisplay.textContent = `${data.gems} gemmes`;
-        updateDiscordLinkStatus(data.discord_id);
+
+        if (data.username) {
+            userEmail.textContent = data.username;
+        } else {
+            requireUsername();
+        }
+
     }
-}
-// ========================================
-// STATUT DE LIAISON DISCORD (juste le texte, le clic est deja fixe plus haut)
-// ========================================
-function updateDiscordLinkStatus(discordId) {
-    if (discordId) {
-        discordLinkStatus.textContent = "Discord lié ✅";
-        discordLinkStatus.disabled = true;
-    } else {
-        discordLinkStatus.textContent = "Lier Discord";
-        discordLinkStatus.disabled = false;
-    }
+
 }
 // ========================================
 // NAVIGATION
@@ -121,36 +164,47 @@ inventoryButton.onclick = function () {
 // VERIFICATION DU COMPTE
 // ========================================
 async function checkUser() {
+
     const {
         data,
         error
     } = await supabaseClient.auth.getUser();
+
     if (error || !data.user) {
         window.location.href = "login.html";
         return false;
     }
-    userEmail.textContent = data.user.email;
+
     return true;
+
 }
 // ========================================
 // DECONNEXION
 // ========================================
 logoutButton.onclick = async function () {
+
     const { error } = await supabaseClient.auth.signOut();
+
     if (error) {
         console.error("Erreur de déconnexion :", error);
         return;
     }
+
     window.location.href = "login.html";
+
 };
 // ========================================
 // INITIALISATION
 // ========================================
 async function init() {
+
     const loggedIn = await checkUser();
+
     if (!loggedIn) {
         return;
     }
+
     await loadUserGems();
+
 }
 init();
