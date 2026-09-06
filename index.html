@@ -18,12 +18,12 @@
     <!-- ============================== -->
     <div id="account">
         <span id="gemsDisplay">0 gemmes</span>
+        <span id="discordLinkStatus"></span>
         <span id="userEmail"></span>
         <button id="logoutButton">
             log out
         </button>
     </div>
-
     <!-- ============================== -->
     <!-- MENU PRINCIPAL                 -->
     <!-- ============================== -->
@@ -36,7 +36,19 @@
             Inventaire
         </button>
     </div>
-
+    <!-- ============================== -->
+    <!-- FENETRE DE LIAISON DISCORD     -->
+    <!-- ============================== -->
+    <div class="modalOverlay" id="discordLinkOverlay">
+        <div class="discordLinkModal">
+            <button class="modalCloseButton" id="discordLinkClose">✕</button>
+            <h2>Lier ton compte Discord</h2>
+            <p>Tape <strong>/link</strong> sur le serveur Discord, puis entre le code reçu ci-dessous.</p>
+            <input type="text" id="discordCodeInput" placeholder="Code à 6 chiffres" maxlength="6">
+            <button id="discordCodeSubmit">Lier mon compte</button>
+            <p id="discordLinkError" class="discordLinkError"></p>
+        </div>
+    </div>
     <!-- ============================== -->
     <!-- SUPABASE                       -->
     <!-- ============================== -->
