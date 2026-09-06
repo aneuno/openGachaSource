@@ -348,3 +348,50 @@ body {
     .bannerCard { opacity: 1; transform: none; }
     .modalOverlay { opacity: 1; visibility: visible; }
 }
+
+/* ========================= */
+/* LIAISON DISCORD           */
+/* ========================= */
+#discordLinkStatus {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #F6F7F7;
+    font-size: 0.9em;
+}
+#discordLinkStatus:hover {
+    text-decoration: underline;
+}
+
+.discordLinkModal {
+    background-color: #F6F7F7;
+    padding: 30px;
+    width: 340px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+}
+.discordLinkModal h2 {
+    margin: 0;
+}
+.discordLinkModal input {
+    padding: 8px;
+    border: none;
+    background-color: #E0E3E9;
+    box-sizing: border-box;
+    font-size: 1.1em;
+    text-align: center;
+    letter-spacing: 2px;
+}
+.discordLinkModal .modalCloseButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.discordLinkError {
+    color: #b23b3b;
+    font-size: 0.85em;
+    margin: 0;
+    min-height: 1em;
+}
