@@ -18,7 +18,6 @@
     <!-- ============================== -->
     <div id="account">
         <span id="gemsDisplay">0 gemmes</span>
-        <button id="discordLinkStatus">Lier Discord</button>
         <span id="userEmail"></span>
         <button id="logoutButton">
             log out
@@ -37,16 +36,15 @@
         </button>
     </div>
     <!-- ============================== -->
-    <!-- FENETRE DE LIAISON DISCORD     -->
+    <!-- FENETRE PSEUDO OBLIGATOIRE     -->
     <!-- ============================== -->
-    <div class="modalOverlay" id="discordLinkOverlay">
+    <div class="modalOverlay" id="usernameOverlay">
         <div class="discordLinkModal">
-            <button class="modalCloseButton" id="discordLinkClose">✕</button>
-            <h2>Lier ton compte Discord</h2>
-            <p>Tape <strong>/link</strong> sur le serveur Discord, puis entre le code reçu ci-dessous.</p>
-            <input type="text" id="discordCodeInput" placeholder="Code à 6 chiffres" maxlength="6">
-            <button id="discordCodeSubmit">Lier mon compte</button>
-            <p id="discordLinkError" class="discordLinkError"></p>
+            <h2>Choisis ton pseudo</h2>
+            <p>Ce pseudo sera visible sur le site. Tu ne pourras pas continuer sans en choisir un.</p>
+            <input type="text" id="usernameInput" placeholder="Ton pseudo" maxlength="20">
+            <button id="usernameSubmit">Valider</button>
+            <p id="usernameError" class="discordLinkError"></p>
         </div>
     </div>
     <!-- ============================== -->
