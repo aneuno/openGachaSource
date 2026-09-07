@@ -20,7 +20,7 @@ discordLoginButton.onclick = async function () {
     const { error } = await supabaseClient.auth.signInWithOAuth({
         provider: "discord",
         options: {
-            redirectTo: window.location.origin + "/index.html"
+            redirectTo: new URL("index.html", window.location.href).href
         }
     });
 
