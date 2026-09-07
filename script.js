@@ -135,7 +135,7 @@ async function loadUserGems() {
             return;
         }
 
-        gemsDisplay.textContent = "10000 gemmes";
+        gemsDisplay.textContent = "50 gemmes";
         requireUsername();
 
     } else {
