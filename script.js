@@ -128,7 +128,7 @@ async function loadUserGems() {
 
         const { error: insertError } = await supabaseClient
             .from("profiles")
-            .insert({ id: user.id, gems: 10000, discord_id: discordId });
+            .insert({ id: user.id, gems: 50, discord_id: discordId });
 
         if (insertError) {
             console.error("Erreur lors de la création du profil :", insertError);
