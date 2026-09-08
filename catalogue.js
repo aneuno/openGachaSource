@@ -35,9 +35,6 @@ const modalId =
 const modalDescription =
     document.getElementById("modalDescription");
 
-const modalDescription =
-    document.getElementById("modalDescription");
-
 
 // ========================================
 // ETAT
@@ -390,7 +387,7 @@ function openModal(character) {
         character.name;
 
     modalDescription.textContent =
-        `description : ${character.description}`;
+        character.description || "";
 
 
     modalRarity.textContent =
@@ -399,10 +396,6 @@ function openModal(character) {
 
     modalId.textContent =
         `ID : ${character.id}`;
-
-
-    modalDescription.textContent =
-        character.description || "";
 
 
     modalOverlay.classList.add(
