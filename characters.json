@@ -159,6 +159,14 @@
       "rarity": "ssr",
       "weight": 3.9702,
       "description": ""
+    },
+    {
+      "name": "saber",
+      "id": "saber - run",
+      "image": "https://i.pinimg.com/1200x/de/e0/f2/dee0f2184ac2a726c0553ca29f31076f.jpg",
+      "rarity": "ssr",
+      "weight": 3.9702,
+      "description": ""
     }
   ]
 }
