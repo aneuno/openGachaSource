@@ -87,6 +87,14 @@
       "rarity": "ulr",
       "weight": 0.0098,
       "description": ""
+    },
+    {
+      "name": "frieren",
+      "id": "frieren",
+      "image": "https://safebooru.org//samples/3915/sample_cac81e3b0ba2bfed8ad86c9d07372a95f2732716.jpg?7056983",
+      "rarity": "ssr",
+      "weight": 3.9702,
+      "description": ""
     }
   ]
 }
