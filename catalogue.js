@@ -389,6 +389,9 @@ function openModal(character) {
     modalName.textContent =
         character.name;
 
+    modalWeight.textContent =
+        `Weight : ${character.description}`;
+
 
     modalRarity.textContent =
         `rarity : ${character.rarity}`;
