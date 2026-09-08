@@ -79,6 +79,14 @@
       "rarity": "r",
       "weight": "80",
       "description": ""
+    },
+    {
+      "name": "gabimaru",
+      "id": "gabimaru the hollow",
+      "image": "https://i.pinimg.com/originals/99/68/0a/99680aec1e77734318d243e470135fdb.gif",
+      "rarity": "ulr",
+      "weight": 0.0098,
+      "description": ""
     }
   ]
 }
