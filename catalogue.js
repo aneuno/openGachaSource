@@ -1,4 +1,3 @@
-```javascript
 // ========================================
 // ELEMENTS HTML
 // ========================================
@@ -871,6 +870,3 @@ backButton.onclick =
 // ========================================
 
 loadCatalogue();
-```
-
-Ton JSON peut rester **exactement comme il est** : le JS utilise directement la valeur `rarity` de chaque personnage (`R`, `SR`, `SSR`, `LR`, `ULR`).
