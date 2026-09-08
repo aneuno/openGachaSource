@@ -27,9 +27,11 @@ const bannersContainer = document.getElementById("bannersContainer");
 let banners = [];
 let userGems = 0;
 
-// Base de tous les personnages, indexée par nom (en minuscules).
+// Base de tous les personnages, indexée par ID (en minuscules).
+// L'id est unique par personnage, contrairement au nom qui peut
+// être partagé par plusieurs personnages (ex: "frieren" / "frieren apotheosis").
 // Remplie par loadCharacters() avant loadBanners().
-let charactersByName = {};
+let charactersById = {};
 
 // ========================================
 // CHARGEMENT DE LA BASE DE PERSONNAGES
@@ -47,13 +49,29 @@ try {
 
     const data = await response.json();
 
-    charactersByName = {};
+    charactersById = {};
 
     (data.characters || []).forEach((character) => {
-        charactersByName[character.name.toLowerCase()] = character;
+
+        if (!character.id) {
+            console.warn("Personnage sans id ignoré :", character);
+            return;
+        }
+
+        const key = character.id.toLowerCase();
+
+        if (charactersById[key]) {
+            console.warn(
+                `ID de personnage en doublon dans characters.json, écrasement :`,
+                character.id
+            );
+        }
+
+        charactersById[key] = character;
+
     });
 
-    console.log("Personnages chargés :", charactersByName);
+    console.log("Personnages chargés :", charactersById);
 
 }
 
@@ -67,10 +85,14 @@ catch (error) {
 // CHARGEMENT DES BANNIERES
 // ========================================
 //
-// Chaque bannière ne liste que des NOMS de personnages dans son
-// tableau "characters" (ex: ["zero two", "mikasa"]). On remplace
-// chaque nom par l'objet personnage complet trouvé dans characters.json
-// (id, rareté, poids, image, description, ...).
+// Chaque bannière ne liste que des ID de personnages dans son
+// tableau "characters" (ex: ["zero two", "frieren apotheosis"]).
+// On remplace chaque id par l'objet personnage complet trouvé dans
+// characters.json (name, rareté, poids, image, description, ...).
+//
+// IMPORTANT : ce tableau doit contenir des ID (champ "id" de
+// characters.json), PAS des noms affichés (champ "name"), car un
+// même nom peut correspondre à plusieurs personnages différents.
 
 async function loadBanners() {
 
@@ -106,16 +128,17 @@ function resolveBannerCharacters(banner) {
 return (banner.characters || [])
     .map((entry) => {
 
-        // Autorise soit une simple chaîne ("zero two"), soit un objet
-        // { "name": "zero two" } si jamais tu veux surcharger un jour.
-        const name = typeof entry === "string" ? entry : entry.name;
+        // Autorise soit une simple chaîne ("frieren apotheosis"), soit
+        // un objet { "id": "frieren apotheosis" } si jamais tu veux
+        // surcharger un jour.
+        const id = typeof entry === "string" ? entry : entry.id;
 
-        const character = charactersByName[(name || "").toLowerCase()];
+        const character = charactersById[(id || "").toLowerCase()];
 
         if (!character) {
             console.warn(
                 `Personnage introuvable dans characters.json pour la bannière "${banner.name}" :`,
-                name
+                id
             );
             return null;
         }
@@ -462,6 +485,11 @@ return null;
 // ========================================
 // AJOUT A L'INVENTAIRE
 // ========================================
+//
+// La recherche/mise à jour d'un doublon se fait uniquement sur
+// character_id (unique par personnage). Ne JAMAIS filtrer sur
+// character_name ici : plusieurs personnages différents peuvent
+// partager le même nom affiché sans être le même personnage.
 
 async function addToInventory(character) {
 
