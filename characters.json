@@ -127,6 +127,22 @@
       "rarity": "r",
       "weight": 80,
       "description": ""
+    },
+    {
+      "name": "shinichi",
+      "id": "shinichi kudo",
+      "image": "https://i.pinimg.com/1200x/4f/ee/2f/4fee2fbe713e64c2d880978c5a2dbe0b.jpg",
+      "rarity": "r",
+      "weight": 80,
+      "description": ""
+    },
+    {
+      "name": "frieren",
+      "id": "frieren apotheosis",
+      "image": "https://i.pinimg.com/736x/ae/2b/63/ae2b6332aa62dedb86a9ede15aa7db40.jpg",
+      "rarity": "ssr",
+      "weight": 3.9702,
+      "description": ""
     }
   ]
 }
