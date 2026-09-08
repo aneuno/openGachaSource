@@ -119,6 +119,14 @@
       "rarity": "r",
       "weight": 80,
       "description": ""
+    },
+    {
+      "name": "strelitiza",
+      "id": "strelitzia",
+      "image": "https://i.pinimg.com/736x/82/57/86/82578683431d732a15be308ab70df6b9.jpg",
+      "rarity": "r",
+      "weight": 80,
+      "description": ""
     }
   ]
 }
