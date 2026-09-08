@@ -21,7 +21,7 @@
       "id": "zero two ULR",
       "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-49.gif",
       "rarity": "ulr",
-      "weight": 0,0098,
+      "weight": 0.0098,
       "description": ""
     },
     {
@@ -44,8 +44,8 @@
       "name": "saber",
       "id": "saber",
       "image": "https://i.pinimg.com/736x/55/b3/73/55b373644446e26eea9074b48329f43c.jpg",
-      "rarity":
-      "weight":
+      "rarity": "sr",
+      "weight": 15,
       "description": ""
     }
   ]
