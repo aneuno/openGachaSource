@@ -95,6 +95,14 @@
       "rarity": "ssr",
       "weight": 3.9702,
       "description": ""
+    },
+    {
+      "name": "nazuna",
+      "id": "nazuna nanakusa",
+      "image": "https://i.pinimg.com/736x/f0/89/f8/f089f8ad510b25ac3063ee8a80d6755d.jpg",
+      "rarity": "sr",
+      "weight": 15,
+      "description": ""
     }
   ]
 }
