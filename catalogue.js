@@ -32,8 +32,8 @@ const modalRarity =
 const modalId =
     document.getElementById("modalId");
 
-const modalWeight =
-    document.getElementById("modalWeight");
+const modalDescription =
+    document.getElementById("modalDescription");
 
 const modalDescription =
     document.getElementById("modalDescription");
@@ -389,8 +389,8 @@ function openModal(character) {
     modalName.textContent =
         character.name;
 
-    modalWeight.textContent =
-        `Weight : ${character.description}`;
+    modalDescription.textContent =
+        `description : ${character.description}`;
 
 
     modalRarity.textContent =
