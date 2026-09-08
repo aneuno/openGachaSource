@@ -32,6 +32,9 @@ const modalRarity =
 const modalId =
     document.getElementById("modalId");
 
+const modalWeight =
+    document.getElementById("modalWeight");
+
 const modalDescription =
     document.getElementById("modalDescription");
 
@@ -166,6 +169,38 @@ function renderCatalogue(list) {
 
 
 // ========================================
+// POSITION DE L'IMAGE
+// ========================================
+
+const VALID_POSITIONS = [
+    "center",
+    "top",
+    "bottom",
+    "left",
+    "right"
+];
+
+function getImagePosition(character) {
+
+    const position =
+        String(
+            character.position || "center"
+        )
+        .trim()
+        .toLowerCase();
+
+
+    if (!VALID_POSITIONS.includes(position)) {
+
+        return "center";
+    }
+
+
+    return position;
+}
+
+
+// ========================================
 // CREATION D'UNE CARTE
 // ========================================
 
@@ -214,6 +249,10 @@ function createCharacterCard(
 
     image.referrerPolicy =
         "no-referrer";
+
+
+    image.style.objectPosition =
+        getImagePosition(character);
 
 
     // ------------------------------------
@@ -383,19 +422,28 @@ function openModal(character) {
         character.name;
 
 
+    modalImage.style.objectPosition =
+        getImagePosition(character);
+
+
     modalName.textContent =
         character.name;
 
-    modalDescription.textContent =
-        character.description || "";
-
 
     modalRarity.textContent =
-        `rarity : ${character.rarity}`;
+        `Rareté : ${character.rarity}`;
 
 
     modalId.textContent =
         `ID : ${character.id}`;
+
+
+    modalWeight.textContent =
+        `Weight : ${character.weight}`;
+
+
+    modalDescription.textContent =
+        character.description || "";
 
 
     modalOverlay.classList.add(
