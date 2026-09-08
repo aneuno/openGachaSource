@@ -4,49 +4,49 @@
       "name": "zero two",
       "id": "zero two",
       "image": "https://i.pinimg.com/736x/bf/0b/1c/bf0b1c21f860bd83b95b31a4b13e55ca.jpg",
-      "rarity": "r",
-      "weight": 100,
-      "description": "Pilote du Franxx Strelizia"
+      "rarity": "sr",
+      "weight": 15,
+      "description": ""
     },
     {
       "name": "zero two LR",
       "id": "zero two LR",
       "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-47.gif",
       "rarity": "lr",
-      "weight": 100,
-      "description": "tkt"
+      "weight": 1,02,
+      "description": ""
     },
     {
       "name": "zero two ULR",
       "id": "zero two ULR",
       "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-49.gif",
-      "rarity": "ULR",
-      "weight": "100",
-      "description": "..."
+      "rarity": "ulr",
+      "weight": 0,0098,
+      "description": ""
     },
     {
       "name": "mikasa",
       "id": "mikasa",
       "image": "https://i.pinimg.com/736x/ca/a7/e0/caa7e0b255bbfd654b5dad52671d71dc.jpg",
       "rarity": "sr",
-      "weight": 100,
-      "description": "Soldate d'élite du bataillon d'exploration, adoptée par la famille Yeager."
+      "weight": 15,
+      "description": ""
     },
     {
       "name": "annie",
       "id": "annie leonardt",
       "image": "https://i.pinimg.com/736x/ab/f5/f6/abf5f65521114f0f96e8869d9dee5b60.jpg",
-      "rarity": "ssr",
-      "weight": 100,
-      "description": "Guerrière capable de se transformer en Titan Cuirassé."
+      "rarity": "sr",
+      "weight": 15,
+      "description": ""
     },
     {
       "name": "saber",
       "id": "saber",
       "image": "https://i.pinimg.com/736x/55/b3/73/55b373644446e26eea9074b48329f43c.jpg",
-      "rarity": "ssr",
-      "weight": 100,
-      "description": "Servant de classe Épée, alter ego du roi Arthur."
+      "rarity":
+      "weight":
+      "description": ""
     }
   ]
 }
