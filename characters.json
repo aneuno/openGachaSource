@@ -63,6 +63,22 @@
       "rarity": "r",
       "weight": 80,
       "description": ""
+    },
+    {
+      "name": "ichigo",
+      "id": "ichigo kurosaki",
+      "image": "https://i.pinimg.com/736x/65/7c/44/657c441668b32ce075b1b225677a46a4.jpg",
+      "rarity": "r",
+      "weight": "80",
+      "description": ""
+    },
+    {
+      "name": "erza",
+      "id": "erza scarlet",
+      "image": "https://i.pinimg.com/736x/85/d0/eb/85d0ebccf273555b9b097abd88443536.jpg",
+      "rarity": "r",
+      "weight": "80",
+      "description": ""
     }
   ]
 }
