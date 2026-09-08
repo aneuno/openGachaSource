@@ -1,3 +1,4 @@
+```javascript
 // ========================================
 // ELEMENTS HTML
 // ========================================
@@ -37,10 +38,23 @@ const modalDescription =
 
 
 // ========================================
+// PAGINATION
+// ========================================
+
+const CHARACTERS_PER_PAGE = 12;
+
+let currentPage = 1;
+
+
+// ========================================
 // ETAT
 // ========================================
 
 let characters = [];
+
+let filteredCharacters = [];
+
+let selectedRarity = "ALL";
 
 
 // ========================================
@@ -74,9 +88,14 @@ async function loadCatalogue() {
             data.characters || [];
 
 
-        renderCatalogue(
-            characters
-        );
+        filteredCharacters =
+            characters;
+
+
+        currentPage = 1;
+
+
+        renderCatalogue();
 
 
     } catch (error) {
@@ -111,19 +130,101 @@ async function loadCatalogue() {
 
 
 // ========================================
+// FILTRAGE
+// ========================================
+
+function applyFilters() {
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    filteredCharacters =
+        characters.filter(
+            (character) => {
+
+                // ----------------------------
+                // RECHERCHE
+                // ----------------------------
+
+                const name =
+                    String(
+                        character.name || ""
+                    )
+                    .toLowerCase();
+
+
+                const id =
+                    String(
+                        character.id || ""
+                    )
+                    .toLowerCase();
+
+
+                const matchesSearch =
+                    !search ||
+                    name.includes(search) ||
+                    id.includes(search);
+
+
+                // ----------------------------
+                // RARETE
+                // ----------------------------
+
+                const rarity =
+                    String(
+                        character.rarity || ""
+                    )
+                    .trim()
+                    .toUpperCase();
+
+
+                const matchesRarity =
+                    selectedRarity === "ALL" ||
+                    rarity === selectedRarity;
+
+
+                return (
+                    matchesSearch &&
+                    matchesRarity
+                );
+
+            }
+        );
+
+
+    // Toujours revenir à la page 1
+    // après modification des filtres
+
+    currentPage = 1;
+
+
+    renderCatalogue();
+}
+
+
+// ========================================
 // AFFICHAGE DU CATALOGUE
 // ========================================
 
-function renderCatalogue(list) {
+function renderCatalogue() {
 
     catalogue.innerHTML = "";
 
 
     catalogueCount.textContent =
-        `${list.length} personnage(s)`;
+        `${filteredCharacters.length} personnage(s)`;
 
 
-    if (list.length === 0) {
+    // ------------------------------------
+    // AUCUN RESULTAT
+    // ------------------------------------
+
+    if (
+        filteredCharacters.length === 0
+    ) {
 
         const emptyMessage =
             document.createElement("p");
@@ -142,11 +243,39 @@ function renderCatalogue(list) {
         );
 
 
+        renderPagination();
+
+
         return;
     }
 
 
-    list.forEach(
+    // ------------------------------------
+    // CALCUL DES PAGES
+    // ------------------------------------
+
+    const start =
+        (currentPage - 1) *
+        CHARACTERS_PER_PAGE;
+
+
+    const end =
+        start +
+        CHARACTERS_PER_PAGE;
+
+
+    const pageCharacters =
+        filteredCharacters.slice(
+            start,
+            end
+        );
+
+
+    // ------------------------------------
+    // AFFICHAGE DES CARTES
+    // ------------------------------------
+
+    pageCharacters.forEach(
         (character, index) => {
 
             const card =
@@ -162,6 +291,223 @@ function renderCatalogue(list) {
 
         }
     );
+
+
+    // ------------------------------------
+    // PAGINATION
+    // ------------------------------------
+
+    renderPagination();
+}
+
+
+// ========================================
+// PAGINATION
+// ========================================
+
+function renderPagination() {
+
+    let pagination =
+        document.getElementById(
+            "pagination"
+        );
+
+
+    // Si le HTML ne contient pas encore
+    // pagination, on le crée automatiquement
+
+    if (!pagination) {
+
+        pagination =
+            document.createElement("div");
+
+        pagination.id =
+            "pagination";
+
+
+        catalogue.parentElement.appendChild(
+            pagination
+        );
+
+    }
+
+
+    pagination.innerHTML = "";
+
+
+    const totalPages =
+        Math.ceil(
+            filteredCharacters.length /
+            CHARACTERS_PER_PAGE
+        );
+
+
+    // Pas de pagination nécessaire
+
+    if (totalPages <= 1) {
+
+        return;
+    }
+
+
+    // ------------------------------------
+    // PRECEDENT
+    // ------------------------------------
+
+    const previousButton =
+        document.createElement("button");
+
+
+    previousButton.textContent =
+        "‹";
+
+
+    previousButton.className =
+        "paginationButton";
+
+
+    previousButton.disabled =
+        currentPage === 1;
+
+
+    previousButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                currentPage > 1
+            ) {
+
+                currentPage--;
+
+                renderCatalogue();
+
+                scrollToCatalogue();
+
+            }
+
+        }
+    );
+
+
+    pagination.appendChild(
+        previousButton
+    );
+
+
+    // ------------------------------------
+    // NUMEROS DES PAGES
+    // ------------------------------------
+
+    for (
+        let page = 1;
+        page <= totalPages;
+        page++
+    ) {
+
+        const pageButton =
+            document.createElement("button");
+
+
+        pageButton.textContent =
+            page;
+
+
+        pageButton.className =
+            "paginationButton";
+
+
+        if (
+            page === currentPage
+        ) {
+
+            pageButton.classList.add(
+                "active"
+            );
+
+        }
+
+
+        pageButton.addEventListener(
+            "click",
+            function () {
+
+                currentPage =
+                    page;
+
+
+                renderCatalogue();
+
+                scrollToCatalogue();
+
+            }
+        );
+
+
+        pagination.appendChild(
+            pageButton
+        );
+
+    }
+
+
+    // ------------------------------------
+    // SUIVANT
+    // ------------------------------------
+
+    const nextButton =
+        document.createElement("button");
+
+
+    nextButton.textContent =
+        "›";
+
+
+    nextButton.className =
+        "paginationButton";
+
+
+    nextButton.disabled =
+        currentPage === totalPages;
+
+
+    nextButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                currentPage < totalPages
+            ) {
+
+                currentPage++;
+
+                renderCatalogue();
+
+                scrollToCatalogue();
+
+            }
+
+        }
+    );
+
+
+    pagination.appendChild(
+        nextButton
+    );
+}
+
+
+// ========================================
+// RETOUR EN HAUT
+// ========================================
+
+function scrollToCatalogue() {
+
+    catalogue.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
 }
 
 
@@ -177,6 +523,7 @@ const VALID_POSITIONS = [
     "right"
 ];
 
+
 function getImagePosition(character) {
 
     const position =
@@ -187,7 +534,11 @@ function getImagePosition(character) {
         .toLowerCase();
 
 
-    if (!VALID_POSITIONS.includes(position)) {
+    if (
+        !VALID_POSITIONS.includes(
+            position
+        )
+    ) {
 
         return "center";
     }
@@ -249,7 +600,9 @@ function createCharacterCard(
 
 
     image.style.objectPosition =
-        getImagePosition(character);
+        getImagePosition(
+            character
+        );
 
 
     // ------------------------------------
@@ -351,54 +704,57 @@ searchInput.addEventListener(
     "input",
     function () {
 
-        const search =
-            searchInput.value
-                .trim()
-                .toLowerCase();
+        applyFilters();
+
+    }
+);
 
 
-        // Aucun texte
-        // = afficher tout
+// ========================================
+// FILTRES DE RARETE
+// ========================================
 
-        if (!search) {
-
-            renderCatalogue(
-                characters
-            );
-
-            return;
-        }
+const rarityButtons =
+    document.querySelectorAll(
+        ".rarityFilter"
+    );
 
 
-        const filtered =
-            characters.filter(
-                (character) => {
+rarityButtons.forEach(
+    function (button) {
 
-                    const name =
-                        String(
-                            character.name || ""
-                        )
-                        .toLowerCase();
+        button.addEventListener(
+            "click",
+            function () {
 
-
-                    const id =
-                        String(
-                            character.id || ""
-                        )
-                        .toLowerCase();
+                selectedRarity =
+                    button.dataset.rarity
+                        .toUpperCase();
 
 
-                    return (
-                        name.includes(search) ||
-                        id.includes(search)
-                    );
+                // Retirer active de tous
 
-                }
-            );
+                rarityButtons.forEach(
+                    function (otherButton) {
+
+                        otherButton.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
 
 
-        renderCatalogue(
-            filtered
+                // Activer le bouton choisi
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                applyFilters();
+
+            }
         );
 
     }
@@ -420,7 +776,9 @@ function openModal(character) {
 
 
     modalImage.style.objectPosition =
-        getImagePosition(character);
+        getImagePosition(
+            character
+        );
 
 
     modalName.textContent =
@@ -513,3 +871,6 @@ backButton.onclick =
 // ========================================
 
 loadCatalogue();
+```
+
+Ton JSON peut rester **exactement comme il est** : le JS utilise directement la valeur `rarity` de chaque personnage (`R`, `SR`, `SSR`, `LR`, `ULR`).
