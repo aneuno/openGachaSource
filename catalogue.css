@@ -1,0 +1,696 @@
+```css
+/* ============================== */
+/* GENERAL                        */
+/* ============================== */
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background-color:
+        #E0E3E9;
+
+    color:
+        #3E3D45;
+
+    font-family:
+        Arial, sans-serif;
+}
+
+
+/* ============================== */
+/* HEADER                         */
+/* ============================== */
+
+header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        20px 30px;
+}
+
+
+header h1 {
+
+    margin: 0;
+}
+
+
+/* ============================== */
+/* BOUTONS                        */
+/* ============================== */
+
+button {
+
+    cursor: pointer;
+
+    padding:
+        8px 18px;
+
+    background-color:
+        #A7A7AB;
+
+    border: none;
+
+    color:
+        #3E3D45;
+
+    transition:
+        transform 0.15s ease;
+}
+
+
+button:hover {
+
+    transform:
+        scale(1.08);
+}
+
+
+/* ============================== */
+/* CONTROLES                      */
+/* ============================== */
+
+#catalogueControls {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        0 30px 25px;
+}
+
+
+/* ============================== */
+/* RECHERCHE                      */
+/* ============================== */
+
+#searchInput {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    padding:
+        12px 15px;
+
+    box-sizing: border-box;
+
+    border: none;
+
+    outline: none;
+
+    background-color:
+        #F6F7F7;
+
+    color:
+        #3E3D45;
+
+    font-size: 16px;
+}
+
+
+#searchInput:focus {
+
+    box-shadow:
+        0 0 0 2px #A7A7AB;
+}
+
+
+/* ============================== */
+/* COMPTEUR                       */
+/* ============================== */
+
+#catalogueCount {
+
+    color:
+        #6b6a72;
+
+    font-size:
+        14px;
+}
+
+
+/* ============================== */
+/* CATALOGUE                      */
+/* ============================== */
+
+#catalogue {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(220px, 1fr)
+        );
+
+    gap:
+        26px;
+
+    padding:
+        0 30px 40px;
+}
+
+
+/* ============================== */
+/* CARTE PERSONNAGE               */
+/* ============================== */
+
+.characterCard {
+
+    position: relative;
+
+    background-color:
+        #F6F7F7;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px
+        rgba(
+            62,
+            61,
+            69,
+            0.10
+        );
+
+    opacity: 0;
+
+    transform:
+        translateY(18px)
+        scale(0.97);
+
+    animation:
+        cardEnter
+        0.5s
+        ease
+        forwards;
+
+    animation-delay:
+        calc(
+            var(--i, 0)
+            * 35ms
+        );
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    touch-action:
+        pan-y;
+}
+
+
+.characterCard:hover {
+
+    transform:
+        translateY(-6px)
+        scale(1.02);
+
+    box-shadow:
+        0 16px 30px
+        rgba(
+            62,
+            61,
+            69,
+            0.22
+        );
+}
+
+
+/* ============================== */
+/* ANIMATION                      */
+/* ============================== */
+
+@keyframes cardEnter {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(18px)
+            scale(0.97);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* ============================== */
+/* IMAGE                          */
+/* ============================== */
+
+.imageWrap {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio:
+        3 / 4;
+
+    overflow: hidden;
+}
+
+
+.characterCard img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.4s ease;
+
+    pointer-events: none;
+}
+
+
+.characterCard:hover img {
+
+    transform:
+        scale(1.07);
+}
+
+
+/* ============================== */
+/* NOM                             */
+/* ============================== */
+
+.nameOverlay {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding:
+        28px 14px 12px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(
+                62,
+                61,
+                69,
+                0.85
+            ) 0%,
+
+            rgba(
+                62,
+                61,
+                69,
+                0.45
+            ) 55%,
+
+            rgba(
+                62,
+                61,
+                69,
+                0
+            ) 100%
+        );
+}
+
+
+.characterName {
+
+    margin: 0;
+
+    font-size:
+        17px;
+
+    font-weight:
+        bold;
+
+    color:
+        #F6F7F7;
+}
+
+
+/* ============================== */
+/* RARETE                         */
+/* ============================== */
+
+.rarityBadge {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 12px;
+
+    padding:
+        5px 9px;
+
+    background-color:
+        #3E3D45;
+
+    color:
+        #F6F7F7;
+
+    font-size:
+        12px;
+
+    font-weight:
+        bold;
+}
+
+
+/* ============================== */
+/* MESSAGE                        */
+/* ============================== */
+
+#message {
+
+    grid-column:
+        1 / -1;
+
+    text-align:
+        center;
+
+    font-size:
+        18px;
+}
+
+
+/* ============================== */
+/* MODALE                         */
+/* ============================== */
+
+.modalOverlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        24px;
+
+    background-color:
+        rgba(
+            62,
+            61,
+            69,
+            0.55
+        );
+
+    backdrop-filter:
+        blur(4px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+
+    z-index: 100;
+}
+
+
+.modalOverlay.isOpen {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.modalCard {
+
+    position: relative;
+
+    display: flex;
+
+    width: 96vw;
+
+    height: 92vh;
+
+    max-width: 1600px;
+
+    background-color:
+        #F6F7F7;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 60px
+        rgba(
+            62,
+            61,
+            69,
+            0.35
+        );
+
+    transform:
+        scale(0.92)
+        translateY(10px);
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.modalOverlay.isOpen
+.modalCard {
+
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+
+/* ============================== */
+/* IMAGE MODALE                   */
+/* ============================== */
+
+.modalImageWrap {
+
+    flex:
+        1 1 65%;
+
+    background-color:
+        #E0E3E9;
+}
+
+
+.modalImageWrap img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ============================== */
+/* INFOS MODALE                   */
+/* ============================== */
+
+.modalBody {
+
+    flex:
+        1 1 35%;
+
+    padding:
+        50px 44px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    overflow-y: auto;
+}
+
+
+.modalBody .characterName {
+
+    color:
+        #3E3D45;
+
+    font-size:
+        34px;
+
+    margin-bottom:
+        14px;
+}
+
+
+.characterInfo {
+
+    font-size:
+        16px;
+
+    margin:
+        6px 0;
+}
+
+
+/* ============================== */
+/* FERMER                         */
+/* ============================== */
+
+.modalClose {
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 20px;
+
+    width: 40px;
+
+    height: 40px;
+
+    padding: 0;
+
+    font-size:
+        20px;
+
+    line-height:
+        1;
+
+    background-color:
+        #3E3D45;
+
+    color:
+        #F6F7F7;
+
+    z-index: 1;
+}
+
+
+.modalClose:hover {
+
+    transform:
+        scale(1.1);
+}
+
+
+/* ============================== */
+/* RESPONSIVE                     */
+/* ============================== */
+
+@media (max-width: 900px) {
+
+    #catalogueControls {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+
+    #searchInput {
+
+        max-width:
+            none;
+    }
+
+
+    .modalCard {
+
+        flex-direction:
+            column;
+
+        width:
+            94vw;
+
+        height:
+            94vh;
+    }
+
+
+    .modalImageWrap {
+
+        flex:
+            1 1 55%;
+    }
+
+
+    .modalBody {
+
+        flex:
+            1 1 45%;
+
+        padding:
+            30px 26px;
+    }
+}
+
+
+/* ============================== */
+/* MOUVEMENT REDUIT               */
+/* ============================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .characterCard,
+    .characterCard img,
+    .modalOverlay,
+    .modalCard {
+
+        animation:
+            none !important;
+
+        transition:
+            none !important;
+    }
+
+
+    .characterCard {
+
+        opacity:
+            1;
+
+        transform:
+            none;
+    }
+}
+```
