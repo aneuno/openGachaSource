@@ -115,7 +115,7 @@
     {
       "name": "kenpachi",
       "id": "kenpachi zaraki",
-      "iamge": "https://i.pinimg.com/1200x/1a/2d/28/1a2d28f0a532254d7fab2c8d73e498bd.jpg",
+      "iamge": "https://i.pinimg.com/1200x/55/b3/86/55b386ab9d416363f9a47570bca97c27.jpg",
       "rarity": "r",
       "weight": 80,
       "description": ""
@@ -182,6 +182,14 @@
       "image": "https://i.pinimg.com/originals/94/2b/85/942b85db87f94fcea41af4fc3b48be11.gif",
       "rarity": "ulr",
       "weight": 0.0098,
+      "description": ""
+    },
+    {
+      "name": "fern",
+      "id": "fern zoltraak",
+      "image": "https://i.pinimg.com/736x/f2/a4/2c/f2a42c88e2962ace534b5efedd95e671.jpg",
+      "rarity": "sr",
+      "weight": 15,
       "description": ""
     }
   ]
