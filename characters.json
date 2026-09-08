@@ -111,6 +111,14 @@
     "rarity": "sr",
     "weight": 15,
     "description": ""
+    },
+    {
+      "name": "kenpachi",
+      "id": "kenpachi zaraki",
+      "iamge": "https://i.pinimg.com/1200x/1a/2d/28/1a2d28f0a532254d7fab2c8d73e498bd.jpg",
+      "rarity": "r",
+      "weight": 80,
+      "description": ""
     }
   ]
 }
