@@ -103,6 +103,12 @@
       "rarity": "sr",
       "weight": 15,
       "description": ""
-    }
+    },
+    "name": "killua",
+    "id": "killua zoldyck",
+    "image": "https://i.pinimg.com/736x/80/b4/7c/80b47cd4f304b0955d75e629f8150d03.jpg",
+    "rarity": "sr",
+    "weight": 15,
+    "description": ""
   ]
 }
