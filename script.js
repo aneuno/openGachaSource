@@ -1,4 +1,3 @@
-```js
 const SUPABASE_URL =
     "https://cskeaklbzfqanzinjfxm.supabase.co";
 
@@ -434,4 +433,3 @@ async function init() {
 
 
 init();
-```
