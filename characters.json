@@ -199,6 +199,22 @@
       "rarity": "ssr",
       "weight": 3.9702,
       "description": ""
+    },
+    {
+      "name": "priscilla",
+      "id": "priscilla barielle",
+      "image": "https://i.pinimg.com/736x/8b/bd/8b/8bbd8b00af0c9f2eeda1a33e3d5d3104.jpg",
+      "rarity": "sr",
+      "weight": 15,
+      "description": ""
+    },
+    {
+      "name": "mikasa",
+      "id": "mikasa ackerman workout",
+      "image": "https://i.pinimg.com/originals/19/ab/7a/19ab7a0b4b7fa65a948772f758c4c861.gif",
+      "rarity": "lr",
+      "weight": 1.02,
+      "description": ""
     }
   ]
 }
