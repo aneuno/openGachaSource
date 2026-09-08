@@ -1,204 +1,206 @@
+```json
 {
   "characters": [
     {
       "name": "zero two",
       "id": "zero two",
-      "image": "https://i.pinimg.com/736x/bf/0b/1c/bf0b1c21f860bd83b95b31a4b13e55ca.jpg",
-      "rarity": "sr",
+      "image": "[https://i.pinimg.com/736x/bf/0b/1c/bf0b1c21f860bd83b95b31a4b13e55ca.jpg](https://i.pinimg.com/736x/bf/0b/1c/bf0b1c21f860bd83b95b31a4b13e55ca.jpg)",
+      "rarity": "SR",
       "weight": 15,
       "description": ""
     },
     {
       "name": "zero two LR",
       "id": "zero two LR",
-      "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-47.gif",
-      "rarity": "lr",
+      "image": "[https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-47.gif](https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-47.gif)",
+      "rarity": "LR",
       "weight": 1.02,
       "description": ""
     },
     {
       "name": "zero two ULR",
       "id": "zero two ULR",
-      "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-49.gif",
-      "rarity": "ulr",
+      "image": "[https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-49.gif](https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-49.gif)",
+      "rarity": "ULR",
       "weight": 0.0098,
       "description": ""
     },
     {
       "name": "mikasa",
       "id": "mikasa",
-      "image": "https://i.pinimg.com/736x/ca/a7/e0/caa7e0b255bbfd654b5dad52671d71dc.jpg",
-      "rarity": "sr",
+      "image": "[https://i.pinimg.com/736x/ca/a7/e0/caa7e0b255bbfd654b5dad52671d71dc.jpg](https://i.pinimg.com/736x/ca/a7/e0/caa7e0b255bbfd654b5dad52671d71dc.jpg)",
+      "rarity": "SR",
       "weight": 15,
       "description": ""
     },
     {
       "name": "annie",
       "id": "annie leonardt",
-      "image": "https://i.pinimg.com/736x/ab/f5/f6/abf5f65521114f0f96e8869d9dee5b60.jpg",
-      "rarity": "sr",
+      "image": "[https://i.pinimg.com/736x/ab/f5/f6/abf5f65521114f0f96e8869d9dee5b60.jpg](https://i.pinimg.com/736x/ab/f5/f6/abf5f65521114f0f96e8869d9dee5b60.jpg)",
+      "rarity": "SR",
       "weight": 15,
       "description": ""
     },
     {
       "name": "saber",
       "id": "saber",
-      "image": "https://i.pinimg.com/736x/55/b3/73/55b373644446e26eea9074b48329f43c.jpg",
-      "rarity": "sr",
+      "image": "[https://i.pinimg.com/736x/55/b3/73/55b373644446e26eea9074b48329f43c.jpg](https://i.pinimg.com/736x/55/b3/73/55b373644446e26eea9074b48329f43c.jpg)",
+      "rarity": "SR",
       "weight": 15,
       "description": ""
     },
     {
       "name": "misato",
       "id": "misato katsuragi",
-      "image": "https://i.pinimg.com/1200x/c9/30/2e/c9302e13ae28fe0e98b6fa24c4a5b7a8.jpg",
-      "rarity": "r",
+      "image": "[https://i.pinimg.com/1200x/c9/30/2e/c9302e13ae28fe0e98b6fa24c4a5b7a8.jpg](https://i.pinimg.com/1200x/c9/30/2e/c9302e13ae28fe0e98b6fa24c4a5b7a8.jpg)",
+      "rarity": "R",
       "weight": 80,
       "description": ""
     },
     {
       "name": "gon",
       "id": "gon freecss",
-      "image": "https://i.pinimg.com/736x/36/75/7c/36757cb62168b0658c3007d980cd828d.jpg",
-      "rarity": "r",
+      "image": "[https://i.pinimg.com/736x/36/75/7c/36757cb62168b0658c3007d980cd828d.jpg](https://i.pinimg.com/736x/36/75/7c/36757cb62168b0658c3007d980cd828d.jpg)",
+      "rarity": "R",
       "weight": 80,
       "description": ""
     },
     {
       "name": "ichigo",
       "id": "ichigo kurosaki",
-      "image": "https://i.pinimg.com/736x/65/7c/44/657c441668b32ce075b1b225677a46a4.jpg",
-      "rarity": "r",
+      "image": "[https://i.pinimg.com/736x/65/7c/44/657c441668b32ce075b1b225677a46a4.jpg](https://i.pinimg.com/736x/65/7c/44/657c441668b32ce075b1b225677a46a4.jpg)",
+      "rarity": "R",
       "weight": 80,
       "description": ""
     },
     {
       "name": "erza",
       "id": "erza scarlet",
-      "image": "https://i.pinimg.com/736x/85/d0/eb/85d0ebccf273555b9b097abd88443536.jpg",
-      "rarity": "r",
+      "image": "[https://i.pinimg.com/736x/85/d0/eb/85d0ebccf273555b9b097abd88443536.jpg](https://i.pinimg.com/736x/85/d0/eb/85d0ebccf273555b9b097abd88443536.jpg)",
+      "rarity": "R",
       "weight": 80,
       "description": ""
     },
     {
       "name": "gabimaru",
       "id": "gabimaru the hollow",
-      "image": "https://i.pinimg.com/originals/99/68/0a/99680aec1e77734318d243e470135fdb.gif",
-      "rarity": "ulr",
+      "image": "[https://i.pinimg.com/originals/99/68/0a/99680aec1e77734318d243e470135fdb.gif](https://i.pinimg.com/originals/99/68/0a/99680aec1e77734318d243e470135fdb.gif)",
+      "rarity": "ULR",
       "weight": 0.0098,
       "description": ""
     },
     {
       "name": "frieren",
       "id": "frieren",
-      "image": "https://safebooru.org//samples/3915/sample_cac81e3b0ba2bfed8ad86c9d07372a95f2732716.jpg?7056983",
-      "rarity": "ssr",
+      "image": "[https://safebooru.org//samples/3915/sample_cac81e3b0ba2bfed8ad86c9d07372a95f2732716.jpg?7056983](https://safebooru.org//samples/3915/sample_cac81e3b0ba2bfed8ad86c9d07372a95f2732716.jpg?7056983)",
+      "rarity": "SSR",
       "weight": 3.9702,
       "description": ""
     },
     {
       "name": "nazuna",
       "id": "nazuna nanakusa",
-      "image": "https://i.pinimg.com/736x/f0/89/f8/f089f8ad510b25ac3063ee8a80d6755d.jpg",
-      "rarity": "sr",
+      "image": "[https://i.pinimg.com/736x/f0/89/f8/f089f8ad510b25ac3063ee8a80d6755d.jpg](https://i.pinimg.com/736x/f0/89/f8/f089f8ad510b25ac3063ee8a80d6755d.jpg)",
+      "rarity": "SR",
       "weight": 15,
       "description": ""
     },
     {
-    "name": "killua",
-    "id": "killua zoldyck",
-    "image": "https://i.pinimg.com/736x/80/b4/7c/80b47cd4f304b0955d75e629f8150d03.jpg",
-    "rarity": "sr",
-    "weight": 15,
-    "description": ""
+      "name": "killua",
+      "id": "killua zoldyck",
+      "image": "[https://i.pinimg.com/736x/80/b4/7c/80b47cd4f304b0955d75e629f8150d03.jpg](https://i.pinimg.com/736x/80/b4/7c/80b47cd4f304b0955d75e629f8150d03.jpg)",
+      "rarity": "SR",
+      "weight": 15,
+      "description": ""
     },
     {
       "name": "kenpachi",
       "id": "kenpachi zaraki",
-      "image": "https://i.pinimg.com/1200x/e6/31/14/e63114485c1a0ddab5dc1427cb1914d6.jpg",
-      "rarity": "r",
+      "image": "[https://i.pinimg.com/1200x/e6/31/14/e63114485c1a0ddab5dc1427cb1914d6.jpg](https://i.pinimg.com/1200x/e6/31/14/e63114485c1a0ddab5dc1427cb1914d6.jpg)",
+      "rarity": "R",
       "weight": 80,
       "description": ""
     },
     {
       "name": "strelitiza",
       "id": "strelitzia",
-      "image": "https://i.pinimg.com/736x/82/57/86/82578683431d732a15be308ab70df6b9.jpg",
-      "rarity": "r",
+      "image": "[https://i.pinimg.com/736x/82/57/86/82578683431d732a15be308ab70df6b9.jpg](https://i.pinimg.com/736x/82/57/86/82578683431d732a15be308ab70df6b9.jpg)",
+      "rarity": "R",
       "weight": 80,
       "description": ""
     },
     {
       "name": "shinichi",
       "id": "shinichi kudo",
-      "image": "https://i.pinimg.com/1200x/4f/ee/2f/4fee2fbe713e64c2d880978c5a2dbe0b.jpg",
-      "rarity": "r",
+      "image": "[https://i.pinimg.com/1200x/4f/ee/2f/4fee2fbe713e64c2d880978c5a2dbe0b.jpg](https://i.pinimg.com/1200x/4f/ee/2f/4fee2fbe713e64c2d880978c5a2dbe0b.jpg)",
+      "rarity": "R",
       "weight": 80,
       "description": ""
     },
     {
       "name": "fern",
       "id": "fern",
-      "image": "https://i.pinimg.com/1200x/0c/2f/09/0c2f0936dc3b8c9c0cd64e9370922865.jpg",
-      "rarity": "ssr",
+      "image": "[https://i.pinimg.com/1200x/0c/2f/09/0c2f0936dc3b8c9c0cd64e9370922865.jpg](https://i.pinimg.com/1200x/0c/2f/09/0c2f0936dc3b8c9c0cd64e9370922865.jpg)",
+      "rarity": "SSR",
       "weight": 3.9702,
       "description": ""
     },
     {
       "name": "dazai",
       "id": "osamu dazai",
-      "image": "https://i.pinimg.com/1200x/86/95/38/8695385b0b8ef6670000458e7881b04d.jpg",
-      "rarity": "ssr",
+      "image": "[https://i.pinimg.com/1200x/86/95/38/8695385b0b8ef6670000458e7881b04d.jpg](https://i.pinimg.com/1200x/86/95/38/8695385b0b8ef6670000458e7881b04d.jpg)",
+      "rarity": "SSR",
       "weight": 3.9702,
       "description": ""
     },
     {
       "name": "saber",
       "id": "saber - run",
-      "image": "https://i.pinimg.com/1200x/de/e0/f2/dee0f2184ac2a726c0553ca29f31076f.jpg",
-      "rarity": "ssr",
+      "image": "[https://i.pinimg.com/1200x/de/e0/f2/dee0f2184ac2a726c0553ca29f31076f.jpg](https://i.pinimg.com/1200x/de/e0/f2/dee0f2184ac2a726c0553ca29f31076f.jpg)",
+      "rarity": "SSR",
       "weight": 3.9702,
       "description": ""
     },
     {
       "name": "reze",
       "id": "reze",
-      "image": "https://i.pinimg.com/1200x/c1/d7/a4/c1d7a417397bfc2d9fad9fe24d35984e.jpg",
-      "rarity": "ssr",
+      "image": "[https://i.pinimg.com/1200x/c1/d7/a4/c1d7a417397bfc2d9fad9fe24d35984e.jpg](https://i.pinimg.com/1200x/c1/d7/a4/c1d7a417397bfc2d9fad9fe24d35984e.jpg)",
+      "rarity": "SSR",
       "weight": 3.9702,
       "description": ""
     },
     {
       "name": "levi",
       "id": "levi ackerman",
-      "image": "https://i.pinimg.com/originals/94/2b/85/942b85db87f94fcea41af4fc3b48be11.gif",
-      "rarity": "ulr",
+      "image": "[https://i.pinimg.com/originals/94/2b/85/942b85db87f94fcea41af4fc3b48be11.gif](https://i.pinimg.com/originals/94/2b/85/942b85db87f94fcea41af4fc3b48be11.gif)",
+      "rarity": "ULR",
       "weight": 0.0098,
       "description": ""
     },
     {
       "name": "ubel",
       "id": "ubel",
-      "image": "https://i.pinimg.com/1200x/4d/e7/47/4de7471370c96976ad6f9641828ba2e2.jpg",
-      "rarity": "ssr",
+      "image": "[https://i.pinimg.com/1200x/4d/e7/47/4de7471370c96976ad6f9641828ba2e2.jpg](https://i.pinimg.com/1200x/4d/e7/47/4de7471370c96976ad6f9641828ba2e2.jpg)",
+      "rarity": "SSR",
       "weight": 3.9702,
       "description": ""
     },
     {
       "name": "priscilla",
       "id": "priscilla barielle",
-      "image": "https://i.pinimg.com/736x/8b/bd/8b/8bbd8b00af0c9f2eeda1a33e3d5d3104.jpg",
-      "rarity": "sr",
+      "image": "[https://i.pinimg.com/736x/8b/bd/8b/8bbd8b00af0c9f2eeda1a33e3d5d3104.jpg](https://i.pinimg.com/736x/8b/bd/8b/8bbd8b00af0c9f2eeda1a33e3d5d3104.jpg)",
+      "rarity": "SR",
       "weight": 15,
       "description": ""
     },
     {
       "name": "mikasa",
       "id": "mikasa ackerman workout",
-      "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a99321bb-67b2-4629-94c4-264de6fccea0/dfroias-9cf9588e-4dac-4b3c-a84f-e17d671f1fcc.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9hOTkzMjFiYi02N2IyLTQ2MjktOTRjNC0yNjRkZTZmY2NlYTAvZGZyb2lhcy05Y2Y5NTg4ZS00ZGFjLTRiM2MtYTg0Zi1lMTdkNjcxZjFmY2MuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Xx6zgxtjdX5k8A8ufivUxh_et5DtLtLcTs56RnlwpOY",
-      "rarity": "lr",
+      "image": "[https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a99321bb-67b2-4629-94c4-264de6fccea0/dfroias-9cf9588e-4dac-4b3c-a84f-e17d671f1fcc.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9hOTkzMjFiYi02N2IyLTQ2MjktOTRjNC0yNjRkZTZmY2NlYTAvZGZyb2lhcy05Y2Y5NTg4ZS00ZGFjLTRiM2MtYTg0Zi1lMTdkNjcxZjFmY2MuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Xx6zgxtjdX5k8A8ufivUxh_et5DtLtLcTs56RnlwpOY](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a99321bb-67b2-4629-94c4-264de6fccea0/dfroias-9cf9588e-4dac-4b3c-a84f-e17d671f1fcc.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9hOTkzMjFiYi02N2IyLTQ2MjktOTRjNC0yNjRkZTZmY2NlYTAvZGZyb2lhcy05Y2Y5NTg4ZS00ZGFjLTRiM2MtYTg0Zi1lMTdkNjcxZjFmY2MuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Xx6zgxtjdX5k8A8ufivUxh_et5DtLtLcTs56RnlwpOY)",
+      "rarity": "LR",
       "weight": 1.02,
       "description": "objectif de vie nn ?"
     }
   ]
 }
+```
