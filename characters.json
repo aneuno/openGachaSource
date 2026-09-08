@@ -175,6 +175,14 @@
       "rarity": "ssr",
       "weight": 3.9702,
       "description": ""
+    },
+    {
+      "name": "levi",
+      "id": "levi ackerman",
+      "image": "https://i.pinimg.com/originals/94/2b/85/942b85db87f94fcea41af4fc3b48be11.gif",
+      "rarity": "ulr",
+      "weight": 0.0098,
+      "description": ""
     }
   ]
 }
