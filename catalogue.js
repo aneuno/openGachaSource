@@ -169,38 +169,6 @@ function renderCatalogue(list) {
 
 
 // ========================================
-// POSITION DE L'IMAGE
-// ========================================
-
-const VALID_POSITIONS = [
-    "center",
-    "top",
-    "bottom",
-    "left",
-    "right"
-];
-
-function getImagePosition(character) {
-
-    const position =
-        String(
-            character.position || "center"
-        )
-        .trim()
-        .toLowerCase();
-
-
-    if (!VALID_POSITIONS.includes(position)) {
-
-        return "center";
-    }
-
-
-    return position;
-}
-
-
-// ========================================
 // CREATION D'UNE CARTE
 // ========================================
 
@@ -249,10 +217,6 @@ function createCharacterCard(
 
     image.referrerPolicy =
         "no-referrer";
-
-
-    image.style.objectPosition =
-        getImagePosition(character);
 
 
     // ------------------------------------
@@ -420,10 +384,6 @@ function openModal(character) {
 
     modalImage.alt =
         character.name;
-
-
-    modalImage.style.objectPosition =
-        getImagePosition(character);
 
 
     modalName.textContent =
