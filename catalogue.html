@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -41,10 +42,13 @@
 
 
     <!-- ============================== -->
-    <!-- RECHERCHE                      -->
+    <!-- RECHERCHE + FILTRES            -->
     <!-- ============================== -->
 
     <section id="catalogueControls">
+
+
+        <!-- RECHERCHE -->
 
         <input
             type="text"
@@ -53,9 +57,67 @@
             autocomplete="off"
         >
 
+
+        <!-- FILTRES DE RARETE -->
+
+        <div id="rarityFilters">
+
+            <button
+                class="rarityFilter active"
+                data-rarity="ALL"
+            >
+                Tous
+            </button>
+
+
+            <button
+                class="rarityFilter"
+                data-rarity="R"
+            >
+                R
+            </button>
+
+
+            <button
+                class="rarityFilter"
+                data-rarity="SR"
+            >
+                SR
+            </button>
+
+
+            <button
+                class="rarityFilter"
+                data-rarity="SSR"
+            >
+                SSR
+            </button>
+
+
+            <button
+                class="rarityFilter"
+                data-rarity="LR"
+            >
+                LR
+            </button>
+
+
+            <button
+                class="rarityFilter"
+                data-rarity="ULR"
+            >
+                ULR
+            </button>
+
+        </div>
+
+
+        <!-- COMPTEUR -->
+
         <span id="catalogueCount">
             Chargement...
         </span>
+
 
     </section>
 
@@ -74,6 +136,11 @@
 
         </div>
 
+
+        <!-- PAGINATION -->
+
+        <div id="pagination"></div>
+
     </main>
 
 
@@ -88,6 +155,9 @@
 
         <div class="modalCard">
 
+
+            <!-- BOUTON FERMER -->
+
             <button
                 class="modalClose"
                 id="modalClose"
@@ -96,6 +166,8 @@
                 &times;
             </button>
 
+
+            <!-- IMAGE -->
 
             <div class="modalImageWrap">
 
@@ -108,6 +180,8 @@
             </div>
 
 
+            <!-- INFORMATIONS -->
+
             <div class="modalBody">
 
                 <p
@@ -115,15 +189,18 @@
                     id="modalName"
                 ></p>
 
+
                 <p
                     class="characterInfo"
                     id="modalRarity"
                 ></p>
 
+
                 <p
                     class="characterInfo"
                     id="modalId"
                 ></p>
+
 
                 <p
                     class="characterInfo"
@@ -137,8 +214,14 @@
     </div>
 
 
+    <!-- ============================== -->
+    <!-- JAVASCRIPT                     -->
+    <!-- ============================== -->
+
     <script src="catalogue.js"></script>
+
 
 </body>
 
 </html>
+```
