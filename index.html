@@ -1,56 +1,117 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+
     <title>gachaOpenSource</title>
+
     <link
         rel="stylesheet"
         href="style.css"
     >
 </head>
+
 <body>
+
     <!-- ============================== -->
     <!-- COMPTE                         -->
     <!-- ============================== -->
+
     <div id="account">
-        <span id="gemsDisplay">0 gemmes</span>
+
+        <span id="gemsDisplay">
+            0 gemmes
+        </span>
+
         <span id="userEmail"></span>
+
         <button id="logoutButton">
             log out
         </button>
+
     </div>
+
+
     <!-- ============================== -->
     <!-- MENU PRINCIPAL                 -->
     <!-- ============================== -->
+
     <div id="mainMenu">
-        <h1>gachaOpenSource</h1>
+
+        <h1>
+            gachaOpenSource
+        </h1>
+
         <button id="bannersButton">
             Invoquer
         </button>
+
         <button id="inventoryButton">
             Inventaire
         </button>
+
+        <button id="catalogueButton">
+            Catalogue
+        </button>
+
     </div>
+
+
     <!-- ============================== -->
     <!-- FENETRE PSEUDO OBLIGATOIRE     -->
     <!-- ============================== -->
-    <div class="modalOverlay" id="usernameOverlay">
+
+    <div
+        class="modalOverlay"
+        id="usernameOverlay"
+    >
+
         <div class="discordLinkModal">
-            <h2>Choisis ton pseudo</h2>
-            <p>Ce pseudo sera visible sur le site. Tu ne pourras pas continuer sans en choisir un.</p>
-            <input type="text" id="usernameInput" placeholder="Ton pseudo" maxlength="20">
-            <button id="usernameSubmit">Valider</button>
-            <p id="usernameError" class="discordLinkError"></p>
+
+            <h2>
+                Choisis ton pseudo
+            </h2>
+
+            <p>
+                Ce pseudo sera visible sur le site.
+                Tu ne pourras pas continuer sans en choisir un.
+            </p>
+
+            <input
+                type="text"
+                id="usernameInput"
+                placeholder="Ton pseudo"
+                maxlength="20"
+            >
+
+            <button id="usernameSubmit">
+                Valider
+            </button>
+
+            <p
+                id="usernameError"
+                class="discordLinkError"
+            ></p>
+
         </div>
+
     </div>
+
+
     <!-- ============================== -->
     <!-- SUPABASE                       -->
     <!-- ============================== -->
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script src="script.js"></script>
+
 </body>
 </html>
+```
