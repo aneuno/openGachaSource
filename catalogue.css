@@ -110,6 +110,8 @@ button:hover {
     box-sizing: border-box;
 
     width: 100%;
+
+    flex-wrap: wrap;
 }
 
 
@@ -149,6 +151,61 @@ button:hover {
 
     box-shadow:
         0 0 0 2px #A7A7AB;
+}
+
+
+/* ============================== */
+/* FILTRES RARETE                 */
+/* ============================== */
+
+#rarityFilters {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    flex-wrap: wrap;
+}
+
+
+.rarityFilter {
+
+    padding:
+        7px
+        12px;
+
+    background-color:
+        #A7A7AB;
+
+    color:
+        #3E3D45;
+
+    font-size:
+        13px;
+
+    transition:
+        transform 0.15s ease,
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+
+.rarityFilter:hover {
+
+    transform:
+        scale(1.05);
+}
+
+
+.rarityFilter.active {
+
+    background-color:
+        #3E3D45;
+
+    color:
+        #F6F7F7;
 }
 
 
@@ -285,6 +342,7 @@ button:hover {
             translateY(18px)
             scale(0.97);
     }
+
 
     to {
 
@@ -449,6 +507,84 @@ button:hover {
 
 
 /* ============================== */
+/* PAGINATION                     */
+/* ============================== */
+
+#pagination {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    padding:
+        0
+        clamp(18px, 2vw, 30px)
+        40px;
+}
+
+
+.paginationButton {
+
+    min-width: 40px;
+
+    height: 40px;
+
+    padding:
+        0
+        10px;
+
+    background-color:
+        #A7A7AB;
+
+    color:
+        #3E3D45;
+
+    font-size:
+        14px;
+}
+
+
+.paginationButton:hover:not(:disabled) {
+
+    transform:
+        scale(1.08);
+}
+
+
+.paginationButton.active {
+
+    background-color:
+        #3E3D45;
+
+    color:
+        #F6F7F7;
+}
+
+
+.paginationButton:disabled {
+
+    opacity:
+        0.35;
+
+    cursor:
+        default;
+}
+
+
+.paginationButton:disabled:hover {
+
+    transform:
+        none;
+}
+
+
+/* ============================== */
 /* MODALE                         */
 /* ============================== */
 
@@ -512,9 +648,11 @@ button:hover {
     height:
         min(92vh, 1000px);
 
-    max-width: 1600px;
+    max-width:
+        1600px;
 
-    max-height: 92vh;
+    max-height:
+        92vh;
 
     background-color:
         #F6F7F7;
@@ -695,12 +833,21 @@ button:hover {
     }
 
 
+    #rarityFilters {
+
+        width: 100%;
+    }
+
+
     #catalogue {
 
         grid-template-columns:
             repeat(
                 auto-fill,
-                minmax(170px, 1fr)
+                minmax(
+                    170px,
+                    1fr
+                )
             );
     }
 
@@ -762,12 +909,32 @@ button:hover {
     }
 
 
+    #rarityFilters {
+
+        gap:
+            5px;
+    }
+
+
+    .rarityFilter {
+
+        flex:
+            1 1 auto;
+
+        padding:
+            7px 9px;
+    }
+
+
     #catalogue {
 
         grid-template-columns:
             repeat(
                 2,
-                minmax(0, 1fr)
+                minmax(
+                    0,
+                    1fr
+                )
             );
 
         gap:
@@ -789,6 +956,23 @@ button:hover {
 
         transform:
             none;
+    }
+
+
+    #pagination {
+
+        gap:
+            5px;
+    }
+
+
+    .paginationButton {
+
+        min-width:
+            36px;
+
+        height:
+            36px;
     }
 
 
@@ -814,7 +998,10 @@ button:hover {
         grid-template-columns:
             repeat(
                 auto-fill,
-                minmax(240px, 1fr)
+                minmax(
+                    240px,
+                    1fr
+                )
             );
     }
 }
