@@ -143,6 +143,22 @@
       "rarity": "ssr",
       "weight": 3.9702,
       "description": ""
+    },
+    {
+      "name": "fern",
+      "id": "fern",
+      "image": "https://i.pinimg.com/1200x/0c/2f/09/0c2f0936dc3b8c9c0cd64e9370922865.jpg",
+      "rarity": "ssr",
+      "weight": 3.9702,
+      "description": ""
+    },
+    {
+      "name": "dazai",
+      "id": "osamu dazai",
+      "image": "https://i.pinimg.com/1200x/86/95/38/8695385b0b8ef6670000458e7881b04d.jpg",
+      "rarity": "ssr",
+      "weight": 3.9702,
+      "description": ""
     }
   ]
 }
