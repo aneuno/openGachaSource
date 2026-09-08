@@ -215,6 +215,14 @@
       "rarity": "lr",
       "weight": 1.02,
       "description": ""
+    },
+    {
+      "name": "erza",
+      "id": "erza scarlet combat form",
+      "image": "https://i.pinimg.com/736x/53/13/5d/53135d5134a3c31c1899d4aebdf5e80e.jpg",
+      "rarity": "ssr",
+      "weight": 3.9702,
+      "description": ""
     }
   ]
 }
