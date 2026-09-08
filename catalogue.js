@@ -391,15 +391,11 @@ function openModal(character) {
 
 
     modalRarity.textContent =
-        `Rareté : ${character.rarity}`;
+        `rarity : ${character.rarity}`;
 
 
     modalId.textContent =
         `ID : ${character.id}`;
-
-
-    modalWeight.textContent =
-        `Weight : ${character.weight}`;
 
 
     modalDescription.textContent =
