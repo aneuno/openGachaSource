@@ -25,6 +25,9 @@ const collectionCount =
 const backButton =
     document.getElementById("backButton");
 
+const searchInput =
+    document.getElementById("searchInput");
+
 const modalOverlay =
     document.getElementById("modalOverlay");
 
@@ -94,6 +97,8 @@ const addCardGrid =
 // ========================================
 
 let inventoryItems = [];
+let filteredItems = [];
+let selectedRarity = "ALL";
 let binders = [];
 let currentBinder = null;
 let currentBinderItems = [];
@@ -242,6 +247,8 @@ async function loadInventory() {
 
     if (inventoryItems.length === 0) {
 
+        filteredItems = [];
+
         collectionCount.textContent =
             "0 personnage";
 
@@ -258,11 +265,97 @@ async function loadInventory() {
 
 
     // ----------------------------
+    // APPLICATION DES FILTRES
+    // ----------------------------
+
+    applyFilters();
+
+}
+
+
+// ========================================
+// RECHERCHE + FILTRES DE RARETE
+// ========================================
+
+function applyFilters() {
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    filteredItems =
+        inventoryItems.filter(
+            (character) => {
+
+                // ----------------------------
+                // RECHERCHE
+                // ----------------------------
+
+                const name =
+                    String(
+                        character.character_name || ""
+                    )
+                    .toLowerCase();
+
+
+                const id =
+                    String(
+                        character.character_id || ""
+                    )
+                    .toLowerCase();
+
+
+                const matchesSearch =
+                    !search ||
+                    name.includes(search) ||
+                    id.includes(search);
+
+
+                // ----------------------------
+                // RARETE
+                // ----------------------------
+
+                const rarity =
+                    String(
+                        character.character_rarity || ""
+                    )
+                    .trim()
+                    .toUpperCase();
+
+
+                const matchesRarity =
+                    selectedRarity === "ALL" ||
+                    rarity === selectedRarity;
+
+
+                return (
+                    matchesSearch &&
+                    matchesRarity
+                );
+
+            }
+        );
+
+
+    renderInventory();
+
+}
+
+
+// ========================================
+// AFFICHAGE DE L'INVENTAIRE (VUE CARTES)
+// ========================================
+
+function renderInventory() {
+
+    // ----------------------------
     // COMPTEUR
     // ----------------------------
 
     const totalCharacters =
-        inventoryItems.reduce(
+        filteredItems.reduce(
 
             (total, character) =>
                 total + character.quantity,
@@ -273,21 +366,34 @@ async function loadInventory() {
 
 
     collectionCount.textContent =
-        `${inventoryItems.length} personnage(s) • ${totalCharacters} exemplaire(s)`;
+        `${filteredItems.length} personnage(s) • ${totalCharacters} exemplaire(s)`;
 
 
     // ----------------------------
-    // SUPPRESSION MESSAGE
+    // AUCUN RESULTAT
     // ----------------------------
 
-    inventoryElement.innerHTML = "";
+    if (filteredItems.length === 0) {
+
+        inventoryElement.innerHTML = `
+            <p id="message">
+                Aucun personnage trouvé.
+            </p>
+        `;
+
+        return;
+
+    }
 
 
     // ----------------------------
     // CREATION DES CARTES
     // ----------------------------
 
-    inventoryItems.forEach((character, index) => {
+    inventoryElement.innerHTML = "";
+
+
+    filteredItems.forEach((character, index) => {
 
         const card =
             createCharacterCard(character, index);
@@ -391,6 +497,67 @@ function createCharacterCard(character, index) {
     return card;
 
 }
+
+
+// ========================================
+// EVENEMENTS RECHERCHE / RARETE
+// ========================================
+
+searchInput.addEventListener(
+    "input",
+    function () {
+
+        applyFilters();
+
+    }
+);
+
+
+const rarityButtons =
+    document.querySelectorAll(
+        ".rarityFilter"
+    );
+
+
+rarityButtons.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                selectedRarity =
+                    button.dataset.rarity
+                        .toUpperCase();
+
+
+                // Retirer active de tous
+
+                rarityButtons.forEach(
+                    function (otherButton) {
+
+                        otherButton.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                // Activer le bouton choisi
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                applyFilters();
+
+            }
+        );
+
+    }
+);
 
 
 // ========================================
