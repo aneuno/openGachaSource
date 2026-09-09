@@ -35,6 +35,53 @@ button:hover {
     transform: scale(1.08);
 }
 /* ============================== */
+/* RECHERCHE + FILTRES            */
+/* ============================== */
+#inventoryControls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 30px 20px;
+    flex-wrap: wrap;
+}
+#searchInput {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 14px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background-color: #F6F7F7;
+    color: #3E3D45;
+    font-size: 15px;
+}
+#searchInput:focus {
+    box-shadow: 0 0 0 2px #A7A7AB;
+}
+#rarityFilters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.rarityFilter {
+    padding: 7px 12px;
+    background-color: #A7A7AB;
+    color: #3E3D45;
+    font-size: 13px;
+    transition:
+        transform 0.15s ease,
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+.rarityFilter:hover {
+    transform: scale(1.05);
+}
+.rarityFilter.active {
+    background-color: #3E3D45;
+    color: #F6F7F7;
+}
+/* ============================== */
 /* INFORMATIONS                   */
 /* ============================== */
 #collectionInfo {
@@ -271,6 +318,44 @@ button:hover {
         flex: 1 1 45%;
         padding: 30px 26px;
     }
+}
+
+/* ============================== */
+/* PETITS ECRANS                  */
+/* ============================== */
+@media (max-width: 900px) {
+
+    #inventoryControls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #searchInput {
+        max-width: none;
+    }
+
+    #rarityFilters {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    #inventoryControls {
+        padding: 0 16px 18px;
+        gap: 12px;
+    }
+
+    #rarityFilters {
+        gap: 5px;
+    }
+
+    .rarityFilter {
+        flex: 1 1 auto;
+        padding: 7px 9px;
+    }
+
 }
 
 /* ============================== */
