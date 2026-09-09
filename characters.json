@@ -202,11 +202,19 @@
       "description": "objectif de vie nn ?"
     },
     {
-      "name: "frieren",
+      "name": "frieren",
       "id": "frieren sleepy",
       "image": "https://i.pinimg.com/originals/5c/48/03/5c4803dbb22042545d02cb0447532e94.gif",
       "rarity": "LR",
       "weight": 1.50,
+      "description": ""
+    },
+    {
+      "name": "natsu",
+      "id": "natsu dragneel",
+      "image": "https://i.pinimg.com/736x/3f/c0/a0/3fc0a05befee1b9da73e9246a51c48ed.jpg",
+      "rarity": "SR",
+      "weight": 15,
       "description": ""
     }
   ]
