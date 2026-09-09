@@ -13,7 +13,7 @@
       "id": "zero two LR",
       "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-47.gif",
       "rarity": "LR",
-      "weight": 0.5,
+      "weight": 0.98,
       "description": ""
     },
     {
@@ -21,7 +21,7 @@
       "id": "zero two ULR",
       "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-49.gif",
       "rarity": "ULR",
-      "weight": 0.09,
+      "weight": 0.50,
       "description": ""
     },
     {
@@ -85,7 +85,7 @@
       "id": "gabimaru the hollow",
       "image": "https://i.pinimg.com/originals/99/68/0a/99680aec1e77734318d243e470135fdb.gif",
       "rarity": "ULR",
-      "weight": 0.09,
+      "weight": 0.50,
       "description": ""
     },
     {
@@ -93,7 +93,7 @@
       "id": "frieren",
       "image": "https://safebooru.org//samples/3915/sample_cac81e3b0ba2bfed8ad86c9d07372a95f2732716.jpg?7056983",
       "rarity": "SSR",
-      "weight": 1.02,
+      "weight": 1.98,
       "description": ""
     },
     {
@@ -141,7 +141,7 @@
       "id": "fern",
       "image": "https://i.pinimg.com/1200x/0c/2f/09/0c2f0936dc3b8c9c0cd64e9370922865.jpg",
       "rarity": "SSR",
-      "weight": 1.02,
+      "weight": 1.98,
       "description": ""
     },
     {
@@ -149,7 +149,7 @@
       "id": "osamu dazai",
       "image": "https://i.pinimg.com/1200x/86/95/38/8695385b0b8ef6670000458e7881b04d.jpg",
       "rarity": "SSR",
-      "weight": 1.02,
+      "weight": 1.98,
       "description": ""
     },
     {
@@ -157,7 +157,7 @@
       "id": "saber - run",
       "image": "https://i.pinimg.com/1200x/de/e0/f2/dee0f2184ac2a726c0553ca29f31076f.jpg",
       "rarity": "SSR",
-      "weight": 1.02,
+      "weight": 1.98,
       "description": ""
     },
     {
@@ -165,7 +165,7 @@
       "id": "reze",
       "image": "https://i.pinimg.com/1200x/c1/d7/a4/c1d7a417397bfc2d9fad9fe24d35984e.jpg",
       "rarity": "SSR",
-      "weight": 1.02,
+      "weight": 1.98,
       "description": ""
     },
     {
@@ -173,7 +173,7 @@
       "id": "levi ackerman",
       "image": "https://i.pinimg.com/originals/94/2b/85/942b85db87f94fcea41af4fc3b48be11.gif",
       "rarity": "ULR",
-      "weight": 0.09,
+      "weight": 0.50,
       "description": ""
     },
     {
@@ -181,7 +181,7 @@
       "id": "ubel",
       "image": "https://i.pinimg.com/1200x/4d/e7/47/4de7471370c96976ad6f9641828ba2e2.jpg",
       "rarity": "SSR",
-      "weight": 1.02,
+      "weight": 1.98,
       "description": "",
       "position": "top"
     },
@@ -198,7 +198,7 @@
       "id": "mikasa ackerman workout",
       "image": "https://i.imgur.com/XFu7vmn.gif",
       "rarity": "LR",
-      "weight": 0.5,
+      "weight": 0.98,
       "description": "objectif de vie nn ?"
     }
   ]
