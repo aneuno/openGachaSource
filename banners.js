@@ -393,14 +393,14 @@ if (!data) {
 
     const { error: insertError } = await supabaseClient
         .from("profiles")
-        .insert({ id: user.id, gems: 10000 });
+        .insert({ id: user.id, gems: 50 });
 
     if (insertError) {
         console.error("Erreur lors de la création du profil :", insertError);
         return;
     }
 
-    userGems = 10000;
+    userGems = 50;
 
 } else {
 
