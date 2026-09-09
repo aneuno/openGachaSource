@@ -1,3 +1,4 @@
+```json
 {
   "characters": [
     {
@@ -13,7 +14,7 @@
       "id": "zero two LR",
       "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-47.gif",
       "rarity": "LR",
-      "weight": 1.02,
+      "weight": 0.505051,
       "description": ""
     },
     {
@@ -21,7 +22,7 @@
       "id": "zero two ULR",
       "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-49.gif",
       "rarity": "ULR",
-      "weight": 0.0098,
+      "weight": 0.010204,
       "description": ""
     },
     {
@@ -53,7 +54,7 @@
       "id": "misato katsuragi",
       "image": "https://i.pinimg.com/1200x/c9/30/2e/c9302e13ae28fe0e98b6fa24c4a5b7a8.jpg",
       "rarity": "R",
-      "weight": 80,
+      "weight": 83.464745,
       "description": ""
     },
     {
@@ -61,7 +62,7 @@
       "id": "gon freecss",
       "image": "https://i.pinimg.com/736x/36/75/7c/36757cb62168b0658c3007d980cd828d.jpg",
       "rarity": "R",
-      "weight": 80,
+      "weight": 83.464745,
       "description": ""
     },
     {
@@ -69,7 +70,7 @@
       "id": "ichigo kurosaki",
       "image": "https://i.pinimg.com/736x/65/7c/44/657c441668b32ce075b1b225677a46a4.jpg",
       "rarity": "R",
-      "weight": 80,
+      "weight": 83.464745,
       "description": ""
     },
     {
@@ -77,7 +78,7 @@
       "id": "erza scarlet",
       "image": "https://i.pinimg.com/736x/85/d0/eb/85d0ebccf273555b9b097abd88443536.jpg",
       "rarity": "R",
-      "weight": 80,
+      "weight": 83.464745,
       "description": ""
     },
     {
@@ -85,7 +86,7 @@
       "id": "gabimaru the hollow",
       "image": "https://i.pinimg.com/originals/99/68/0a/99680aec1e77734318d243e470135fdb.gif",
       "rarity": "ULR",
-      "weight": 0.0098,
+      "weight": 0.010204,
       "description": ""
     },
     {
@@ -93,7 +94,7 @@
       "id": "frieren",
       "image": "https://safebooru.org//samples/3915/sample_cac81e3b0ba2bfed8ad86c9d07372a95f2732716.jpg?7056983",
       "rarity": "SSR",
-      "weight": 3.9702,
+      "weight": 1.02,
       "description": ""
     },
     {
@@ -117,7 +118,7 @@
       "id": "kenpachi zaraki",
       "image": "https://i.pinimg.com/1200x/e6/31/14/e63114485c1a0ddab5dc1427cb1914d6.jpg",
       "rarity": "R",
-      "weight": 80,
+      "weight": 83.464745,
       "description": ""
     },
     {
@@ -125,7 +126,7 @@
       "id": "strelitzia",
       "image": "https://i.pinimg.com/736x/82/57/86/82578683431d732a15be308ab70df6b9.jpg",
       "rarity": "R",
-      "weight": 80,
+      "weight": 83.464745,
       "description": ""
     },
     {
@@ -133,7 +134,7 @@
       "id": "shinichi kudo",
       "image": "https://i.pinimg.com/1200x/2d/f2/b2/2df2b24108ecc1f46ece8b82223cac01.jpg",
       "rarity": "R",
-      "weight": 80,
+      "weight": 83.464745,
       "description": ""
     },
     {
@@ -141,7 +142,7 @@
       "id": "fern",
       "image": "https://i.pinimg.com/1200x/0c/2f/09/0c2f0936dc3b8c9c0cd64e9370922865.jpg",
       "rarity": "SSR",
-      "weight": 3.9702,
+      "weight": 1.02,
       "description": ""
     },
     {
@@ -149,7 +150,7 @@
       "id": "osamu dazai",
       "image": "https://i.pinimg.com/1200x/86/95/38/8695385b0b8ef6670000458e7881b04d.jpg",
       "rarity": "SSR",
-      "weight": 3.9702,
+      "weight": 1.02,
       "description": ""
     },
     {
@@ -157,7 +158,7 @@
       "id": "saber - run",
       "image": "https://i.pinimg.com/1200x/de/e0/f2/dee0f2184ac2a726c0553ca29f31076f.jpg",
       "rarity": "SSR",
-      "weight": 3.9702,
+      "weight": 1.02,
       "description": ""
     },
     {
@@ -165,7 +166,7 @@
       "id": "reze",
       "image": "https://i.pinimg.com/1200x/c1/d7/a4/c1d7a417397bfc2d9fad9fe24d35984e.jpg",
       "rarity": "SSR",
-      "weight": 3.9702,
+      "weight": 1.02,
       "description": ""
     },
     {
@@ -173,7 +174,7 @@
       "id": "levi ackerman",
       "image": "https://i.pinimg.com/originals/94/2b/85/942b85db87f94fcea41af4fc3b48be11.gif",
       "rarity": "ULR",
-      "weight": 0.0098,
+      "weight": 0.010204,
       "description": ""
     },
     {
@@ -181,7 +182,7 @@
       "id": "ubel",
       "image": "https://i.pinimg.com/1200x/4d/e7/47/4de7471370c96976ad6f9641828ba2e2.jpg",
       "rarity": "SSR",
-      "weight": 3.9702,
+      "weight": 1.02,
       "description": "",
       "position": "top"
     },
@@ -198,8 +199,9 @@
       "id": "mikasa ackerman workout",
       "image": "https://i.imgur.com/XFu7vmn.gif",
       "rarity": "LR",
-      "weight": 1.02,
+      "weight": 0.505051,
       "description": "objectif de vie nn ?"
     }
   ]
 }
+```
