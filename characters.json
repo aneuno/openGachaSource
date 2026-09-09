@@ -13,7 +13,7 @@
       "id": "zero two LR",
       "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-47.gif",
       "rarity": "LR",
-      "weight": 0.505051,
+      "weight": 0.5,
       "description": ""
     },
     {
@@ -21,7 +21,7 @@
       "id": "zero two ULR",
       "image": "https://aniyuki.com/wp-content/uploads/2021/05/gif-aniyuki-zero-two-49.gif",
       "rarity": "ULR",
-      "weight": 0.010204,
+      "weight": 0.09,
       "description": ""
     },
     {
@@ -53,7 +53,7 @@
       "id": "misato katsuragi",
       "image": "https://i.pinimg.com/1200x/c9/30/2e/c9302e13ae28fe0e98b6fa24c4a5b7a8.jpg",
       "rarity": "R",
-      "weight": 83.464745,
+      "weight": 83.39,
       "description": ""
     },
     {
@@ -61,7 +61,7 @@
       "id": "gon freecss",
       "image": "https://i.pinimg.com/736x/36/75/7c/36757cb62168b0658c3007d980cd828d.jpg",
       "rarity": "R",
-      "weight": 83.464745,
+      "weight": 83.39,
       "description": ""
     },
     {
@@ -69,7 +69,7 @@
       "id": "ichigo kurosaki",
       "image": "https://i.pinimg.com/736x/65/7c/44/657c441668b32ce075b1b225677a46a4.jpg",
       "rarity": "R",
-      "weight": 83.464745,
+      "weight": 83.39,
       "description": ""
     },
     {
@@ -77,7 +77,7 @@
       "id": "erza scarlet",
       "image": "https://i.pinimg.com/736x/85/d0/eb/85d0ebccf273555b9b097abd88443536.jpg",
       "rarity": "R",
-      "weight": 83.464745,
+      "weight": 83.39,
       "description": ""
     },
     {
@@ -85,7 +85,7 @@
       "id": "gabimaru the hollow",
       "image": "https://i.pinimg.com/originals/99/68/0a/99680aec1e77734318d243e470135fdb.gif",
       "rarity": "ULR",
-      "weight": 0.010204,
+      "weight": 0.09,
       "description": ""
     },
     {
@@ -117,7 +117,7 @@
       "id": "kenpachi zaraki",
       "image": "https://i.pinimg.com/1200x/e6/31/14/e63114485c1a0ddab5dc1427cb1914d6.jpg",
       "rarity": "R",
-      "weight": 83.464745,
+      "weight": 83.39,
       "description": ""
     },
     {
@@ -125,7 +125,7 @@
       "id": "strelitzia",
       "image": "https://i.pinimg.com/736x/82/57/86/82578683431d732a15be308ab70df6b9.jpg",
       "rarity": "R",
-      "weight": 83.464745,
+      "weight": 83.39,
       "description": ""
     },
     {
@@ -133,7 +133,7 @@
       "id": "shinichi kudo",
       "image": "https://i.pinimg.com/1200x/2d/f2/b2/2df2b24108ecc1f46ece8b82223cac01.jpg",
       "rarity": "R",
-      "weight": 83.464745,
+      "weight": 83.39,
       "description": ""
     },
     {
@@ -173,7 +173,7 @@
       "id": "levi ackerman",
       "image": "https://i.pinimg.com/originals/94/2b/85/942b85db87f94fcea41af4fc3b48be11.gif",
       "rarity": "ULR",
-      "weight": 0.010204,
+      "weight": 0.09,
       "description": ""
     },
     {
@@ -198,7 +198,7 @@
       "id": "mikasa ackerman workout",
       "image": "https://i.imgur.com/XFu7vmn.gif",
       "rarity": "LR",
-      "weight": 0.505051,
+      "weight": 0.5,
       "description": "objectif de vie nn ?"
     }
   ]
