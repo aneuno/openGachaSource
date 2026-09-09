@@ -224,6 +224,14 @@
       "rarity": "LR",
       "weight": 1.50,
       "description": ""
+    },
+    {
+      "name": "Psyduck",
+      "id": "Psyduck",
+      "image": "https://i.pinimg.com/736x/0e/c9/f8/0ec9f8d45e971e73cf07aad82fe8487e.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
     }
   ]
 }
