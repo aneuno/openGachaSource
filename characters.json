@@ -216,6 +216,14 @@
       "rarity": "SR",
       "weight": 15,
       "description": ""
+    },
+    {
+      "name": "natsu",
+      "id": "natsu dragneel rage form",
+      "image": "https://i.pinimg.com/originals/ea/d8/88/ead888f36fd37053e167bf7f6023b34d.gif",
+      "rarity": "LR",
+      "weight": 1.50,
+      "description": ""
     }
   ]
 }
