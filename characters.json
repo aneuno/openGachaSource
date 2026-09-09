@@ -200,6 +200,14 @@
       "rarity": "LR",
       "weight": 1.50,
       "description": "objectif de vie nn ?"
+    },
+    {
+      "name: "frieren",
+      "id": "frieren sleepy",
+      "image": "https://i.pinimg.com/originals/5c/48/03/5c4803dbb22042545d02cb0447532e94.gif",
+      "rarity": "LR",
+      "weight": 1.50,
+      "description": ""
     }
   ]
 }
