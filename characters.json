@@ -170,7 +170,7 @@
     },
     {
       "name": "levi",
-      "id": "levi ackerman",
+      "id": "fighting levi ackerman",
       "image": "https://i.pinimg.com/originals/94/2b/85/942b85db87f94fcea41af4fc3b48be11.gif",
       "rarity": "ULR",
       "weight": 1,
@@ -271,6 +271,14 @@
       "image": "https://i.pinimg.com/736x/54/b6/26/54b626476b2aa260595be79bf7837eb6.jpg",
       "rarity": "SR",
       "weight": 15,
+      "description": ""
+    },
+    {
+      "name": "levi",
+      "id": "levi ackerman",
+      "image": "https://i.pinimg.com/736x/f1/85/3e/f1853eae3a6ca843033b93942f1e62cc.jpg",
+      "rarity": "R",
+      "weight": 80,
       "description": ""
     }
   ]
