@@ -121,7 +121,7 @@
       "description": ""
     },
     {
-      "name": "strelitiza",
+      "name": "strelitzia",
       "id": "strelitzia",
       "image": "https://i.pinimg.com/736x/82/57/86/82578683431d732a15be308ab70df6b9.jpg",
       "rarity": "R",
@@ -375,6 +375,14 @@
       "image": "https://i.pinimg.com/736x/b1/29/ee/b129eee3ac641b54b8bf1e9d7333e6df.jpg",
       "rarity": "R",
       "weight": 80,
+      "description": ""
+    },
+    {
+      "name": "strelitzia",
+      "id": "apotheosis strelitzia",
+      "image": "https://i.pinimg.com/736x/fa/d4/c8/fad4c80266f269d62549b9f096a02cba.jpg",
+      "rarity": "SSR",
+      "weight": 2.50,
       "description": ""
     }
   ]
