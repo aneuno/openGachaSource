@@ -376,6 +376,14 @@
       "rarity": "R",
       "weight": 80,
       "description": ""
+    },
+    {
+      "name": "2B",
+      "id": "YoRHa No.2 Type B",
+      "image": "https://i.pinimg.com/736x/83/16/3b/83163bd3294727108e0cae9d42b6d2cb.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
     }
   ]
 }
