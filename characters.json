@@ -304,6 +304,14 @@
       "rarity": "SR",
       "weight": 15,
       "description": ""
+    },
+    {
+      "name": "ryou",
+      "id": "ryou reaper",
+      "image": "https://i.pinimg.com/736x/d6/01/cc/d601ccb6b5f9eb660394578e1066b70e.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
     }
   ]
 }
