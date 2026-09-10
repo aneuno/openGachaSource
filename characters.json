@@ -264,6 +264,14 @@
       "rarity": "R",
       "weight": 80,
       "description": ""
+    },
+    {
+      "name": "anya",
+      "id": "cool anya forger",
+      "image": "https://i.pinimg.com/736x/54/b6/26/54b626476b2aa260595be79bf7837eb6.jpg",
+      "rarity": "SR",
+      "weight": 15,
+      "description": ""
     }
   ]
 }
