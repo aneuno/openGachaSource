@@ -360,6 +360,14 @@
       "rarity": "R",
       "weight": 80,
       "description": ""
+    },
+    {
+      "name": "ryūko",
+      "id": "ryūko matoi",
+      "image": "https://i.pinimg.com/736x/2e/65/1a/2e651afc8f093aaafbf39622ec2cb7d4.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
     }
   ]
 }
