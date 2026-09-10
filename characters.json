@@ -344,6 +344,14 @@
       "rarity": "R",
       "weight": 80,
       "description": ""
+    },
+    {
+      "name": "dabi",
+      "id": "dabi",
+      "image": "https://i.pinimg.com/736x/9d/cb/c8/9dcbc8d839e15ee8fe5dd93438056164.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
     }
   ]
 }
