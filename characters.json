@@ -296,6 +296,14 @@
       "rarity": "R",
       "weight": 80,
       "description": ""
+    },
+    {
+      "name": "makima",
+      "id": "makima",
+      "image": "https://i.pinimg.com/736x/56/6b/93/566b93eb3b4e2e7cff44e3436336475f.jpg",
+      "rarity": "SR",
+      "weight": 15,
+      "description": ""
     }
   ]
 }
