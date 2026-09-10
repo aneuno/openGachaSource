@@ -320,6 +320,14 @@
       "rarity": "SR",
       "weight": 15,
       "description": ""
+    },
+    {
+      "name": "naruto",
+      "id": "naruto uzumaki",
+      "image": "https://i.pinimg.com/1200x/24/7b/97/247b97b8f8ceed9c89357c2a65fc16ba.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
     }
   ]
 }
