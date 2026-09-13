@@ -384,6 +384,257 @@
       "rarity": "R",
       "weight": 80,
       "description": ""
+    },
+    {
+      "name": "Shinji Hirako",
+      "id": "Shinji sky",
+      "image": "https://i.pinimg.com/736x/2c/3d/e7/2c3de7f0d1f60aecac0e8f8d5cc4cdd3.jpg",
+      "rarity": "SR",
+      "weight": 15,
+      "description": ""
+    },
+
+{
+      "name": "Sōsuke Aizen",
+      "id": "Aizen shikai",
+      "image": "https://i.pinimg.com/1200x/e7/5a/2d/e75a2d99993bb56ff6cbfb2313ce91e1.jpg",
+      "rarity": "SSR",
+      "weight": 2.5,
+      "description": "Son shikai te brise le cerveau..."
+    },
+
+{
+      "name": "Kurapika",
+      "id": "Kurapika suit",
+      "image": "https://i.pinimg.com/1200x/80/58/3b/80583bb4057d5172182d9e1807e31832.jpg",
+      "rarity": "SSR",
+      "weight": 2.5,
+      "description": ""
+    },
+
+{
+      "name": "Julius Juukulius",
+      "id": "Julius Rainbow",
+      "image": "https://i.pinimg.com/736x/ed/15/87/ed1587da204a1faae4775208bd66de52.jpg",
+      "rarity": "SR",
+      "weight": 15,
+      "description": ""
+    },
+
+{
+      "name": "BlackStar",
+      "id": "BlackStar",
+      "image": "https://i.pinimg.com/736x/73/9a/52/739a5276a0d7fd9964a5494d6bf292a0.jpg",
+      "rarity": "SSR",
+      "weight": 2.5,
+      "description": ""
+    },
+
+{
+      "name": "Death The Kidd",
+      "id": "Kidd",
+      "image": "https://i.pinimg.com/736x/9f/ff/0e/9fff0e9d57de02ce221ce01fe5835e5a.jpg",
+      "rarity": "SSR",
+      "weight": 2.5,
+      "description": ""
+    },
+
+{
+      "name": "Shinmon Benimaru",
+      "id": "Benimaru Rainbow",
+      "image": "https://i.pinimg.com/736x/ec/80/c6/ec80c634b088a3ef6889afcc107f199e.jpg",
+      "rarity": "SSR",
+      "weight": 2.5,
+      "description": ""
+    },
+
+{
+      "name": "Diablo",
+      "id": "Diablo the butler",
+      "image": "https://i.pinimg.com/736x/3b/76/86/3b76869cb2a267e7b02773438efbab2b.jpg",
+      "rarity": "SR",
+      "weight": 15,
+      "description": "The butler ça veut dire le majordome (pour les Français)"
+    },
+
+{
+      "name": "Diavolo",
+      "id": "King Crimson",
+      "image": "https://i.pinimg.com/736x/b8/87/d3/b887d3683f93d6a57cefd44aeb99e65a.jpg",
+      "rarity": "SR",
+      "weight": 15,
+      "description": ""
+    },
+
+{
+      "name": "Natsuki Subaru",
+      "id": "Subaru Stair's",
+      "image": "https://i.pinimg.com/736x/2a/0d/e8/2a0de8ab75511d04879ae8f173748515.jpg",
+      "rarity": "SR",
+      "weight": 15,
+      "description": ""
+    },
+
+{
+      "name": "Takumi Fujiwara",
+      "id": "Trueno",
+      "image": "https://i.pinimg.com/736x/a2/25/71/a22571e02014ab50a3bd075e5386e6c6.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
+    },
+
+{
+      "name": "Joker",
+      "id": "joker",
+      "image": "https://i.pinimg.com/1200x/7c/76/9d/7c769d9115ff6fe4df053ca4641f9534.jpg",
+      "rarity": "SR",
+      "weight": 15,
+      "description": ""
+    },
+
+{
+      "name": "Rudeus Greyrat",
+      "id": "Rudeus pause midi",
+      "image": "https://i.pinimg.com/736x/95/56/9f/95569f7cca45f6cad216982c40b526b4.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
+    },
+
+{
+      "name": "Levi Ackerman",
+      "id": "Salue Levi",
+      "image": "https://i.pinimg.com/1200x/9b/09/ae/9b09ae14d613b2dd5674d66f6911f84f.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
+    },
+
+{
+      "name": "L",
+      "id": "L spin",
+      "image": "https://i.pinimg.com/originals/96/50/d9/9650d93a369a325b1410309ce5d0e96f.gif",
+      "rarity": "ULR",
+      "weight": 1,
+      "description": "C'est L qui tourne"
+    },
+
+{
+      "name": "Reze",
+      "id": "Reze explosion",
+      "image": "https://i.pinimg.com/736x/8b/0d/79/8b0d79567cc0f583a8e82484aab36299.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
+    },
+
+{
+      "name": "Frieren The slayer",
+      "id": "frieren sigma ",
+      "image": "https://i.pinimg.com/originals/51/a1/68/51a1685a81172ce52b1b14214790a75b.gif",
+      "rarity": "ULR",
+      "weight": 1,
+      "description": "un trou noir..."
+    },
+
+{
+      "name": "shoko leiri",
+      "id": "shoko smoke",
+      "image": "https://i.pinimg.com/originals/80/2d/64/802d64a0fea818e86618c61c951b75bb.gif",
+      "rarity": "LR",
+      "weight": 1.5,
+      "description": "une cigartte"
+    },
+
+{
+      "name": "Bouddha",
+      "id": "Bouddha",
+      "image": "https://i.pinimg.com/1200x/8c/53/27/8c53270ae4a5054a546aca03afee85e5.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
+    },
+
+{
+      "name": "Jack The Reaper",
+      "id": "Le jack l'éventreur",
+      "image": "https://i.pinimg.com/736x/aa/c0/36/aac03603c98f640fca04a479b36ce1aa.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
+    },
+
+{
+      "name": "Madara Uchiwa",
+      "id": "Madara Ninja War",
+      "image": "https://i.pinimg.com/originals/4e/af/4b/4eaf4b191d08b09368134f4f8939c277.gif",
+      "rarity": "ULR",
+      "weight": 1,
+      "description": "Mode de Madara sous Dynasty Warriors"
+    },
+
+{
+      "name": "Luffy Gear 5",
+      "id": "Monkey D Luffy Gear 5",
+      "image": "https://i.pinimg.com/originals/ad/6b/00/ad6b00a8b07ef35e3a89805ea3c5a890.gif",
+      "rarity": "ULR",
+      "weight": 1,
+      "description": "MAMA luffy enfin !"
+    },
+
+{
+      "name": "Shion Asaemon",
+      "id": " Yamada Asaemon",
+      "image": "https://i.pinimg.com/1200x/69/76/25/6976258a65453c6d19dd9878f6e0a229.jpg",
+      "rarity": "SR",
+      "weight": 15,
+      "description": ""
+    },
+
+{
+      "name": "Shinra Kusakabe",
+      "id": "Shinra",
+      "image": "https://i.pinimg.com/736x/16/3c/40/163c4051f9638e59823445cce759da36.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
+    },
+
+{
+      "name": "Naoya Zenin",
+      "id": "Naoya jujutsu",
+      "image": "https://i.pinimg.com/originals/5d/2d/0b/5d2d0b6f0fb9656ee93108bfa5547ebd.gif",
+      "rarity": "ULR",
+      "weight": 1,
+      "description": "Est ce qu'il va gagner ?"
+    },
+
+{
+      "name": "Maki Zenin",
+      "id": "Maki punch",
+      "image": "https://i.pinimg.com/originals/2e/70/9e/2e709e94cd100bba6a32087e577e6ccd.gif",
+      "rarity": "ULR",
+      "weight": 1,
+      "description": "A benh non, il a perdu..."
+    },
+
+{
+      "name": "Mega Baggaïd",
+      "id": "Baggaïd",
+      "image": "https://i.pinimg.com/736x/28/b0/ea/28b0ea6601c010da60d2a93806910cbb.jpg",
+      "rarity": "SR",
+      "weight": 15,
+      "description": ""
+    },
+
+{
+      "name": "Marin nerd",
+      "id": "Marin Kitagawa",
+      "image": "https://i.pinimg.com/736x/03/bc/72/03bc721484673c2baab189d836036d70.jpg",
+      "rarity": "R",
+      "weight": 80,
+      "description": ""
     }
   ]
 }
