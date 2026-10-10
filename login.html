@@ -1,25 +1,41 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - gachaOpenSource</title>
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="login">
         <h1>gachaOpenSource</h1>
+
         <button id="discordLoginButton">
             Se connecter avec Discord
         </button>
+
+        <hr>
+
+        <form id="emailLoginForm">
+            <input
+                type="email"
+                id="emailInput"
+                placeholder="Adresse e-mail"
+                autocomplete="email"
+                required
+            >
+
+            <button type="submit" id="emailLoginButton">
+                Se connecter avec e-mail
+            </button>
+        </form>
+
+        <p id="loginMessage" role="status"></p>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="login.js"></script>
 </body>
 </html>
+```
